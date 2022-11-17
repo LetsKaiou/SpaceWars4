@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3136920424432349298}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,12 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletDamage: 5
+  firstRotation: {x: 0, y: 0, z: 0, w: 0}
   speedY: 100
   MoveSpeed: 20
   BulletObj: {fileID: 8518147980204762918}
-  playersc: {fileID: 0}
-  enemysc: {fileID: 0}
-  friendsc: {fileID: 0}
 --- !u!54 &-3136920424432349298
 Rigidbody:
   m_ObjectHideFlags: 0

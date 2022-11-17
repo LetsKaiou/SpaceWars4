@@ -39,7 +39,7 @@ public class CreateShip : MonoBehaviour
         // 画像の表示処理
         for (int i = 0; i < Select_Special.SelectSpecial.Length; i++)
         {
-            
+
             // CSVから画像を持ってきて表示
             image[i].sprite = Resources.Load<Sprite>(specialInfo.Image[int.Parse(Select_Special.SelectSpecial[i])]);
             ReadInfo(i);
@@ -55,21 +55,25 @@ public class CreateShip : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Clones[i] = Instantiate(CreateShips[i], CreatePos[i], Quaternion.identity);
+            Debug.Log("i" + i);
             // 当たり判定取得用のタグとステータスを生成時に割り当てる
             switch (i)
             {
                 case 0:
                     Clones[i].tag = "FriendShip1";
-                    Clones[i].gameObject.GetComponent<child>().SetStatus(HP[0]);
+                    Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 1:
                     Clones[i].tag = "FriendShip2";
+                    Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 2:
                     Clones[i].tag = "FriendShip3";
+                    Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 3:
                     Clones[i].tag = "FriendShip4";
+                    Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
             }
 
@@ -91,6 +95,7 @@ public class CreateShip : MonoBehaviour
         HP[num] = frindInfo.HP[int.Parse(SelectShip.SelectShipNum[num])];
         DEF[num] = frindInfo.DEF[int.Parse(SelectShip.SelectShipNum[num])];
         SPD[num] = frindInfo.SPD[int.Parse(SelectShip.SelectShipNum[num])];
+        Debug.Log("CreateShip" + HP[0]);
     }
 
     // データを別のスクリプトから参照できるようにする
@@ -98,6 +103,6 @@ public class CreateShip : MonoBehaviour
     {
         Debug.Log(CTNum);
         Debug.Log(CT[CTNum]);
-            return CT[CTNum];
+        return CT[CTNum];
     }
 }

@@ -3903,7 +3903,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1258005117}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: OnclickGoBattleButton
+        m_MethodName: OnclickBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

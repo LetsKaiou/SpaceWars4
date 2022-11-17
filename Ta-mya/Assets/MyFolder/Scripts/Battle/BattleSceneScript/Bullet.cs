@@ -14,11 +14,6 @@ public class Bullet : MonoBehaviour
 
     public GameObject BulletObj;
 
-    private GameObject Player;
-    private GameObject Enemy;
-
-    public Player playersc;
-    public Enemy enemysc;
     //public FriendShipSelect friendsc;
 
     public void Awake()
@@ -49,27 +44,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, deleteTime);
     }
 
-    // íeÇÃê⁄êGîªíËèàóù
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            enemysc.hp = enemysc.hp - BulletDamage;
-        }
 
-        if (other.gameObject.tag == "Player")
-        {
-            playersc.P_Damage(BulletDamage);
-        }
-    }
-
-    private void OnTriggerEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Child1")
-        {
+    //private void OnTriggerEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.name == "Child1")
+    //    {
             
             
-        }
-    }
+    //    }
+    //}
 
 }

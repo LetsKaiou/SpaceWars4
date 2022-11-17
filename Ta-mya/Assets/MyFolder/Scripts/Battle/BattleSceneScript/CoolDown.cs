@@ -90,9 +90,9 @@ public class CoolDown : MonoBehaviour
     public void SetSpecialNum()
     {
         Debug.Log("IN");
-        Debug.Log("SpecialNum:"+SpecialNum);
+        Debug.Log("SpecialNum:" + SpecialNum);
 
-            
+
         SpecialNum = PlayerScript.GetSpecialNum() - 1;
         UIobj[SpecialNum].fillAmount = 0;
     }

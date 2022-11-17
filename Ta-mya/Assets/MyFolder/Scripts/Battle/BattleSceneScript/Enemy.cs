@@ -9,7 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _timeInterval;
     // 経過時間取得用変数
     private float _timeElapsed;
+    private int Enemy_HP =50;
+    private bool DamageHit;
     [SerializeField] private GameObject[] Bullet;
+    public GameObject bulletPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
     }
     public void shot()
     {
+        Debug.Log("IN_E_Bullet");
         //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
         //出現させる位置をずらす値
@@ -44,6 +48,26 @@ public class Enemy : MonoBehaviour
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
         //弾生成
-        Instantiate(Bullet[0], placePosition, q);
+        Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+    }
+
+    public void E_Damage(int damage)
+    {
+        Enemy_HP -= damage;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            DamageHit = false;
+            Destroy(other.gameObject);
+            if (DamageHit == false)
+            {
+                E_Damage(5);
+                DamageHit = true;
+            }
+            //Debug.Log("Ehp:" + Enemy_HP);
+        }
     }
 }

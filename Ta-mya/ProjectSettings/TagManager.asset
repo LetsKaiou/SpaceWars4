@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Eemy
   - FriendShip
+  - Bullet
+  - FriendShip1
+  - FriendShip2
+  - FriendShip3
+  - FriendShip24
   layers:
   - Default
   - TransparentFX

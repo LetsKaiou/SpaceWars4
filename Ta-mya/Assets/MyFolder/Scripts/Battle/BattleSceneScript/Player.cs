@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     // 移動速度を格納する変数
     public float speed = 1;
     // HP
-    public int hp;
+    private int Player_HP;
     [SerializeField] private Slider hp_slider;
     // 弾の発射間隔
     [SerializeField] private float _timeInterval;
@@ -29,13 +29,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] Bullet;
     // 特殊攻撃の弾ごとのクールタイム確認格納用
     public List<bool> Reload = new List<bool>();
-    Vector3 bulletPoint;
+    [SerializeField] private GameObject bulletPoint;
     public CoolDown CoolDownScript;
+    private bool DamageHit;
 
     void Start()
     {
-        hp_slider.maxValue = hp;
-        hp_slider.value = hp;
+        Player_HP = 100;
+        hp_slider.maxValue = Player_HP;
+        hp_slider.value = Player_HP;
+        Debug.Log(Player_HP);
         // Listに情報を追加(ture:発射可能、false:クールタイム中)
         Reload.Add(true);   // 特殊攻撃1
         Reload.Add(true);   // 特殊攻撃2
@@ -69,9 +72,9 @@ public class Player : MonoBehaviour
         // 特殊攻撃選択処理
         #region 特殊攻撃
         // マウスの回転数取得(回転させるたびに1ずつ増減する デフォルトは0)
-            MousWheel += Input.GetAxis("Mouse ScrollWheel");
-            MousWheel = Mathf.Floor(MousWheel);
-            MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
+        MousWheel += Input.GetAxis("Mouse ScrollWheel");
+        MousWheel = Mathf.Floor(MousWheel);
+        MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
         #endregion
 
         // 弾発射
@@ -86,7 +89,8 @@ public class Player : MonoBehaviour
         }
         #endregion
         // 特殊攻撃の弾選択処理と発射処理への移動(マウス左クリックで発射)
-        if(MousWheel > 0)
+        #region 特殊攻撃設定用
+        if (MousWheel > 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -95,17 +99,19 @@ public class Player : MonoBehaviour
                 BulletSelect = (int)MousWheel;
                 if (Reload[BulletSelect - 1] == true)
                 {
-                    
-
                     SpecialAttack(BulletSelect);
                 }
             }
         }
+        #endregion
+        // HPのスライダー処理
+        hp_slider.value = Player_HP;
     }
 
     // 通常弾発射処理関数
     public void shot()
     {
+
         //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
         //出現させる位置をずらす値
@@ -120,7 +126,7 @@ public class Player : MonoBehaviour
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
         //弾生成
-        Instantiate(Bullet[0], transform.position, transform.rotation);
+        Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
     }
 
     // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)
@@ -146,14 +152,14 @@ public class Player : MonoBehaviour
         placePosition = q1 * offsetGun + placePosition;
         //弾生成
         Instantiate(Bullet[BulletSelection], placePosition, Quaternion.identity);
-        
+
         // クールタイム開始
         //StartCoroutine(CoolTime());
     }
 
     public void P_Damage(int damage)
     {
-        hp_slider.value -= damage;
+        Player_HP -= damage;
     }
 
 
@@ -174,6 +180,28 @@ public class Player : MonoBehaviour
     public int GetSpecialNum()
     {
         return BulletSelect;
+    }
+
+    public int GetPHp()
+    {
+
+
+        return Player_HP;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            DamageHit = false;
+            Destroy(other.gameObject);
+            if (DamageHit == false)
+            {
+                P_Damage(5);
+                DamageHit = true;
+            }
+            Debug.Log("hp:" + Player_HP);
+        }
     }
 }
 

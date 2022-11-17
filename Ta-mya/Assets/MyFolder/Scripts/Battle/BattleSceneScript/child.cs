@@ -15,7 +15,7 @@ public class child : MonoBehaviour
     public int HP;
     public int DEF;
     public int SPD;
-    public int[] hp = new int [4];
+    public int[] hp = new int[4];
     public int[] def = new int[4];
     public int[] spd = new int[4];
 
@@ -30,27 +30,28 @@ public class child : MonoBehaviour
         {
 
             case "FriendShip1":
-                this.HP = hp[0];
-                
+                this.hp[0] = HP;
+                Debug.Log("F1:" + hp[0]);
                 break;
             case "FriendShip2":
-                this.HP = hp[1];
+                this.hp[1] = HP;
+                Debug.Log("F2:" + hp[1]);
                 break;
             case "FriendShip3":
-                this.HP = hp[2];
+                this.hp[2] = HP;
+                Debug.Log("F3:" + hp[2]);
                 break;
             case "FriendShip4":
-                this.HP = hp[3];
+                this.hp[3] = HP;
+                Debug.Log("F4:" + hp[3]);
                 break;
         }
-
 
     }
 
     // ÉQÅ[ÉÄé¿çsíÜÇÃåJÇËï‘Çµèàóù
     void Update()
     {
-        Debug.Log(HP);
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * speed * Time.deltaTime;
@@ -99,10 +100,10 @@ public class child : MonoBehaviour
 
     public void SetStatus(int FHP)
     {
-
-            HP = FHP;
-            //def[i] = createcs.DEF[i];
-            //spd[i] = createcs.SPD[i];
+        Debug.Log("FHP:" + FHP);
+        HP = FHP;
+        //def[i] = createcs.DEF[i];
+        //spd[i] = createcs.SPD[i];
 
     }
 }
