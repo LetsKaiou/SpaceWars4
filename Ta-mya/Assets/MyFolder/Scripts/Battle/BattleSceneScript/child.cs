@@ -31,19 +31,19 @@ public class child : MonoBehaviour
 
             case "FriendShip1":
                 this.hp[0] = HP;
-                Debug.Log("F1:" + hp[0]);
+                //Debug.Log("F1:" + hp[0]);
                 break;
             case "FriendShip2":
                 this.hp[1] = HP;
-                Debug.Log("F2:" + hp[1]);
+                //Debug.Log("F2:" + hp[1]);
                 break;
             case "FriendShip3":
                 this.hp[2] = HP;
-                Debug.Log("F3:" + hp[2]);
+                //Debug.Log("F3:" + hp[2]);
                 break;
             case "FriendShip4":
                 this.hp[3] = HP;
-                Debug.Log("F4:" + hp[3]);
+                //Debug.Log("F4:" + hp[3]);
                 break;
         }
 
@@ -100,7 +100,7 @@ public class child : MonoBehaviour
 
     public void SetStatus(int FHP)
     {
-        Debug.Log("FHP:" + FHP);
+        //Debug.Log("FHP:" + FHP);
         HP = FHP;
         //def[i] = createcs.DEF[i];
         //spd[i] = createcs.SPD[i];
