@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
         MousWheel += Input.GetAxis("Mouse ScrollWheel");
         MousWheel = Mathf.Floor(MousWheel);
         MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
+        SP_Anim.SetInteger("Param", (int)MousWheel);
         #endregion
 
         // 弾発射
@@ -96,8 +98,9 @@ public class Player : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                SP_Anim.SetInteger("Param", (int)MousWheel);
-                Debug.Log(MousWheel);
+
+                int AnimNum = SP_Anim.GetInteger((int)MousWheel);
+                Debug.Log("AnimNum"+AnimNum);
                 Debug.Log(Reload[3]);
                 BulletSelect = (int)MousWheel;
                 if (Reload[BulletSelect - 1] == true)
@@ -109,6 +112,10 @@ public class Player : MonoBehaviour
         #endregion
         // HPのスライダー処理
         hp_slider.value = Player_HP;
+        if (Player_HP <= 0)
+        {
+            SceneManager.LoadScene("Result");
+        }
     }
 
     // 通常弾発射処理関数
@@ -203,7 +210,7 @@ public class Player : MonoBehaviour
                 P_Damage(5);
                 DamageHit = true;
             }
-            Debug.Log("hp:" + Player_HP);
+            //Debug.Log("hp:" + Player_HP);
         }
     }
 }

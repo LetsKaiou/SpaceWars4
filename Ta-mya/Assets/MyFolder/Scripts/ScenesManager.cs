@@ -56,6 +56,7 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene("Result");
     }
 
+
     public void OnClickBackButton(int Num)
     {
         switch (Num)
@@ -78,7 +79,7 @@ public class ScenesManager : MonoBehaviour
             default:
                 break;
         }
-        ;       
+               
     }
 
     // シーン遷移処理(バトル)
