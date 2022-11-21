@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4112097546394478}
   - component: {fileID: 6450651425045816069}
   - component: {fileID: 1369439365953119753}
-  - component: {fileID: 5099171529784798297}
   m_Layer: 0
   m_Name: Ship4
   m_TagString: Untagged
@@ -93,27 +92,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5099171529784798297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646988040113528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec2809318b19334e946f661fc3e5cff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  bullet: {fileID: 0}
-  _timeInterval: 0
-  HP: 0
-  DEF: 0
-  SPD: 0
-  hp: 00000000000000000000000000000000
-  def: 00000000000000000000000000000000
-  spd: 00000000000000000000000000000000
 --- !u!1001 &353819069382065644
 PrefabInstance:
   m_ObjectHideFlags: 0
