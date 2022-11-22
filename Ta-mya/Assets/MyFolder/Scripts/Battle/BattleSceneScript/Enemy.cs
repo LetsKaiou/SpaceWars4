@@ -30,6 +30,10 @@ public class Enemy : MonoBehaviour
             // Œo‰ßŽžŠÔ‚ðŒ³‚É–ß‚·
             _timeElapsed = 0f;
         }
+        if (Enemy_HP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     public void shot()
     {
