@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public SP_Bullet sp_Bullet;
     // 移動速度を格納する変数
     public float speed = 1;
     // HP
@@ -100,8 +101,6 @@ public class Player : MonoBehaviour
             {
 
                 int AnimNum = SP_Anim.GetInteger((int)MousWheel);
-                Debug.Log("AnimNum"+AnimNum);
-                Debug.Log(Reload[3]);
                 BulletSelect = (int)MousWheel;
                 if (Reload[BulletSelect - 1] == true)
                 {
@@ -110,12 +109,15 @@ public class Player : MonoBehaviour
             }
         }
         #endregion
+        // プレイヤーの体力処理
+        #region HP処理
         // HPのスライダー処理
         hp_slider.value = Player_HP;
         if (Player_HP <= 0)
         {
             SceneManager.LoadScene("Result");
         }
+        #endregion
     }
 
     // 通常弾発射処理関数
@@ -143,7 +145,7 @@ public class Player : MonoBehaviour
     public void SpecialAttack(int BulletSelection)
     {
         CoolDownScript.SetSpecialNum();
-
+        
         // 発射後falseに変更
         Reload[BulletSelect - 1] = false;
 
@@ -160,9 +162,11 @@ public class Player : MonoBehaviour
 
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
+        Quaternion a = Quaternion.identity;
         //弾生成
-        Instantiate(Bullet[BulletSelection], placePosition, Quaternion.identity);
-
+        //sp_Bullet.RangeCount(BulletSelection, placePosition, a);
+        Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        sp_Bullet.Destroy(BulletSelect);
         // クールタイム開始
         //StartCoroutine(CoolTime());
     }

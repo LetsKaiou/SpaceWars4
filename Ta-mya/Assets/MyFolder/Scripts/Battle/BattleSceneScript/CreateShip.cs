@@ -30,7 +30,6 @@ public class CreateShip : MonoBehaviour
     {
         specialInfo = new Special_info();
         frindInfo = new FriendShipInfo();
-        Debug.Log("CreateShips_awake");
         specialInfo.Delete();   // 一度データを削除
         specialInfo.Init();     // 再度読み込み
         frindInfo.Delete();   // 一度データを削除
@@ -55,7 +54,6 @@ public class CreateShip : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Clones[i] = Instantiate(CreateShips[i], CreatePos[i], Quaternion.identity);
-            Debug.Log("i" + i);
             // 当たり判定取得用のタグとステータスを生成時に割り当てる
             switch (i)
             {
@@ -95,7 +93,15 @@ public class CreateShip : MonoBehaviour
         HP[num] = frindInfo.HP[int.Parse(SelectShip.SelectShipNum[num])];
         DEF[num] = frindInfo.DEF[int.Parse(SelectShip.SelectShipNum[num])];
         SPD[num] = frindInfo.SPD[int.Parse(SelectShip.SelectShipNum[num])];
-        Debug.Log("CreateShip" + HP[0]);
+    }
+
+    public int GetSPAttack(int Num)
+    {
+        return Attack[Num];
+    }
+    public int GetSPRange(int Num)
+    {
+        return Range[Num];
     }
 
     // データを別のスクリプトから参照できるようにする

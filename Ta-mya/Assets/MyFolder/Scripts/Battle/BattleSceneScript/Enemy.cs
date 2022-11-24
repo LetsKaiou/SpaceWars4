@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
     }
     public void shot()
     {
-        Debug.Log("IN_E_Bullet");
         //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
         //出現させる位置をずらす値
