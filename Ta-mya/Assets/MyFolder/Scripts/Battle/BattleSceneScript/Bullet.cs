@@ -44,14 +44,4 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, deleteTime);
     }
 
-
-    //private void OnTriggerEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.name == "Child1")
-    //    {
-            
-            
-    //    }
-    //}
-
 }
