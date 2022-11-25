@@ -11,6 +11,10 @@ TagManager:
   - FriendShip2
   - FriendShip3
   - FriendShip4
+  - SP1
+  - SP2
+  - SP3
+  - SP4
   layers:
   - Default
   - TransparentFX
