@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bulletPoint;
     public CoolDown CoolDownScript;
     private bool DamageHit;
+    public GameObject[] Clones = new GameObject[256];
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
         MousWheel += Input.GetAxis("Mouse ScrollWheel");
         MousWheel = Mathf.Floor(MousWheel);
         MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
-        SP_Anim.SetInteger("Param", (int)MousWheel);
+        //SP_Anim.SetInteger("Param", (int)MousWheel);
         #endregion
 
         // 弾発射
@@ -164,8 +165,22 @@ public class Player : MonoBehaviour
         placePosition = q1 * offsetGun + placePosition;
         Quaternion a = Quaternion.identity;
         //弾生成
-        //sp_Bullet.RangeCount(BulletSelection, placePosition, a);
-        Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        switch (BulletSelect - 1)
+        {
+            case 0:
+                Clones[BulletSelect - 1].tag = "SP1";
+                break;
+            case 1:
+                Clones[BulletSelect - 1].tag = "SP2";
+                break;
+            case 2:
+                Clones[BulletSelect - 1].tag = "SP3";
+                break;
+            case 3:
+                Clones[BulletSelect - 1].tag = "SP4";
+                break;
+        }
         sp_Bullet.Destroy(BulletSelect);
         // クールタイム開始
         //StartCoroutine(CoolTime());

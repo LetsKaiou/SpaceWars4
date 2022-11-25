@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp_info: {fileID: 6559855396803649696, guid: f9d846f1bcf9236408f67eedede5b3d7, type: 3}
+  playersc: {fileID: 1287866323308063150, guid: 5d4e3f372ecc87742bab9e09007d4930, type: 3}
   P_SPBullet: []
   P_BulletNumber: 
   SPCheck: 00000000
