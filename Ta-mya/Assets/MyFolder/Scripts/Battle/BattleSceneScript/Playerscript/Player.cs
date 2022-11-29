@@ -9,8 +9,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public SP_Bullet sp_Bullet;
+    public CreateShip createcs;
     // 移動速度を格納する変数
-    public float speed = 1;
+    public float speed;
     // HP
     private int Player_HP;
     [SerializeField] private Slider hp_slider;
@@ -43,6 +44,13 @@ public class Player : MonoBehaviour
         Player_HP = 100;
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
+
+        for (int i = 0; i < 4; i++)
+        {
+            speed += createcs.SPD[i];
+        }
+
+
         SP_Anim.GetComponent<Animator>();
         // Listに情報を追加(ture:発射可能、false:クールタイム中)
         Reload.Add(true);   // 特殊攻撃1
@@ -116,7 +124,7 @@ public class Player : MonoBehaviour
         hp_slider.value = Player_HP;
         if (Player_HP <= 0)
         {
-            SceneManager.LoadScene("Result");
+            //SceneManager.LoadScene("Result");
         }
         #endregion
     }

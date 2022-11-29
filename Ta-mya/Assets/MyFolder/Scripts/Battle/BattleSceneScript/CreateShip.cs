@@ -35,7 +35,7 @@ public class CreateShip : MonoBehaviour
         specialInfo.Init();     // 再度読み込み
         frindInfo.Delete();   // 一度データを削除
         frindInfo.Init();     // 再度読み込み
-
+        GameObject parentObject = GameObject.FindGameObjectWithTag("Player");
         // 画像の表示処理
         for (int i = 0; i < Select_Special.SelectSpecial.Length; i++)
         {
@@ -60,18 +60,22 @@ public class CreateShip : MonoBehaviour
             {
                 case 0:
                     Clones[i].tag = "FriendShip1";
+                    Clones[i].transform.parent = parentObject.transform;
                     Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 1:
                     Clones[i].tag = "FriendShip2";
+                    Clones[i].transform.parent = parentObject.transform;
                     Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 2:
                     Clones[i].tag = "FriendShip3";
+                    Clones[i].transform.parent = parentObject.transform;
                     Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
                 case 3:
                     Clones[i].tag = "FriendShip4";
+                    Clones[i].transform.parent = parentObject.transform;
                     Clones[i].gameObject.GetComponent<child>().SetStatus(HP[i]);
                     break;
             }
@@ -95,6 +99,7 @@ public class CreateShip : MonoBehaviour
         HP[num] = frindInfo.HP[int.Parse(SelectShip.SelectShipNum[num])];
         DEF[num] = frindInfo.DEF[int.Parse(SelectShip.SelectShipNum[num])];
         SPD[num] = frindInfo.SPD[int.Parse(SelectShip.SelectShipNum[num])];
+        Debug.Log("SPD" + SPD[num]);
     }
 
     public int GetSPAttack(int Num)
@@ -105,7 +110,10 @@ public class CreateShip : MonoBehaviour
     {
         return Range[Num];
     }
-
+    public int GetSPD(int Num)
+    {
+        return SPD[Num];
+    }
     // データを別のスクリプトから参照できるようにする
     public float GetCT(int CTNum)
     {

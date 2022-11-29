@@ -1017,7 +1017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp_Bullet: {fileID: -3374305987914367047, guid: 17b4ef48c2ac4aa458ddb56a8d2fa593, type: 3}
-  speed: 1
+  createcs: {fileID: 1693190104}
+  speed: 15
   hp_slider: {fileID: 2102736276}
   _timeInterval: 100
   SkillInterval: 0
@@ -1645,6 +1646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989027003}
   - component: {fileID: 989027004}
+  - component: {fileID: 989027005}
   m_Layer: 0
   m_Name: FindPlayer
   m_TagString: Untagged
@@ -1680,6 +1682,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 300, y: 10, z: 300}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &989027005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989027002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d138e9ce3400a4fa6f27ac823ea2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemysc: {fileID: 1491040386}
 --- !u!4 &998957546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4900826527037906, guid: dde490f5ea9b7d94d9594ec8d6435f29, type: 3}
@@ -2177,7 +2192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersc: {fileID: 0}
-  enemysc: {fileID: 1491040381}
+  enemysc: {fileID: 1491040386}
 --- !u!4 &1326768681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4520498643260594, guid: 1f78031b7183f2a4498c4cfc761ca60c, type: 3}
@@ -2739,7 +2754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2849,31 +2864,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1405876428854690, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
   m_PrefabInstance: {fileID: 1491040379}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1491040381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491040380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0652e4d3be31d8145ae27de365ecc620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeInterval: 3
-  _timeElapsed: 0
-  Enemy_HP: 50
-  speed: 3
-  In: 0
-  StatusNum: 0
-  DamageHit: 0
-  Bullet:
-  - {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
-  shotcheck: 0
-  bulletPoint: {fileID: 1834901719}
-  createship: {fileID: 1693190104}
-  target: {fileID: 1820494842713227}
 --- !u!4 &1491040382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
@@ -2892,6 +2882,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.926746, y: 5.14402, z: 13.02625}
   m_Center: {x: -0.00000047683716, y: -0.00000059604645, z: 0}
+--- !u!114 &1491040386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491040380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21e4f5a84d37fa4c825f789594bbc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeInterval: 1
+  _RotateTime: 8
+  speed: 20
+  In: 0
+  PlayerFind: 0
+  StatusNum: 0
+  Bullet:
+  - {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
+  bulletPoint: {fileID: 1834901719}
+  createship: {fileID: 1693190104}
+  target: {fileID: 1820494842713227}
+--- !u!54 &1491040389
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491040380}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1566791006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4962461464239576, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
@@ -3180,7 +3209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834901719}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 14.700001}
+  m_LocalPosition: {x: 0, y: 0, z: 12.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3609,7 +3638,7 @@ GameObject:
   - component: {fileID: 504740971}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,11 +10,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _timeInterval;
     // 経過時間取得用変数
     private float _timeElapsed;
+    [SerializeField] private float _RotateTime;
+    private float _RtimeElapsed;
     // 敵の情報
     private int Enemy_HP = 50;
     [SerializeField] private float speed;
     public bool In;
-    public int StatusNum;
+    public bool PlayerFind;
+    public bool StatusNum;
+    private Vector3 angle;
+    private float setangle;
+    private float Maxangle;
+    Vector3 NowRotate;
     // ダメージを受けてるかどうか
     private bool DamageHit;
     // 弾に関する変数
@@ -26,13 +34,25 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        angle = gameObject.transform.eulerAngles;
     }
 
     // Update is called once per frame
     void Update()
     {
         _timeElapsed += Time.deltaTime;
+        _RtimeElapsed += Time.deltaTime;
+
+        if (_RtimeElapsed > _RotateTime)
+        {
+            Maxangle = Random.Range(0, 360);
+            angle = new Vector3(0, Maxangle, 0);
+            Debug.Log("angle:" + Maxangle);
+            Debug.Log("NowRotate:" + NowRotate);
+            // 経過時間を元に戻す
+            _RtimeElapsed = 0f;
+        }
 
         if (_timeElapsed > _timeInterval)
         {
@@ -40,15 +60,23 @@ public class Enemy : MonoBehaviour
             // 経過時間を元に戻す
             _timeElapsed = 0f;
         }
-
-        // 対象物と自分自身の座標からベクトルを算出
-        Vector3 vector3 = target.transform.position - this.transform.position;
-        // Quaternion(回転値)を取得
-        Quaternion quaternion = Quaternion.LookRotation(vector3);
-        // 算出した回転値をこのゲームオブジェクトのrotationに代入
-        this.transform.rotation = quaternion;
-        if(In == false)
+        // Playerの方向に向かって移動する処理
+        if (PlayerFind == true)
         {
+            // 対象物と自分自身の座標からベクトルを算出
+            Vector3 vector3 = target.transform.position - this.transform.position;
+            // Quaternion(回転値)を取得
+            Quaternion quaternion = Quaternion.LookRotation(vector3);
+            // 算出した回転値をこのゲームオブジェクトのrotationに代入
+            this.transform.rotation = quaternion;
+            if (In == false)
+            {
+                transform.position += transform.forward * speed * Time.deltaTime;
+            }
+        }
+        else if(PlayerFind == false)
+        {
+            transform.DORotate(angle, 4);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
 
@@ -152,6 +180,8 @@ public class Enemy : MonoBehaviour
             Debug.Log("ダメージ:" + createship.Attack[3]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
-        #endregion
+        
     }
+    #endregion
+
 }
