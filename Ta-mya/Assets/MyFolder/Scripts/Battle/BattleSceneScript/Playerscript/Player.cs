@@ -166,6 +166,7 @@ public class Player : MonoBehaviour
         Quaternion a = Quaternion.identity;
         //’e¶¬
         Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        // ƒ^ƒO‚ÌŠ„‚è“–‚Ä
         switch (BulletSelect - 1)
         {
             case 0:
