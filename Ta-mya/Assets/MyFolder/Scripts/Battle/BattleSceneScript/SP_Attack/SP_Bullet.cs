@@ -14,7 +14,7 @@ public class SP_Bullet : MonoBehaviour
     private bool P_SetData = false;
     public bool[] SPCheck;
     // “ÁêUŒ‚‚Ìƒf[ƒ^æ“¾
-    private int[] P_Attack = new int[100];            
+    public int[] P_Attack = new int[100];            
     private int[] P_Range = new int[100];
     GameObject[] bullet = new GameObject[4];
     private Rigidbody rb;
@@ -24,16 +24,14 @@ public class SP_Bullet : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if(P_SetData == false)
-        {
-            Setdata();
-        }
+
+        Debug.Log(P_Attack[0]);
         // ’e‚ÌˆÚ“®
         rb.velocity = transform.forward * 15;
         
@@ -53,34 +51,11 @@ public class SP_Bullet : MonoBehaviour
         Destroy(bullet[bulletNum-1], P_Range[bulletNum-1]);
     }
 
-    public void SetTag(int setnum)
-    {
-        switch (setnum - 1)
-        {
-            case 0:
-                playersc.Clones[setnum - 1].tag = "SP1";
-                break;
-            case 1:
-                playersc.Clones[setnum - 1].tag = "SP2";
-                break;
-            case 2:
-                playersc.Clones[setnum - 1].tag = "SP3";
-                break;
-            case 3:
-                playersc.Clones[setnum - 1].tag = "SP4";
-                break;
-        }
-        
-    }
 
-    public void Setdata()
+    public void Setdata(int num, int attack)
     {
-        for (int i = 0; i < 4; i++)
-        {
-            P_Attack[i] = sp_info.GetSPAttack(i);
-            P_Range[i] = sp_info.GetSPRange(i);
-        }
-        P_SetData = true;
+        P_Attack[num] = sp_info.GetSPAttack(attack);
+        Debug.Log(P_Attack[num]);
     }
 
 }

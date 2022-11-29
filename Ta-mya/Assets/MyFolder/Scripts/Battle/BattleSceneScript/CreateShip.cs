@@ -8,6 +8,7 @@ public class CreateShip : MonoBehaviour
     private Special_info specialInfo;
     private FriendShipInfo frindInfo;
     private child childcs;
+    public SP_Bullet sp_bullet;
 
     [SerializeField] private Vector3[] CreatePos = new Vector3[4];
     [SerializeField] private GameObject[] CreateShips;
@@ -17,7 +18,7 @@ public class CreateShip : MonoBehaviour
     // CSVƒf[ƒ^Ši”[—p•Ï”
     [SerializeField] private Image[] image;
     private string[] Name = new string[100];         // –¼‘O
-    private int[] Attack = new int[100];             // UŒ‚—Í
+    public int[] Attack = new int[100];             // UŒ‚—Í
     public float[] CT = new float[100];             // ƒN[ƒ‹ƒ^ƒCƒ€
     private int[] Range = new int[100];              // Ë’ö(’e‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ)
     private string[] Explanatory = new string[100];  // “ÁêUŒ‚‚Ìà–¾•¶
@@ -83,6 +84,7 @@ public class CreateShip : MonoBehaviour
     public void ReadInfo(int num)
     {
         Attack[num] = specialInfo.Attack[int.Parse(Select_Special.SelectSpecial[num])];
+        sp_bullet.Setdata(num,Attack[num]);
         CT[num] = specialInfo.CT[int.Parse(Select_Special.SelectSpecial[num])];
         Range[num] = specialInfo.Range[int.Parse(Select_Special.SelectSpecial[num])];
 
