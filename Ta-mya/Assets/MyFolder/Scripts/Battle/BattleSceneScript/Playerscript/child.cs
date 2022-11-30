@@ -12,6 +12,7 @@ public class child : MonoBehaviour
     private FriendShipInfo frindInfo;
     [SerializeField] private float _timeInterval;
     private float _timeElapsed;
+    [SerializeField] private GameObject bulletPoint;
     public int HP;
     public int DEF;
     public int SPD;
@@ -19,7 +20,6 @@ public class child : MonoBehaviour
     public int[] def = new int[4];
     public int[] spd = new int[4];
 
-    Vector3 bulletPoint;
 
     // ゲームのスタート時の処理
     void Start()
@@ -95,7 +95,7 @@ public class child : MonoBehaviour
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
         //弾生成！
-        Instantiate(bullet, transform.position, transform.rotation);
+        Instantiate(bullet, bulletPoint.transform.position, transform.rotation);
     }
 
     public void SetStatus(int FHP)
