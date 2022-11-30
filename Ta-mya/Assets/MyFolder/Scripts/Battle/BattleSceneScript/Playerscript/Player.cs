@@ -15,32 +15,28 @@ public class Player : MonoBehaviour
     // HP
     private int Player_HP;
     [SerializeField] private Slider hp_slider;
-    // 弾の発射間隔
-    [SerializeField] private float _timeInterval;
+    // 弾の種類、発射位置
+    [SerializeField] private GameObject[] Bullet;
+    [SerializeField] private GameObject bulletPoint;
+    public GameObject[] Clones = new GameObject[256];
     // 経過時間取得用変数
+    [SerializeField] private float _timeInterval;
     private float _timeElapsed;
     // マウスホイールの回転数取得用変数
     private float MousWheel;
-    // 特殊攻撃用経過時間格納変数
-    private float SkillTime;
-    // 特殊攻撃のクールタイム
-    [SerializeField] private float SkillInterval;
-    // 特殊攻撃選択用変数
+    // 特殊攻撃用格納変数
+    private int[] sp_Range = new int[4];
     public int BulletSelect;
-    // 特殊攻撃の弾のプレファブ格納
-    //[SerializeField] private List<GameObject> BulletList = new List<GameObject>();
-    [SerializeField] private GameObject[] Bullet;
-    // 特殊攻撃の弾ごとのクールタイム確認格納用
     public List<bool> Reload = new List<bool>();
-    [SerializeField] private GameObject bulletPoint;
     public CoolDown CoolDownScript;
+    // ダメージ処理用変数
     private bool DamageHit;
-    public GameObject[] Clones = new GameObject[256];
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
     void Start()
     {
+        // 初期化
         Player_HP = 100;
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
@@ -52,6 +48,7 @@ public class Player : MonoBehaviour
 
 
         SP_Anim.GetComponent<Animator>();
+
         // Listに情報を追加(ture:発射可能、false:クールタイム中)
         Reload.Add(true);   // 特殊攻撃1
         Reload.Add(true);   // 特殊攻撃2
@@ -200,21 +197,6 @@ public class Player : MonoBehaviour
         Player_HP -= damage;
     }
 
-
-    // クールタイム処理コルーチン
-    private IEnumerator CoolTime()
-    {
-        // クールタイム開始
-        //Debug.Log("クールタイム開始");
-
-        // 待機時間
-        yield return new WaitForSeconds(2);
-
-        // false → trueに変更
-        Reload[BulletSelect - 1] = true;
-        //Debug.Log("クールタイム終了");
-    }
-
     public int GetSpecialNum()
     {
         return BulletSelect;
@@ -227,6 +209,7 @@ public class Player : MonoBehaviour
         return Player_HP;
     }
 
+    // ダメージ判定用関数
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")

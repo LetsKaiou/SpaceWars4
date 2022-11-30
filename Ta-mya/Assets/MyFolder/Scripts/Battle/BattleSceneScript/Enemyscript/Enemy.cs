@@ -48,8 +48,6 @@ public class Enemy : MonoBehaviour
         {
             Maxangle = Random.Range(0, 360);
             angle = new Vector3(0, Maxangle, 0);
-            Debug.Log("angle:" + Maxangle);
-            Debug.Log("NowRotate:" + NowRotate);
             // Œo‰ßŽžŠÔ‚ðŒ³‚É–ß‚·
             _RtimeElapsed = 0f;
         }
