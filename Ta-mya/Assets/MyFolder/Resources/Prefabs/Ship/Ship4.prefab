@@ -52,6 +52,7 @@ Transform:
   - {fileID: 5667362755822963538}
   - {fileID: 8379037937902820106}
   - {fileID: 2848823733181466213}
+  - {fileID: 7177049412012995261}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +71,7 @@ MonoBehaviour:
   speed: 1
   bullet: {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
   _timeInterval: 1
+  bulletPoint: {fileID: 2466098283288951334}
   HP: 0
   DEF: 0
   SPD: 0
@@ -92,6 +94,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &2466098283288951334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7177049412012995261}
+  m_Layer: 0
+  m_Name: bulletpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7177049412012995261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466098283288951334}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.000017106533, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4112097546394478}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &353819069382065644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,6 +132,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1038534777481896, guid: 01b4c9caff0ad4d48ac8cb23e89e5224, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1733392146470058, guid: 01b4c9caff0ad4d48ac8cb23e89e5224, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Engine
@@ -177,9 +214,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1032450277301170, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1601426786796990, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982995091250592, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4815862664654990, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
       propertyPath: m_RootOrder
@@ -241,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 69d393aa2d52fd34f80a48e88145a81c, type: 2}
+    - target: {fileID: 3662999099404315647, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30ca3097cfd8de47aa1ba38578e0c30, type: 3}
 --- !u!4 &951447716423113518 stripped
@@ -258,6 +307,10 @@ PrefabInstance:
     - target: {fileID: 1409850185942326, guid: 157f084336ed05c45947433542a2eba2, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Plasma
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693674368464086, guid: 157f084336ed05c45947433542a2eba2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142724572941594, guid: 157f084336ed05c45947433542a2eba2, type: 3}
       propertyPath: m_RootOrder
@@ -333,6 +386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1566032886273004, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1656205560423842, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Thruster
@@ -411,6 +468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -489,6 +550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -567,6 +632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -645,6 +714,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1566032886273004, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1656205560423842, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Thruster
@@ -723,6 +796,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -805,6 +882,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarSparrow_Core
       objectReference: {fileID: 0}
+    - target: {fileID: 1502382406564142, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674370738071850, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679612401105354, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4394320405331038, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -870,6 +959,10 @@ PrefabInstance:
     - target: {fileID: 1035129555781656, guid: 1f78031b7183f2a4498c4cfc761ca60c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570126557378428, guid: 1f78031b7183f2a4498c4cfc761ca60c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4520498643260594, guid: 1f78031b7183f2a4498c4cfc761ca60c, type: 3}
       propertyPath: m_RootOrder
@@ -945,6 +1038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1023,6 +1120,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1101,6 +1202,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1179,6 +1284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1566032886273004, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1656205560423842, guid: 2d009ca22ab0fc141ade283e835e506a, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Thruster
@@ -1261,6 +1370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarSparrow_Plasma
       objectReference: {fileID: 0}
+    - target: {fileID: 1693674368464086, guid: 157f084336ed05c45947433542a2eba2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4142724572941594, guid: 157f084336ed05c45947433542a2eba2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1335,6 +1448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1038534777481896, guid: 01b4c9caff0ad4d48ac8cb23e89e5224, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1733392146470058, guid: 01b4c9caff0ad4d48ac8cb23e89e5224, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Engine
@@ -1413,6 +1530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 6710803522318617369, guid: f5a635a64e8270a40aa07137c6d1f162, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6712519913433576573, guid: f5a635a64e8270a40aa07137c6d1f162, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon_Mirrored
@@ -1491,6 +1612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1569,6 +1694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1647,6 +1776,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 1318454727220766, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984362752728524, guid: 53643d8f33e9df94ba733d00e1c6d10c, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing_3
@@ -1725,6 +1858,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4112097546394478}
     m_Modifications:
+    - target: {fileID: 925355992872884944, guid: c6b3f5b24fac195409550702e5daa40f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914814039465094299, guid: c6b3f5b24fac195409550702e5daa40f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963194022862193217, guid: c6b3f5b24fac195409550702e5daa40f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7432230514322780154, guid: c6b3f5b24fac195409550702e5daa40f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
