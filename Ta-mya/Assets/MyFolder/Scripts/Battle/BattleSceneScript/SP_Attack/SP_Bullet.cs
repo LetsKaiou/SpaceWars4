@@ -38,12 +38,12 @@ public class SP_Bullet : MonoBehaviour
 
 
 
-    public void Destroy(int bulletNum)
-    {
-        P_Range[bulletNum - 1] = sp_info.GetSPRange(bulletNum - 1);
-        Debug.Log("Range:" + P_Range[bulletNum - 1]);
-        Destroy(bullet[bulletNum-1], P_Range[bulletNum - 1]);
-    }
+    //public void Destroy(int bulletNum, int Range)
+    //{
+    //    P_Range[bulletNum - 1] = Range;
+    //    Debug.Log("Range:" + P_Range[bulletNum - 1]);
+    //    Destroy(bullet[bulletNum-1], P_Range[bulletNum - 1]);
+    //}
 
 
 
