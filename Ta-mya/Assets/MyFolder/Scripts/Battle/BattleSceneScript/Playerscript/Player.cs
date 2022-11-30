@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     // マウスホイールの回転数取得用変数
     private float MousWheel;
     // 特殊攻撃用格納変数
-    private int[] sp_Range = new int[4];
-    public int BulletSelect;
+    [SerializeField]private float[] sp_Range = new float[4];
+    public int BulletSelect;   
     public List<bool> Reload = new List<bool>();
     public CoolDown CoolDownScript;
     // ダメージ処理用変数
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
                 BulletSelect = (int)MousWheel;
                 if (Reload[BulletSelect - 1] == true)
                 {
-                    SpecialAttack(BulletSelect);
+                    SpecialAttack();
                 }
             }
         }
@@ -148,9 +148,11 @@ public class Player : MonoBehaviour
     }
 
     // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)
-    public void SpecialAttack(int BulletSelection)
+    public void SpecialAttack()
     {
         CoolDownScript.SetSpecialNum();
+
+        sp_Range[BulletSelect - 1] = createcs.GetSPRange(BulletSelect - 1);
         
         // 発射後falseに変更
         Reload[BulletSelect - 1] = false;
@@ -187,7 +189,12 @@ public class Player : MonoBehaviour
                 Clones[BulletSelect - 1].tag = "SP4";
                 break;
         }
-        sp_Bullet.Destroy(BulletSelect);
+        Debug.Log("DestryObj:" + Clones[BulletSelect - 1].tag);
+        Destroy();
+        //Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
+        Debug.Log("Range:" + sp_Range[BulletSelect - 1]);
+        //Destroy(Clones[BulletSelect - 1], 10.0f);
+        //sp_Bullet.Destroy(BulletSelect,sp_Range[BulletSelect-1]);
         // クールタイム開始
         //StartCoroutine(CoolTime());
     }
@@ -202,11 +209,9 @@ public class Player : MonoBehaviour
         return BulletSelect;
     }
 
-    public int GetPHp()
+    public void Destroy()
     {
-
-
-        return Player_HP;
+        Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
     }
 
     // ダメージ判定用関数
