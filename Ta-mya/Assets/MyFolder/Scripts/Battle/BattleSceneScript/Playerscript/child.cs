@@ -6,13 +6,16 @@ public class child : MonoBehaviour
 {
     public float speed = 1;
     //public Bullet script;
+    // 攻撃用変数
     public GameObject bullet;
+    [SerializeField] private GameObject bulletPoint;
+    [SerializeField] private float _timeInterval;
+    private float _timeElapsed;
+    // 他のスクリプト参照用変数
     private GameObject control;
     private CreateShip createcs;
     private FriendShipInfo frindInfo;
-    [SerializeField] private float _timeInterval;
-    private float _timeElapsed;
-    [SerializeField] private GameObject bulletPoint;
+    // ステータス格納用
     public int HP;
     public int DEF;
     public int SPD;
@@ -24,8 +27,7 @@ public class child : MonoBehaviour
     // ゲームのスタート時の処理
     void Start()
     {
-        //createcs = control.GetComponent<CreateShip>();
-        //SetStatus();
+        
         switch (this.gameObject.tag)
         {
 
@@ -52,22 +54,22 @@ public class child : MonoBehaviour
     // ゲーム実行中の繰り返し処理
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= transform.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.position += transform.up * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.position -= transform.up * speed * Time.deltaTime;
-        }
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    transform.position += transform.forward * speed * Time.deltaTime;
+        //}
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    transform.position -= transform.forward * speed * Time.deltaTime;
+        //}
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    transform.position += transform.up * speed * Time.deltaTime;
+        //}
+        //if (Input.GetKey(KeyCode.E))
+        //{
+        //    transform.position -= transform.up * speed * Time.deltaTime;
+        //}
         _timeElapsed += Time.deltaTime;
 
         if (_timeElapsed > _timeInterval)
@@ -97,13 +99,12 @@ public class child : MonoBehaviour
         //弾生成！
         Instantiate(bullet, bulletPoint.transform.position, transform.rotation);
     }
-
+    // 生成時に自分のステータスを代入
     public void SetStatus(int FHP)
     {
-        //Debug.Log("FHP:" + FHP);
+
         HP = FHP;
-        //def[i] = createcs.DEF[i];
-        //spd[i] = createcs.SPD[i];
+
 
     }
 }

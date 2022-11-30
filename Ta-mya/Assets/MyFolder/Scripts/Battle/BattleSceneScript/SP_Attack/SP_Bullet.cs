@@ -10,7 +10,7 @@ public class SP_Bullet : MonoBehaviour
     // 発射する特殊攻撃のオブジェクト格納用
     [SerializeField] private GameObject[] P_SPBullet;
     // どの特殊攻撃が撃たれたか判別
-    public int[] P_BulletNumber;
+    public int P_BulletNumber;
     private bool P_SetData = false;
     public bool[] SPCheck;
     // 特殊攻撃のデータ取得
@@ -31,31 +31,21 @@ public class SP_Bullet : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(P_Attack[0]);
         // 弾の移動
         rb.velocity = transform.forward * 15;
-        
+       
     }
 
-    public void CreatBullet(int bulletNum, Vector3 pos)
-    {
 
-        bullet[bulletNum] = Instantiate(P_SPBullet[bulletNum]) as GameObject;
-        Debug.Log(bullet[bulletNum]);
-        //Debug.Log(eul);
-    }
 
     public void Destroy(int bulletNum)
     {
-       
-        Destroy(bullet[bulletNum-1], P_Range[bulletNum-1]);
+        P_Range[bulletNum - 1] = sp_info.GetSPRange(bulletNum - 1);
+        Debug.Log("Range:" + P_Range[bulletNum - 1]);
+        Destroy(bullet[bulletNum-1], P_Range[bulletNum - 1]);
     }
 
 
-    public void Setdata(int num, int attack)
-    {
-        P_Attack[num] = sp_info.GetSPAttack(attack);
-        Debug.Log(P_Attack[num]);
-    }
+
 
 }

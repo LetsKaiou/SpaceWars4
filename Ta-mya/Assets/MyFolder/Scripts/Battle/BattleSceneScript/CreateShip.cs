@@ -20,7 +20,7 @@ public class CreateShip : MonoBehaviour
     private string[] Name = new string[100];         // –¼‘O
     public int[] Attack = new int[100];             // UŒ‚—Í
     public float[] CT = new float[100];             // ƒN[ƒ‹ƒ^ƒCƒ€
-    private int[] Range = new int[100];              // Ë’ö(’e‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ)
+    public int[] Range = new int[100];              // Ë’ö(’e‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ)
     private string[] Explanatory = new string[100];  // “ÁêUŒ‚‚Ìà–¾•¶
 
     public int[] HP = new int[4];
@@ -87,8 +87,8 @@ public class CreateShip : MonoBehaviour
     // “ÁêUŒ‚‚ÌCSVƒf[ƒ^‚ğŠi”[‚·‚éˆ—
     public void ReadInfo(int num)
     {
+        Debug.Log("IN");
         Attack[num] = specialInfo.Attack[int.Parse(Select_Special.SelectSpecial[num])];
-        sp_bullet.Setdata(num,Attack[num]);
         CT[num] = specialInfo.CT[int.Parse(Select_Special.SelectSpecial[num])];
         Range[num] = specialInfo.Range[int.Parse(Select_Special.SelectSpecial[num])];
 
