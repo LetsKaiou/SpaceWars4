@@ -26,6 +26,9 @@ public class Homing : MonoBehaviour
     public GameObject obj;
     Vector3 startPos;
     private bool moveFlag = false;
+    [SerializeField] private ParticleSystem particle;
+    
+
     public Transform Target
     {
         set
@@ -47,17 +50,19 @@ public class Homing : MonoBehaviour
             Random.Range(minInitVelocity.z, maxInitVelocity.z));
         startPos = thisTransform.position;
         time = 2.5f;
+        
+        //particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         //StartCoroutine(nameof(Timer));
         //target = GameObject.FindGameObjectWithTag("Target").transform;
 
-       // Instantiate(obj, startPos, Quaternion.identity);
+        // Instantiate(obj, startPos, Quaternion.identity);
 
     }
     public void Update()
     {
         Debug.Log("update");
-        //if (Input.GetKeyDown("space"))
-        //{
+        
+        //particle.Pause();
 
         if (target == null)
             {
@@ -66,7 +71,16 @@ public class Homing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             moveFlag = true;
+
+            //particle.Play();
+            //ParticleSystem newParticle = Instantiate(particle);
+            //newParticle.transform.position = this.transform.position;
+            //newParticle.Play();
+            //particle.transform.parent = obj.transform;
+
             StartCoroutine(nameof(Timer));
+
+            
 
         }
         if (moveFlag)
@@ -87,7 +101,7 @@ public class Homing : MonoBehaviour
             thisTransform.rotation = Quaternion.LookRotation(velocity);
         }
             
-        //}
+        
 
     }
 
