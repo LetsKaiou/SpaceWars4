@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
         Enemy_HP -= damage;
     }
 
-    #region “ÁêUŒ‚Hitˆ—
+    #region UŒ‚Hitˆ—
     public void OnTriggerEnter(Collider other)
     {
         // ’ÊíUŒ‚Hit”»’è

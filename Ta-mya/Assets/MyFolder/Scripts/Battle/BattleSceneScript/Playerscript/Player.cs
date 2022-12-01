@@ -8,13 +8,15 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    // 他のスクリプト参照用
     public SP_Bullet sp_Bullet;
     public CreateShip createcs;
-    // 移動速度を格納する変数
+    public CoolDown CoolDownScript;
+    // Player情報
     public float speed;
-    // HP
     private int Player_HP;
     [SerializeField] private Slider hp_slider;
+    public bool isTurn = false;
     // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
@@ -28,7 +30,6 @@ public class Player : MonoBehaviour
     [SerializeField]private float[] sp_Range = new float[4];
     public int BulletSelect;   
     public List<bool> Reload = new List<bool>();
-    public CoolDown CoolDownScript;
     // ダメージ処理用変数
     private bool DamageHit;
     // アニメーション格納用
@@ -61,11 +62,12 @@ public class Player : MonoBehaviour
     {
         // 移動処理
         #region 移動
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
+
             transform.position += transform.forward * speed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && isTurn == false)
         {
             transform.position -= transform.forward * speed * Time.deltaTime;
         }
@@ -150,8 +152,10 @@ public class Player : MonoBehaviour
     // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)
     public void SpecialAttack()
     {
+        // 選択した特殊攻撃を渡す
         CoolDownScript.SetSpecialNum();
 
+        // 消滅までの時間を代入
         sp_Range[BulletSelect - 1] = createcs.GetSPRange(BulletSelect - 1);
         
         // 発射後falseに変更
@@ -189,26 +193,23 @@ public class Player : MonoBehaviour
                 Clones[BulletSelect - 1].tag = "SP4";
                 break;
         }
-        Debug.Log("DestryObj:" + Clones[BulletSelect - 1].tag);
+
         Destroy();
-        //Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
-        Debug.Log("Range:" + sp_Range[BulletSelect - 1]);
-        //Destroy(Clones[BulletSelect - 1], 10.0f);
-        //sp_Bullet.Destroy(BulletSelect,sp_Range[BulletSelect-1]);
-        // クールタイム開始
-        //StartCoroutine(CoolTime());
     }
 
+    // ダメージ計算処理
     public void P_Damage(int damage)
     {
         Player_HP -= damage;
     }
 
+    // BulletSelectを渡す
     public int GetSpecialNum()
     {
         return BulletSelect;
     }
 
+    // 発射した特殊攻撃を消す
     public void Destroy()
     {
         Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
@@ -226,7 +227,6 @@ public class Player : MonoBehaviour
                 P_Damage(5);
                 DamageHit = true;
             }
-            //Debug.Log("hp:" + Player_HP);
         }
     }
 }

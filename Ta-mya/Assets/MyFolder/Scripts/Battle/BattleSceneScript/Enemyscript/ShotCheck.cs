@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ShotCheck : MonoBehaviour
 {
-    public Player playersc;
-    public Enemy enemysc;
+    public Enemy enemycs;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            enemysc.shot();
-            enemysc.In = true;
+            enemycs.shot();
+            enemycs.In = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            enemycs.In = false;
         }
     }
 }

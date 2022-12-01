@@ -54,7 +54,6 @@ public class CoolDown : MonoBehaviour
     public void SetSpecialNum()
     {
 
-
         SpecialNum = PlayerScript.GetSpecialNum() - 1;
         UIobj[SpecialNum].fillAmount = 0;
     }

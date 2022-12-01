@@ -32,7 +32,7 @@ public class SP_Use1 : MonoBehaviour
         }
     }
 
-
+    // Player.cs‚©‚ç’l‚ğQÆ
     public void SetSpecialNum()
     {
         Debug.Log("SpecialNum:" + SpecialNum);

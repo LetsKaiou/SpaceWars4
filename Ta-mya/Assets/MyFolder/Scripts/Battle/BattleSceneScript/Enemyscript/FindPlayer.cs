@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class FindPlayer : MonoBehaviour
 {
-    public Enemy enemysc;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Enemy enemycs;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            enemysc.PlayerFind = true;
-            
-
+            enemycs.PlayerFind = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            enemycs.PlayerFind = false;
         }
     }
 }

@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         // ’e‚ÌˆÚ“®
         rb.velocity = transform.forward * MoveSpeed;
 
-        Destroy(gameObject, deleteTime);
+        Destroy(BulletObj, deleteTime);
     }
 
 }

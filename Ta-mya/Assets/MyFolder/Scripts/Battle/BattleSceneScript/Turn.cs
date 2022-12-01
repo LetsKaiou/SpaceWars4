@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Turn : MonoBehaviour
 {
+    public Player playercs;
     public float turnSpeed;
     private Rigidbody rb;
     private float turnInputValue;
@@ -57,11 +58,15 @@ public class Turn : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+            playercs.isTurn = true;
             transform.Rotate(new Vector3(0, 0.5f, 0));
         }
         if (Input.GetKey(KeyCode.A))
         {
+            Debug.Log(playercs.isTurn);
+            playercs.isTurn = true;
             transform.Rotate(new Vector3(0, -0.5f, 0));
         }
+        playercs.isTurn = false;
     }
 }
