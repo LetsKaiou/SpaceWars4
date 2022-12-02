@@ -3386,6 +3386,27 @@ MonoBehaviour:
   Obj:
   - {fileID: 8012348742254770958, guid: 5413e5c25dd88f745a3ba5d11a4c0e9c, type: 3}
   CreateNum: 15
+--- !u!114 &1693190108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578787966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784165df2e2f20b4d882525fc9c60d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyShip: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
+  EnemyCreatePos:
+  - {x: -15, y: 0, z: 0}
+  - {x: 15, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  isBigMap: 0
 --- !u!1 &1720176634
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,6 +5513,14 @@ PrefabInstance:
       propertyPath: image.Array.data[3]
       value: 
       objectReference: {fileID: 265089523}
+    - target: {fileID: 6559855396803649696, guid: f9d846f1bcf9236408f67eedede5b3d7, type: 3}
+      propertyPath: CreatePos.Array.data[0].x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559855396803649696, guid: f9d846f1bcf9236408f67eedede5b3d7, type: 3}
+      propertyPath: CreatePos.Array.data[1].x
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6559855396803649697, guid: f9d846f1bcf9236408f67eedede5b3d7, type: 3}
       propertyPath: m_RootOrder
       value: 6

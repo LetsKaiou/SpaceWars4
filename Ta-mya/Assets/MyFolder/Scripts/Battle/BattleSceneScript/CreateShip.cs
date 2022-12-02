@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class CreateShip : MonoBehaviour
 {
+    // 他のスクリプトの変数参照用
     private Special_info specialInfo;
     private FriendShipInfo frindInfo;
     private child childcs;
     public SP_Bullet sp_bullet;
 
+    // メイン艦の位置獲得用
+    //[SerializeField] private GameObject MainShip;
+    private Vector3[] MainPos = new Vector3[4];
+
+    // 生成する船の情報
     [SerializeField] private Vector3[] CreatePos = new Vector3[4];
     [SerializeField] private GameObject[] CreateShips;
     [SerializeField] GameObject[] Clones = new GameObject[6];
@@ -31,21 +37,24 @@ public class CreateShip : MonoBehaviour
     {
         specialInfo = new Special_info();
         frindInfo = new FriendShipInfo();
-        specialInfo.Delete();   // 一度データを削除
-        specialInfo.Init();     // 再度読み込み
-        frindInfo.Delete();   // 一度データを削除
-        frindInfo.Init();     // 再度読み込み
+        specialInfo.Delete();  // 一度データを削除
+        specialInfo.Init();    // 再度読み込み
+        frindInfo.Delete();    // 一度データを削除
+        frindInfo.Init();      // 再度読み込み
+
+
+        // 親オブジェクトを探す
         GameObject parentObject = GameObject.FindGameObjectWithTag("Player");
-        // 画像の表示処理
+
+        // 特殊攻撃の画像表示処理
         for (int i = 0; i < Select_Special.SelectSpecial.Length; i++)
         {
-
             // CSVから画像を持ってきて表示
             image[i].sprite = Resources.Load<Sprite>(specialInfo.Image[int.Parse(Select_Special.SelectSpecial[i])]);
             ReadInfo(i);
         }
 
-        // 味方船生成処理
+        // 味方船のステータス参照処理
         for (int i = 0; i < SelectShip.SelectShipNum.Length; i++)
         {
             Num[i] = int.Parse(SelectShip.SelectShipNum[i]);
@@ -80,8 +89,8 @@ public class CreateShip : MonoBehaviour
                     break;
             }
 
+           
         }
-
     }
 
     // 特殊攻撃のCSVデータを格納する処理
