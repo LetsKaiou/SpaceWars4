@@ -16,6 +16,16 @@ TagManager:
   - SP3
   - SP4
   - Dust
+  - EnemyChild1
+  - EnemyChild2
+  - EnemyChild3
+  - EnemyChild4
+  - EnemyChild5
+  - EnemyChild6
+  - EnemyChild7
+  - EnemyChild8
+  - EnemyChild9
+  - EnemyChild10
   layers:
   - Default
   - TransparentFX
