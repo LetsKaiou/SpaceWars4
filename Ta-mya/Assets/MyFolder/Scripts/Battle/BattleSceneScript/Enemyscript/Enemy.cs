@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _RotateTime;
     private float _RtimeElapsed;
     // “G‚Ìî•ñ
-    private int Enemy_HP = 50;
+    private int Enemy_HP = 100;
     [SerializeField] private float speed;
     public bool In;
     public bool PlayerFind;
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     // ƒ_ƒ[ƒW‚ğó‚¯‚Ä‚é‚©‚Ç‚¤‚©
     private bool DamageHit;
     // ’e‚ÉŠÖ‚·‚é•Ï”
+    private GameObject E_Bullet;
     [SerializeField] private GameObject[] Bullet;
     private bool shotcheck;
     public GameObject bulletPoint;
@@ -102,7 +103,8 @@ public class Enemy : MonoBehaviour
             //’e‚ğoŒ»‚³‚¹‚éˆÊ’u‚ğ’²®
             placePosition = q1 * offsetGun + placePosition;
             //’e¶¬
-            Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+            E_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+            E_Bullet.tag = "E_bullet";
             shotcheck = false;
         }
 
@@ -110,15 +112,16 @@ public class Enemy : MonoBehaviour
 
     public void E_Damage(int damage)
     {
-        Enemy_HP -= damage;
+        this.Enemy_HP -= damage;
     }
 
     #region UŒ‚Hitˆ—
     public void OnTriggerEnter(Collider other)
     {
         // ’ÊíUŒ‚Hit”»’è
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "P_bullet")
         {
+            Debug.Log("INEHit");
             DamageHit = false;
             Destroy(other.gameObject);
             if (DamageHit == false)

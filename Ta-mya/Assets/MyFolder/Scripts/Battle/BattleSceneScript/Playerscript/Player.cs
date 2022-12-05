@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
     public GameObject[] Clones = new GameObject[256];
+    private GameObject P_Bullet;
     // 経過時間取得用変数
     [SerializeField] private float _timeInterval;
     private float _timeElapsed;
@@ -131,7 +132,6 @@ public class Player : MonoBehaviour
     // 通常弾発射処理関数
     public void shot()
     {
-
         //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
         //出現させる位置をずらす値
@@ -146,7 +146,8 @@ public class Player : MonoBehaviour
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
         //弾生成
-        Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+        P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+        P_Bullet.tag = "P_bullet";
     }
 
     // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)
@@ -218,7 +219,7 @@ public class Player : MonoBehaviour
     // ダメージ判定用関数
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")
         {
             DamageHit = false;
             Destroy(other.gameObject);

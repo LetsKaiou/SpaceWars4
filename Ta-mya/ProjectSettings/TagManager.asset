@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Eemy
+  - Enemy
   - FriendShip
   - Bullet
   - FriendShip1
@@ -26,6 +26,10 @@ TagManager:
   - EnemyChild8
   - EnemyChild9
   - EnemyChild10
+  - Enemy2
+  - P_bullet
+  - C_bullet
+  - E_bullet
   layers:
   - Default
   - TransparentFX

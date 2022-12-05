@@ -7,6 +7,7 @@ public class child : MonoBehaviour
     public float speed = 1;
     //public Bullet script;
     // 攻撃用変数
+    private GameObject C_Bullet;
     public GameObject bullet;
     [SerializeField] private GameObject bulletPoint;
     [SerializeField] private float _timeInterval;
@@ -22,6 +23,7 @@ public class child : MonoBehaviour
     public int[] hp = new int[4];
     public int[] def = new int[4];
     public int[] spd = new int[4];
+    private int[] shipId = new int[4];
 
 
     // ゲームのスタート時の処理
@@ -30,7 +32,6 @@ public class child : MonoBehaviour
         
         switch (this.gameObject.tag)
         {
-
             case "FriendShip1":
                 this.hp[0] = HP;
                 //Debug.Log("F1:" + hp[0]);
@@ -48,7 +49,6 @@ public class child : MonoBehaviour
                 //Debug.Log("F4:" + hp[3]);
                 break;
         }
-
     }
 
     // ゲーム実行中の繰り返し処理
@@ -83,6 +83,7 @@ public class child : MonoBehaviour
 
     public void shot()
     {
+        Debug.Log("ChildShot");
         //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
         //出現させる位置をずらす値
@@ -96,15 +97,71 @@ public class child : MonoBehaviour
 
         //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
-        //弾生成！
-        Instantiate(bullet, bulletPoint.transform.position, transform.rotation);
+        //弾生成
+        C_Bullet = Instantiate(bullet, bulletPoint.transform.position, transform.rotation);
+        C_Bullet.tag = "C_bullet";
     }
     // 生成時に自分のステータスを代入
     public void SetStatus(int FHP)
     {
-
         HP = FHP;
-
-
     }
+
+    public void C_Damage(int damage)
+    {
+        switch (this.gameObject.tag)
+        {
+            case "FriendShip1":
+                this.hp[0] -= damage;
+                //Debug.Log("F1:" + hp[0]);
+                break;
+            case "FriendShip2":
+                this.hp[1] -= damage;
+                //Debug.Log("F2:" + hp[1]);
+                break;
+            case "FriendShip3":
+                this.hp[2] -= damage;
+                //Debug.Log("F3:" + hp[2]);
+                break;
+            case "FriendShip4":
+                this.hp[3] -= damage;
+                //Debug.Log("F4:" + hp[3]);
+                break;
+        }
+    }
+
+    #region 攻撃Hit処理
+    public void OnTriggerEnter(Collider other)
+    {
+        // 通常攻撃Hit判定
+        if (other.gameObject.tag == "P_bullet")
+        {
+            Debug.Log("INEHit");
+
+            C_Damage(5);
+
+        }
+        // 特殊攻撃Hit判定
+        if (other.gameObject.tag == "SP1")
+        {
+            Destroy(other.gameObject);
+            C_Damage(createcs.Attack[0]);
+        }
+        if (other.gameObject.tag == "SP2")
+        {
+            Destroy(other.gameObject);
+            C_Damage(createcs.Attack[1]);
+        }
+        if (other.gameObject.tag == "SP3")
+        {
+            Destroy(other.gameObject);
+            C_Damage(createcs.Attack[2]);
+        }
+        if (other.gameObject.tag == "SP4")
+        {
+            Destroy(other.gameObject);
+            C_Damage(createcs.Attack[3]);
+        }
+    }
+    #endregion
 }
