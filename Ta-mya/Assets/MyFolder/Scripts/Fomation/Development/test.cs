@@ -13,12 +13,6 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            for (int i = 0; i < SelectShip.SelectShipNum.Length; i++)
-            {
-                Debug.Log(SelectShip.SelectShipNum[i]);
-            }            
-        }
+
     }
 }
