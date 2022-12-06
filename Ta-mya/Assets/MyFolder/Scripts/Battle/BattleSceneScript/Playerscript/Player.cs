@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public CoolDown CoolDownScript;
     // Playerî•ñ
     public float speed;
-    private int Player_HP;
+    [SerializeField] private int Player_HP;
+    [SerializeField] private int DEF;
     [SerializeField] private Slider hp_slider;
     public bool isTurn = false;
     // ’e‚Ìí—ŞA”­ËˆÊ’u
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         Player_HP = 100;
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
+        DEF = PreviewScore.Com;
 
         for (int i = 0; i < 4; i++)
         {
