@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         // ‰Šú‰»
-        Player_HP = 100;
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
         DEF = PreviewScore.Com;
