@@ -23,11 +23,11 @@ public class CreateShip : MonoBehaviour
 
     // CSVデータ格納用変数
     [SerializeField] private Image[] image;
-    private string[] Name = new string[100];         // 名前
-    public int[] Attack = new int[100];             // 攻撃力
-    public float[] CT = new float[100];             // クールタイム
-    public float[] Range = new float[100];              // 射程(弾が消えるまでの時間)
-    private string[] Explanatory = new string[100];  // 特殊攻撃の説明文
+    private string[] Name = new string[100];                // 名前
+    public static int[] Attack = new int[100];              // 攻撃力
+    public static float[] CT = new float[100];              // クールタイム
+    public float[] Range = new float[100];                  // 射程(弾が消えるまでの時間)
+    private string[] Explanatory = new string[100];         // 特殊攻撃の説明文
 
     public int[] HP = new int[4];
     public int[] DEF = new int[4];
@@ -111,23 +111,25 @@ public class CreateShip : MonoBehaviour
         Debug.Log("SPD" + SPD[num]);
     }
 
+    // 特殊攻撃の攻撃力を返す
     public int GetSPAttack(int Num)
     {
         return Attack[Num];
     }
+    // 特殊攻撃のCTを返す
+    public float GetCT(int CTNum)
+    {
+        return CT[CTNum];
+    }
+    // 特殊攻撃に射程を返す
     public float GetSPRange(int Num)
     {
         return Range[Num];
     }
+    // 子機のスピードを返す
     public int GetSPD(int Num)
     {
         return SPD[Num];
     }
-    // データを別のスクリプトから参照できるようにする
-    public float GetCT(int CTNum)
-    {
-        Debug.Log(CTNum);
-        Debug.Log(CT[CTNum]);
-        return CT[CTNum];
-    }
+
 }
