@@ -14,13 +14,16 @@ public class PreviewScore : MonoBehaviour
     private int[] DevelopNum = new int[3];
 
     // 開発ポイントからステータス変更用
-    public  int[] MultiDevelop = new int[3];
-    [SerializeField] private int CT_multiply;
+    public int[] MultiDevelop = new int[3];
+    public float AgrDevelop; 
+    [SerializeField] private float CT_multiply = 0.1f;
+    private int[] newAttack = new int[4];
+
     [SerializeField] private TextMeshProUGUI[] StatusUpText;
     // それぞれの開発ポイント格納
     public static int Ind;  // 工業：特殊攻撃の攻撃力
     public static int Com;  // 商業：メイン船の体力
-    public static int Agr;  // 農業：特殊攻撃のCT
+    public static float Agr;  // 農業：特殊攻撃のCT
 
 
     void Start()
@@ -37,26 +40,27 @@ public class PreviewScore : MonoBehaviour
                 case 0:
                     // 10分の1の値にして格納
                     Ind = MultiDevelop[0] / 10;
+                    Debug.Log("工業:"+Ind);
                     break;
                 case 1:
                     // 5分の1の値にして格納
                     Com = MultiDevelop[1] / 5;
+                    Debug.Log("商業:" + Com);
                     break;
                 case 2:
                     // CT_multiplyの値で割った値を格納
                     Agr = MultiDevelop[2] * CT_multiply;
+                    Debug.Log("農業:" + Agr);
                     break;
             }
 
             for (int skill = 0; skill < 4; skill++)
             {
-                createcs.Attack[skill] = createcs.Attack[skill] + Ind;
+                CreateShip.Attack[skill] = CreateShip.Attack[skill] + Ind;
             }
 
-
-            Com = Com + playercs.GetHp();
-
-
         }
+        Com = Com + Player.Player_HP;
+        Debug.Log("previwHP:" + Com);
     }
 }

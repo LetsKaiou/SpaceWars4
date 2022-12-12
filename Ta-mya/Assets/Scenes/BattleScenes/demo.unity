@@ -1413,7 +1413,6 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
-  Player_HP: 0
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:
@@ -3543,7 +3542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
@@ -3587,7 +3590,6 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
-  Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:
@@ -5463,7 +5465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4720436273692829
 Transform:
   m_ObjectHideFlags: 0

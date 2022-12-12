@@ -21,7 +21,7 @@ public class CoolDown : MonoBehaviour
     {
         for (int i = 0; i < Select_Special.SelectSpecial.Length; i++)
         {
-            CoolTime[i] = createShip.CT[i];
+            CoolTime[i] = CreateShip.CT[i];
             //Debug.Log(i+"‚ÌCT:"+CoolTime[i]);
         }
     }

@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+    private GameObject save;
+    private Save savecs;
+
+
     // シーン遷移処理(タイトル画面)
     
     // シーン遷移処理(街)
@@ -43,6 +47,9 @@ public class ScenesManager : MonoBehaviour
 
     public void OnclickBattleSelectButton()
     {
+        save = GameObject.Find("GameObject");
+        savecs = save.GetComponent<Save>();
+        savecs.SetStatus();
         SceneManager.LoadScene("BattleSelectScene");
     }
 

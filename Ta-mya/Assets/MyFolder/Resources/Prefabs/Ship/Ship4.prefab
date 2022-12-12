@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4112097546394478}
   - component: {fileID: 6450651425045816069}
   - component: {fileID: 1369439365953119753}
+  - component: {fileID: 4597177207765957185}
   m_Layer: 0
   m_Name: Ship4
   m_TagString: Untagged
@@ -70,8 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   bullet: {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
-  _timeInterval: 1
   bulletPoint: {fileID: 2466098283288951334}
+  _timeInterval: 1
   HP: 0
   DEF: 0
   SPD: 0
@@ -94,6 +95,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4597177207765957185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646988040113528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 5, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2466098283288951334
 GameObject:
   m_ObjectHideFlags: 0

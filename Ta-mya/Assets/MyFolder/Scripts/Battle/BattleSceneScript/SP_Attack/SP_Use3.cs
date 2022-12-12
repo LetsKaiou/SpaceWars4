@@ -18,7 +18,7 @@ public class SP_Use3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            CoolTime = createShip.CT[2];
+            CoolTime = CreateShip.CT[2];
             //Debug.Log(i+"‚ÌCT:"+CoolTime[i]);
     }
 

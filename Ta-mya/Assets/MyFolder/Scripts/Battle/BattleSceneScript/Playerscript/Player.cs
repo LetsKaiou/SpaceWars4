@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public CoolDown CoolDownScript;
     // Playerî•ñ
     public float speed;
-    [SerializeField] private static int Player_HP;
+    public static int Player_HP = 60;
     [SerializeField] private Slider hp_slider;
     public bool isTurn = false;
     // ’e‚Ìí—ŞA”­ËˆÊ’u
@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        
         // ‰Šú‰»
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
@@ -78,6 +79,10 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             transform.position -= transform.up * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            SceneManager.LoadScene("Result");
         }
         #endregion
 
@@ -211,6 +216,7 @@ public class Player : MonoBehaviour
 
     public static int GetHp()
     {
+        Debug.Log("HP:" + Player_HP);
         return Player_HP;
     }
 
@@ -230,6 +236,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
+                Debug.Log(other.tag);
                 P_Damage(5);
                 DamageHit = true;
             }

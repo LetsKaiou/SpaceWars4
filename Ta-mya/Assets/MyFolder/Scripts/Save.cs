@@ -5,7 +5,10 @@ using Unity.IO;
 
 public class Save : MonoBehaviour
 {
-
+    private void Start()
+    {
+        SaveSystem.Instance.Save();
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,12 +46,10 @@ public class Save : MonoBehaviour
     public void SetStatus()
     {
         
-        SaveSystem.Instance.MainShipData.HP = Player.GetHp();
-        for (int i = 0; i < 4; i++)
-        {
-            SaveSystem.Instance.MainShipData.CT[i]  = CreateShip.CT[i];
-            SaveSystem.Instance.MainShipData.ATK[i] = CreateShip.Attack[i];
-        }
+        SaveSystem.Instance.MainShipData.HP  = PreviewScore.Com;
+        SaveSystem.Instance.MainShipData.CT  = PreviewScore.Agr;
+        SaveSystem.Instance.MainShipData.ATK = PreviewScore.Ind;
+        Debug.Log(SaveSystem.Instance.MainShipData.HP);
         DataSave();
     }
 
