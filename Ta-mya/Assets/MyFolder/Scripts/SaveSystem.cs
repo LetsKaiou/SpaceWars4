@@ -13,8 +13,8 @@ public class SaveSystem
 
     // データの保存先設定
     public string Path => Application.dataPath + "/data.json";
-    private MainShipData mainShipData = new MainShipData();
-    public MainShipData MainShipData { get; private set; }
+
+    public MainShipData MainShipData { get; private set;}
 
     // jsonデータ保存
     public void Save()
@@ -30,7 +30,7 @@ public class SaveSystem
     {
         if(!File.Exists(Path))
         {
-            Debug.Log("I can't find a file");
+            Debug.Log("初回起動");
             MainShipData = new MainShipData();
             Save();
             return;

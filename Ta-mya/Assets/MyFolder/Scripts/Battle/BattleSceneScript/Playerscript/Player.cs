@@ -15,8 +15,10 @@ public class Player : MonoBehaviour
     // Player情報
     public float speed;
     public static int Player_HP = 60;
+    public static int MaxHP;
     [SerializeField] private Slider hp_slider;
     public bool isTurn = false;
+    private bool isSecond;
     // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
@@ -39,6 +41,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         
+        MaxHP = SaveSystem.Instance.MainShipData.HP;
+        Player_HP = MaxHP;
+
         // 初期化
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
@@ -125,7 +130,7 @@ public class Player : MonoBehaviour
         // プレイヤーの体力処理
         #region HP処理
         // HPのスライダー処理
-        hp_slider.value = Player_HP;
+        hp_slider.value = MaxHP;
         if (Player_HP <= 0)
         {
             //SceneManager.LoadScene("Result");
