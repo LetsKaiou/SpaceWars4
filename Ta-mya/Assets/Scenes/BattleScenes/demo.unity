@@ -1003,7 +1003,7 @@ Animator:
   m_GameObject: {fileID: 420672733}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1101496b590871b4dac39a8b1ad2cac9, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1413,8 +1413,6 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
-  Player_HP: 0
-  DEF: 0
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:
@@ -3542,6 +3540,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yamato
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2239b0e4797e7374bbd789ef45907266, type: 3}
 --- !u!1 &1469655925 stripped
@@ -3584,8 +3590,6 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
-  Player_HP: 60
-  DEF: 0
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:

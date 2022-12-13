@@ -56,7 +56,6 @@ public class CreateEnemyShip : MonoBehaviour
             // Counterの数だけ船の生成
             for (int count = 0; count < Counter; count++)
             {
-                Debug.Log(PosCount);
                 EnemyClones[count] = Instantiate(EnemyShip, s_EnemyCreatePos[PosCount], transform.rotation);
                 // 当たり判定取得用のタグとステータスを生成時に割り当てる
                 switch (count)

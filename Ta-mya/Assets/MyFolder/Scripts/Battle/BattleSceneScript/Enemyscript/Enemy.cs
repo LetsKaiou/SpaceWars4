@@ -139,10 +139,10 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
-                E_Damage(createship.Attack[0]);
+                E_Damage(CreateShip.Attack[0]);
                 DamageHit = true;
             }
-            Debug.Log("ダメージ:" + createship.Attack[0]);
+            Debug.Log("ダメージ:" + CreateShip.Attack[0]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
         if (other.gameObject.tag == "SP2")
@@ -151,10 +151,10 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
-                E_Damage(createship.Attack[1]);
+                E_Damage(CreateShip.Attack[1]);
                 DamageHit = true;
             }
-            Debug.Log("ダメージ:" + createship.Attack[1]);
+            Debug.Log("ダメージ:" + CreateShip.Attack[1]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
         if (other.gameObject.tag == "SP3")
@@ -163,10 +163,10 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
-                E_Damage(createship.Attack[2]);
+                E_Damage(CreateShip.Attack[2]);
                 DamageHit = true;
             }
-            Debug.Log("ダメージ:" + createship.Attack[2]);
+            Debug.Log("ダメージ:" + CreateShip.Attack[2]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
         if (other.gameObject.tag == "SP4")
@@ -175,10 +175,10 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
-                E_Damage(createship.Attack[3]);
+                E_Damage(CreateShip.Attack[3]);
                 DamageHit = true;
             }
-            Debug.Log("ダメージ:" + createship.Attack[3]);
+            Debug.Log("ダメージ:" + CreateShip.Attack[3]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
         

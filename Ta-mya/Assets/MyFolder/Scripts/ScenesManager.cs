@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+
     // シーン遷移処理(タイトル画面)
     
     // シーン遷移処理(街)

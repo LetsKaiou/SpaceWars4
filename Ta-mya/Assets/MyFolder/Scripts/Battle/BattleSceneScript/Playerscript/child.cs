@@ -145,22 +145,22 @@ public class child : MonoBehaviour
         if (other.gameObject.tag == "SP1")
         {
             Destroy(other.gameObject);
-            C_Damage(createcs.Attack[0]);
+            C_Damage(createcs.GetSPAttack(0));
         }
         if (other.gameObject.tag == "SP2")
         {
             Destroy(other.gameObject);
-            C_Damage(createcs.Attack[1]);
+            C_Damage(createcs.GetSPAttack(1));
         }
         if (other.gameObject.tag == "SP3")
         {
             Destroy(other.gameObject);
-            C_Damage(createcs.Attack[2]);
+            C_Damage(createcs.GetSPAttack(2));
         }
         if (other.gameObject.tag == "SP4")
         {
             Destroy(other.gameObject);
-            C_Damage(createcs.Attack[3]);
+            C_Damage(createcs.GetSPAttack(3));
         }
     }
     #endregion

@@ -14,10 +14,11 @@ public class Player : MonoBehaviour
     public CoolDown CoolDownScript;
     // Player情報
     public float speed;
-    [SerializeField] private int Player_HP;
-    [SerializeField] private int DEF;
+    public static int Player_HP = 60;
+    public static int MaxHP;
     [SerializeField] private Slider hp_slider;
     public bool isTurn = false;
+    private bool isSecond;
     // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
@@ -39,10 +40,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        
+        MaxHP = SaveSystem.Instance.MainShipData.HP;
+        Player_HP = MaxHP;
+
         // 初期化
         hp_slider.maxValue = Player_HP;
         hp_slider.value = Player_HP;
-        DEF = PreviewScore.Com;
 
         for (int i = 0; i < 4; i++)
         {
@@ -80,6 +84,10 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             transform.position -= transform.up * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            SceneManager.LoadScene("Result");
         }
         #endregion
 
@@ -122,7 +130,7 @@ public class Player : MonoBehaviour
         // プレイヤーの体力処理
         #region HP処理
         // HPのスライダー処理
-        hp_slider.value = Player_HP;
+        hp_slider.value = MaxHP;
         if (Player_HP <= 0)
         {
             //SceneManager.LoadScene("Result");
@@ -211,6 +219,13 @@ public class Player : MonoBehaviour
         return BulletSelect;
     }
 
+    public static int GetHp()
+    {
+        Debug.Log("HP:" + Player_HP);
+        return Player_HP;
+    }
+
+
     // 発射した特殊攻撃を消す
     public void Destroy()
     {
@@ -226,6 +241,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (DamageHit == false)
             {
+                Debug.Log(other.tag);
                 P_Damage(5);
                 DamageHit = true;
             }
