@@ -13,6 +13,7 @@ public class PreviewScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] DeveropmentText;
     [SerializeField] private TextMeshProUGUI[] StatusText;
     [SerializeField] private TextMeshProUGUI[] NowStatusText;
+    [SerializeField] private TextMeshProUGUI[] DevlopSumText;
 
     private int[] DevelopNum = new int[3];
 
@@ -85,6 +86,11 @@ public class PreviewScore : MonoBehaviour
         SaveSystem.Instance.MainShipData.IndSum = SaveSystem.Instance.MainShipData.IndSum + Ind;
         SaveSystem.Instance.MainShipData.ComSum = SaveSystem.Instance.MainShipData.ComSum + Com;
         SaveSystem.Instance.MainShipData.AgrSum = SaveSystem.Instance.MainShipData.AgrSum + Agr;
+
+        // テキスト表示
+        DevlopSumText[0].SetText("Point : {0}", SaveSystem.Instance.MainShipData.IndSum);
+        DevlopSumText[1].SetText("Point : {0}", SaveSystem.Instance.MainShipData.ComSum);
+        DevlopSumText[2].SetText("Point : {0}", SaveSystem.Instance.MainShipData.AgrSum);
 
         // 現在のステータス表示
         NowStatusText[0].SetText("Point : {0}", SaveSystem.Instance.MainShipData.HP);

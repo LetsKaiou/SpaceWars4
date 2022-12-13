@@ -1,6 +1,10 @@
 “ÁêUŒ‚,UŒ‚—Í,CT,Ë’ö(Á–Å‚Ü‚Å‚ÌŠÔ),‚¹‚Â‚ß‚¢,‰æ‘œ
-Charge,10,10,10,A,Image/baria
-Missile,8,8,8,B,Image/Dmissile
-Baraji,5,5,5,C,Image/grabity
-Homing,13,8,4,D,Image/Hmissile
-Spread,14,9,5,E,Image/warp
+Charge,7,10,20,A,Image/Charge
+HormingMissile,8,11,21,B,Image/HomingMissile
+DotMissile,9,12,22,B,Image/DotMissaile
+ParalysisMissile,10,13,23,B,Image/ParalysisMissile
+SwoonMissile,11,14,24,B,Image/SwoonMissile
+LifeDownMissile,12,15,25,B,Image/LifeDownMissile
+DefeneDownMissile,13,16,26,B,Image/DefenceDownMissile
+SpeedDownMissile,14,17,27,B,Image/SpeedDownMissile
+AttackStopMissile,15,18,28,B,Image/AttackStopMissile

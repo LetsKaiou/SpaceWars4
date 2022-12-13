@@ -35,6 +35,10 @@ public class SliderControl : MonoBehaviour
         {
             inputField[i] = inputField[i].GetComponent<TMP_InputField>();
         }
+        for (int i = 0; i < Now_value.Length; i++)
+        {
+            Now_value[i] = 0;
+        }
     }
     private void Update()
     {
