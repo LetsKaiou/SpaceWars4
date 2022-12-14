@@ -16,6 +16,7 @@ public class Special_info
     public int[] Range = new int[100];              // Ë’ö(’e‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ)
     public string[] Explanatory = new string[100];  // “ÁêUŒ‚‚Ìà–¾•¶
     public string[] Image = new string[50];         // “ÁêUŒ‚‚ÌƒAƒCƒRƒ“
+    public int[] ID = new int[20];
     public bool Ones = false;
     // Start is called before the first frame update
     static void CsvReader()
@@ -51,6 +52,7 @@ public class Special_info
                 Range[i] = int.Parse(SpecialList[i][3]);
                 Explanatory[i] = SpecialList[i][4];
                 Image[i] = SpecialList[i][5];
+                ID[i] = int.Parse(SpecialList[i][6]);
             }
             Ones = true;
         }

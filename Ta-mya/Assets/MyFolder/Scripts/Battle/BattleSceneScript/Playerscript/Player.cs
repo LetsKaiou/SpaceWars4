@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    // セーブ用の入力省略
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
     // 他のスクリプト参照用
     public SP_Bullet sp_Bullet;
     public CreateShip createcs;
@@ -41,7 +44,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         
-        MaxHP = SaveSystem.Instance.MainShipData.HP;
+        MaxHP = Data.HP;
+        Debug.Log("MaxHP" + MaxHP);
         Player_HP = MaxHP;
 
         // 初期化
@@ -70,7 +74,6 @@ public class Player : MonoBehaviour
         #region 移動
         if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
-
             transform.position += transform.forward * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S) && isTurn == false)
