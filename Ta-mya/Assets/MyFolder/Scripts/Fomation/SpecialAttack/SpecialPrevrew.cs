@@ -33,6 +33,8 @@ public class SpecialPrevrew : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CTText;
     [SerializeField] private TextMeshProUGUI RANGEText;
 
+    [SerializeField] private DropSkill drop;
+    [SerializeField] private SkillDatabase SkillData;
 
     void Start()
     {
@@ -43,9 +45,15 @@ public class SpecialPrevrew : MonoBehaviour
         specialInfo.Init();
         for (int i = 0; i < SpecialNum; i++)
         {
-            SelectImage[i].sprite = Resources.Load<Sprite>(specialInfo.Image[i+1]);
+           foreach(DropSkill dropSkill in SkillData.SkillList)
+            {
+                if (drop.isGet == true)
+                {
+                    SelectImage[i].sprite = Resources.Load<Sprite>(specialInfo.Image[i + 1]);
+                }
+            }
         }
-       
+        //SkillData.SkillList[0].isGet = true;
         //CreateShip();
     }
 
@@ -65,6 +73,7 @@ public class SpecialPrevrew : MonoBehaviour
     // プレビューに表示するための処理
     public void Display(int number)
     {
+        Debug.Log(specialInfo.Name[6]);
         NameText.text = specialInfo.Name[number];
         //NameText.SetText("{0}", statusInfo.Name[number]);
         ATKText.SetText("ATK:{0}", specialInfo.Attack[number]);

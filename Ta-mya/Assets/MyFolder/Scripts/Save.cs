@@ -5,6 +5,9 @@ using Unity.IO;
 
 public class Save : MonoBehaviour
 {
+    // 入力の省略用
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
 
     public void Start()
     {
@@ -27,16 +30,16 @@ public class Save : MonoBehaviour
         // ロード
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Debug.Log("Load" + SaveSystem.Instance.MainShipData.HP);
-            SaveSystem.Instance.Load();
+            Debug.Log("Load" + System.MainShipData.HP);
+            System.Load();
         }
 
         // 表示
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("HP:"  + SaveSystem.Instance.MainShipData.HP);
-            Debug.Log("CT:"  + SaveSystem.Instance.MainShipData.CT);
-            Debug.Log("ATK:" + SaveSystem.Instance.MainShipData.ATK);
+            Debug.Log("HP:"  + Data.HP);
+            Debug.Log("CT:"  + Data.CT);
+            Debug.Log("ATK:" + Data.ATK);
         }
 
         //if (Input.GetKeyDown(KeyCode.U))
@@ -50,7 +53,7 @@ public class Save : MonoBehaviour
     {
         Debug.Log("SetStatusIn");
         SaveSystem.Instance.Load();
-        
+
         //SaveSystem.Instance.MainShipData.HP  = PreviewScore.Com;
         //SaveSystem.Instance.MainShipData.CT  = PreviewScore.Agr;
         //SaveSystem.Instance.MainShipData.ATK = PreviewScore.Ind;
@@ -60,7 +63,7 @@ public class Save : MonoBehaviour
     public static void DataSave()
     {
         Debug.Log("せーぶ");
-       
+
         SaveSystem.Instance.Save();
         Debug.Log(SaveSystem.Instance.MainShipData.HP);
     }

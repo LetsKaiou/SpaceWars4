@@ -25,11 +25,14 @@ public class Select_Special : MonoBehaviour
     private GameObject Button;
     // 4回選択されているかどうか確認用
     private bool Loop;
+    // 解放されている特殊攻撃のカウント用
+    private int OpenSkill;
 
     void Start()
     {
         // 初期化
         string[] SelectSpecial = new string[] { "", "", "", "" };
+        buttun = new Button[OpenSkill];
         //Animator[] animator = new Animator[3];
         Count = 0;
         Loop = false;
