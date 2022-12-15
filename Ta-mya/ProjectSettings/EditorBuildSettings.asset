@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScenes/Result.unity
     guid: b1bf035bf576fce4aacbf2260606b425
+  - enabled: 1
+    path: Assets/MyFolder/Honda/NetWorkDemo/StandbyScene.unity
+    guid: a1c3e467b7d4a894d9f5cb01f1b1ae64
+  - enabled: 1
+    path: Assets/MyFolder/Honda/NetWorkDemo/NetWorkDemo.unity
+    guid: 1e4afde1cc18c6f46a9425a3960bb18d
   m_configObjects: {}
