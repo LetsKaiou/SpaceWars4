@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Special_info 
 {
@@ -18,6 +19,9 @@ public class Special_info
     public string[] Image = new string[50];         // 特殊攻撃のアイコン
     public int[] ID = new int[20];
     public bool Ones = false;
+
+    //[SerializeField] private DropSkill drop;
+
     // Start is called before the first frame update
     static void CsvReader()
     {
@@ -41,11 +45,12 @@ public class Special_info
         {
             //情報を一時格納
             CsvReader();
-
+            
             //各変数へデータを格納　CSVファイル内の行数分読み込み（全ステータスデータ）
             //Debug.Log("count="+SpecialInfo.Count);
             for (int i = 1; i < SpecialList.Count; i++)
             {
+                ;
                 Name[i] = SpecialList[i][0];
                 Attack[i] = int.Parse(SpecialList[i][1]);//string型からint型へ変換
                 CT[i] = float.Parse(SpecialList[i][2]);
@@ -63,4 +68,5 @@ public class Special_info
     {
         SpecialList.Clear();
     }
+
 }
