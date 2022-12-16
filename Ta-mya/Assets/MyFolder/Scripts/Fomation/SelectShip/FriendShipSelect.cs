@@ -41,8 +41,15 @@ public class FriendShipSelect : MonoBehaviour
     [SerializeField] private TextMeshProUGUI HPText;
     [SerializeField] private TextMeshProUGUI DEFText;
     [SerializeField] private TextMeshProUGUI SPDText;
+    public static FriendShipSelect instance;
 
-
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         count = 0;
@@ -73,6 +80,7 @@ public class FriendShipSelect : MonoBehaviour
         DEFText.SetText("DEF:{0}", statusInfo.DEF[number]);
         SPDText.SetText("SPD:{0}", statusInfo.SPD[number]);
     }
+
 
     // ílÇÃë„ì¸èàóù
     private void SetData(int SelectNum)

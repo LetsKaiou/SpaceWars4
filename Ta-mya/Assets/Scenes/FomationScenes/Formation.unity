@@ -1928,6 +1928,17 @@ MonoBehaviour:
   - {fileID: 1845590498}
   - {fileID: 578108891}
   - {fileID: 639234689}
+  ShipImage:
+  - {fileID: 180873266}
+  - {fileID: 473932080}
+  - {fileID: 666028682}
+  - {fileID: 2026092030}
+  - {fileID: 1738456974}
+  - {fileID: 291960959}
+  - {fileID: 1796795228}
+  - {fileID: 1940384304}
+  - {fileID: 379971778}
+  - {fileID: 1564263100}
   sprite:
   - {fileID: 21300000, guid: 8054b686bf01a704dbd588417f6e7e10, type: 3}
   - {fileID: 21300000, guid: 4fbc87113b7122b45ba84c7530c879bb, type: 3}
@@ -1940,6 +1951,8 @@ MonoBehaviour:
   - {fileID: 1845590501}
   - {fileID: 578108894}
   - {fileID: 639234692}
+  shipData: {fileID: 11400000, guid: 6f9ec37a05601c3429c651fb90fb51bc, type: 2}
+  clickok: 00000000000000000000
 --- !u!95 &645789263
 Animator:
   serializedVersion: 4
