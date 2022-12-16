@@ -13,7 +13,7 @@ public class Select_Special : MonoBehaviour
     // ボタン再選択カウント用
     private int DisCount;
     // ボタン格納用
-    [SerializeField] private Button[] buttun;
+    [SerializeField] private Button[] buttun = new Button[20];
     // image格納用
     [SerializeField] private Image[] image;
     // imageに入れる画像格納用
@@ -27,9 +27,10 @@ public class Select_Special : MonoBehaviour
     private bool Loop;
     // 解放されている特殊攻撃のカウント用
     private int OpenSkill;
-
+    
     void Start()
     {
+        
         // 初期化
         string[] SelectSpecial = new string[] { "", "", "", "" };
         buttun = new Button[OpenSkill];
@@ -63,7 +64,7 @@ public class Select_Special : MonoBehaviour
     // ダブルクリックをした時の処理(船を編成に追加)
     public void DoubleClick(string SpecialNum)
     {
-
+        Debug.Log(Count);
         // 4番目の配列まで到達したらリセット
 
         // 再度ボタンを押せるようにする処理
@@ -75,20 +76,26 @@ public class Select_Special : MonoBehaviour
         SelectSpecial[Count] = SpecialNum;
         //Debug.Log(Count + "番目の配列に" + ShipNum + "代入");
         // ボタン処理
-        buttun[int.Parse(SpecialNum) - 1].interactable = false;    // ボタンに触れなくする
+        Debug.Log(SpecialNum);
+        //buttun[int.Parse(SpecialNum) - 1].interactable = false;    // ボタンに触れなくする
 
         // プレビュー表示用スクリプトに情報を送る
-        Preview.GetComponent<SpecialPrevrew>().DisplayImage(int.Parse(SpecialNum));
-
-        Button.GetComponent<AnimationControl>().SpAnimStop();
-
-
-        // カウントを進める
-        Count++;
-        if (Count >= 4)
+        if (SpecialPrevrew.instance.clickok[int.Parse(SpecialNum) - 1] == true)
         {
-            Count = 0;
-            Loop = true;
+            Preview.GetComponent<SpecialPrevrew>().DisplayImage(int.Parse(SpecialNum));
+            Button.GetComponent<AnimationControl>().SpAnimStop();
+            // カウントを進める
+            Count++;
+            if (Count >= 4)
+            {
+                Count = 0;
+                Loop = true;
+            }
         }
+
+        
+
+
+
     }
 }

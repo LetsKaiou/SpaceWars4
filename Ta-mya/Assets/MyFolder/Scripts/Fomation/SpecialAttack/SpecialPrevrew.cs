@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class SpecialPrevrew : MonoBehaviour
 {
+    public static SpecialPrevrew instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     private Special_info specialInfo;
     [SerializeField] private int SpecialNum;
     // どの特殊攻撃にステータスを代入するか選択する変数(0～3の４つ)
@@ -33,8 +41,10 @@ public class SpecialPrevrew : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CTText;
     [SerializeField] private TextMeshProUGUI RANGEText;
 
-    [SerializeField] private DropSkill drop;
-    [SerializeField] private SkillDatabase SkillData;
+    [SerializeField] private SkillDatabase skillData;
+    int check;
+    public bool[] clickok = new bool[20];
+
 
     void Start()
     {
@@ -43,16 +53,22 @@ public class SpecialPrevrew : MonoBehaviour
         specialInfo = new Special_info();
         Debug.Log("SpcialPrevrew_Start");
         specialInfo.Init();
-        for (int i = 0; i < SpecialNum; i++)
-        {
-           foreach(DropSkill dropSkill in SkillData.SkillList)
+        //for (int i = 0; i < SpecialNum; i++)
+        //{
+           foreach(DropSkill dropSkill in skillData.SkillList)
             {
-                if (drop.isGet == true)
+                if(dropSkill.isGet == true)
                 {
-                    SelectImage[i].sprite = Resources.Load<Sprite>(specialInfo.Image[i + 1]);
+                    Debug.Log(dropSkill.isGet);
+                    SelectImage[check].sprite = Resources.Load<Sprite>(specialInfo.Image[check + 1]);
+                clickok[check] = true;
+                Debug.Log(check+"番目のデータ:"+clickok[check]);
+                //i++;
+                    //skillData.SkillList[i].Image = SelectImage[i].sprite;
                 }
-            }
+            check++;
         }
+        //}
         //SkillData.SkillList[0].isGet = true;
         //CreateShip();
     }
@@ -82,13 +98,17 @@ public class SpecialPrevrew : MonoBehaviour
     }
     public void DisplayImage(int Num)
     {
-        // CSVから画像を持ってきて表示
-        image[Count].sprite = Resources.Load<Sprite>(specialInfo.Image[Num]);
-        // カウントを進める
-        Count++;
-        if (Count >= 4)
+        if (clickok[Num-1] == true)
         {
-            Count = 0;
+            // CSVから画像を持ってきて表示
+            image[Count].sprite = Resources.Load<Sprite>(specialInfo.Image[Num]);
+            Debug.Log(specialInfo.Image[Num]);
+            // カウントを進める
+            Count++;
+            //if (Count >= 4)
+            //{
+            //    Count = 0;
+            //}
         }
     }
 
