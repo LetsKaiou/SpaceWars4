@@ -33,7 +33,7 @@ public class Select_Special : MonoBehaviour
         
         // 初期化
         string[] SelectSpecial = new string[] { "", "", "", "" };
-        buttun = new Button[OpenSkill];
+        //buttun = new Button[OpenSkill];
         //Animator[] animator = new Animator[3];
         Count = 0;
         Loop = false;
@@ -57,8 +57,17 @@ public class Select_Special : MonoBehaviour
     // シングルクリックをした時の処理(プレビューの表示)
     public void Click(int SpecialNumber)
     {
+        if (SpecialPrevrew.instance.clickok[SpecialNumber - 1] == true)
+        {
+            Preview.GetComponent<SpecialPrevrew>().Display(SpecialNumber);
+        }
+        else
+        {
+            SpecialPrevrew.instance.Display(0);
+        }
+
         // プレビュー表示用スクリプトに情報を送る
-        Preview.GetComponent<SpecialPrevrew>().Display(SpecialNumber);
+        //Preview.GetComponent<SpecialPrevrew>().Display(SpecialNumber);
     }
 
     // ダブルクリックをした時の処理(船を編成に追加)
@@ -77,11 +86,11 @@ public class Select_Special : MonoBehaviour
         //Debug.Log(Count + "番目の配列に" + ShipNum + "代入");
         // ボタン処理
         Debug.Log(SpecialNum);
-        //buttun[int.Parse(SpecialNum) - 1].interactable = false;    // ボタンに触れなくする
 
         // プレビュー表示用スクリプトに情報を送る
         if (SpecialPrevrew.instance.clickok[int.Parse(SpecialNum) - 1] == true)
         {
+            buttun[int.Parse(SpecialNum) - 1].interactable = false;    // ボタンに触れなくする
             Preview.GetComponent<SpecialPrevrew>().DisplayImage(int.Parse(SpecialNum));
             Button.GetComponent<AnimationControl>().SpAnimStop();
             // カウントを進める

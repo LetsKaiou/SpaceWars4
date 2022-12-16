@@ -12,6 +12,9 @@ public class FriendShipInfo
     public  int[] HP = new int[100];
     public  int[] DEF = new int[100];
     public  int[] SPD = new int[100];
+    public string[] Image = new string[50];
+    public int[] ID = new int[20];
+
     public bool Ones = false;
     // Start is called before the first frame update
     static void CsvReader()
@@ -29,16 +32,18 @@ public class FriendShipInfo
     {
         Debug.Log("Init");
 
-            CsvReader();//情報を一時格納
-                        //各変数へデータを格納　CSVファイル内の行数分読み込み（全ステータスデータ）
-            for (int i = 1; i < FriendShipData.Count; i++)
-            {
-                Name[i] = FriendShipData[i][0];
-                HP[i]  = int.Parse(FriendShipData[i][1]);//string型からint型へ変換
-                DEF[i] = int.Parse(FriendShipData[i][2]);
-                SPD[i] = int.Parse(FriendShipData[i][3]);
-
-            }
+        CsvReader();//情報を一時格納
+        //各変数へデータを格納　CSVファイル内の行数分読み込み（全ステータスデータ）
+        for (int i = 1; i < FriendShipData.Count; i++)
+        {
+            Name[i] = FriendShipData[i][0];
+            HP[i]  = int.Parse(FriendShipData[i][1]);//string型からint型へ変換
+            DEF[i] = int.Parse(FriendShipData[i][2]);
+            SPD[i] = int.Parse(FriendShipData[i][3]);
+            Image[i] = FriendShipData[i][4];
+            ID[i] = int.Parse(FriendShipData[i][5]);
+        
+        }
 
     }
 

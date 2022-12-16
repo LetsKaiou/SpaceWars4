@@ -1,7 +1,7 @@
-名前,HP(体力),DEF(防御力),SPD(スピード)
-ship1,10,3,4
-ship2,8,4,5
-ship3,5,8,4
-ship4,6,9,5
-ship5,7,10,6
-ship6,8,11,7
+名前,HP(体力),DEF(防御力),SPD(スピード),画像,ID
+ship1,10,3,4,Image/Ship1,1
+ship2,8,4,5,Image/Ship2,2
+ship3,5,8,4,Image/Ship3,3
+ship4,6,9,5,Image/Ship4,4
+ship5,7,10,6,Image/Ship5,5
+ship6,8,11,7,Image/Ship6,6

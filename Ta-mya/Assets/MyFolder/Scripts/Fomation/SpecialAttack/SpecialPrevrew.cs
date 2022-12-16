@@ -53,21 +53,22 @@ public class SpecialPrevrew : MonoBehaviour
         specialInfo = new Special_info();
         Debug.Log("SpcialPrevrew_Start");
         specialInfo.Init();
-        //for (int i = 0; i < SpecialNum; i++)
-        //{
-           foreach(DropSkill dropSkill in skillData.SkillList)
+        foreach(DropSkill dropSkill in skillData.SkillList)
             {
-                if(dropSkill.isGet == true)
-                {
-                    Debug.Log(dropSkill.isGet);
-                    SelectImage[check].sprite = Resources.Load<Sprite>(specialInfo.Image[check + 1]);
+            if(dropSkill.isGet == true)
+            {
+                Debug.Log(dropSkill.isGet);
+                SelectImage[check].sprite = Resources.Load<Sprite>(specialInfo.Image[check + 1]);
                 clickok[check] = true;
-                Debug.Log(check+"番目のデータ:"+clickok[check]);
-                //i++;
-                    //skillData.SkillList[i].Image = SelectImage[i].sprite;
-                }
+            }
+            else
+            {
+                //SelectImage[check].enabled = false;
+                SelectImage[check].sprite = Resources.Load<Sprite>(specialInfo.Image[check + 1]);
+                SelectImage[check].color = new Color(0.2f,0.2f,0.2f,0.5f);
+            }
             check++;
-        }
+            }
         //}
         //SkillData.SkillList[0].isGet = true;
         //CreateShip();
@@ -105,10 +106,10 @@ public class SpecialPrevrew : MonoBehaviour
             Debug.Log(specialInfo.Image[Num]);
             // カウントを進める
             Count++;
-            //if (Count >= 4)
-            //{
-            //    Count = 0;
-            //}
+            if (Count >= 4)
+            {
+                Count = 0;
+            }
         }
     }
 

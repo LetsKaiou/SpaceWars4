@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e23789374edc24dbfbdd037c3cb494, type: 3}
-  m_Name: New Skill Database
+  m_Name: Skill Database
   m_EditorClassIdentifier: 
   SkillList:
   - id: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     Name: "\u9EBB\u75FA\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
     Image: {fileID: 21300000, guid: 3561b5537d52b9548901b8a53155f44a, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 5
     Name: "\u30B9\u30BF\u30F3\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     Name: "\u30B9\u30D4\u30FC\u30C9\u30C0\u30A6\u30F3\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
     Image: {fileID: 21300000, guid: a34afebee1ebdab42b4298bbb364a145, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 9
     Name: "\u653B\u6483\u505C\u6B62\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
