@@ -39,23 +39,23 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     //Photonのコールバック
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to host");
+        Debug.Log("マスターに繋ぎました。");
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log($"{cause}Error");
+        Debug.Log($"{cause}の理由で繋げませんでした。");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("Create a room");
+        Debug.Log("ルームを作成します。");
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = MaxPlayerPerRoom });
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Joined the room");
+        Debug.Log("ルームに参加しました");
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         if (playerCount != MaxPlayerPerRoom)
         {
@@ -75,7 +75,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
             {
                 PhotonNetwork.CurrentRoom.IsOpen = false;
                 statusText.text = "Opponent is coming. Battle start";
-                PhotonNetwork.LoadLevel("SampleScene");
+                PhotonNetwork.LoadLevel("NetWorkDemo");
             }
         }
     }
