@@ -1218,7 +1218,7 @@ MonoBehaviour:
   - {fileID: 1513450998}
   MultiDevelop: 000000000000000000000000
   AgrDevelop: 0
-  CT_multiply: 0.1
+  CT_multiply: 0.001
 --- !u!4 &824200051
 Transform:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class SpecialPrevrew : MonoBehaviour
     int check;
     public bool[] clickok = new bool[20];
 
+    private bool isOnce = false;
 
     void Start()
     {
@@ -90,11 +91,12 @@ public class SpecialPrevrew : MonoBehaviour
     // プレビューに表示するための処理
     public void Display(int number)
     {
+        
         Debug.Log(specialInfo.Name[6]);
         NameText.text = specialInfo.Name[number];
         //NameText.SetText("{0}", statusInfo.Name[number]);
         ATKText.SetText("ATK:{0}", specialInfo.Attack[number]);
-        CTText.SetText("CT:{0}", specialInfo.CT[number]);
+        CTText.SetText("CT:{0}", specialInfo.CT[number] * PreviewScore.instance.Agr);
         RANGEText.SetText("RANGE:{0}", specialInfo.Range[number]);
     }
     public void DisplayImage(int Num)
@@ -103,7 +105,6 @@ public class SpecialPrevrew : MonoBehaviour
         {
             // CSVから画像を持ってきて表示
             image[Count].sprite = Resources.Load<Sprite>(specialInfo.Image[Num]);
-            Debug.Log(specialInfo.Image[Num]);
             // カウントを進める
             Count++;
             if (Count >= 4)
