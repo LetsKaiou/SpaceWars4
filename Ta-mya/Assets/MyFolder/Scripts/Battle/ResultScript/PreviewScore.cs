@@ -8,6 +8,9 @@ public class PreviewScore : MonoBehaviour
     // 他スクリプトの変数取得用
     //public Player playercs;
     //public CreateShip createcs;
+    public static PreviewScore instance;
+
+    private Special_info specialInfo;
 
     // 開発ポイント表示用
     [SerializeField] private TextMeshProUGUI[] DeveropmentText;
@@ -26,13 +29,18 @@ public class PreviewScore : MonoBehaviour
     public static float[] newCT = new float[4];
 
     // それぞれの開発ポイント格納
-    public static int Ind;  // 工業：特殊攻撃の攻撃力
-    public static int Com;  // 商業：メイン船の体力
-    public static float Agr;  // 農業：特殊攻撃のCT
+    public int Ind;  // 工業：特殊攻撃の攻撃力
+    public int Com;  // 商業：メイン船の体力
+    public float Agr;  // 農業：特殊攻撃のCT
 
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         for (int i = 0; i < DeveropmentText.Length; i++)
         {
             // 開発ポイントの値を表示
@@ -59,7 +67,7 @@ public class PreviewScore : MonoBehaviour
                 case 2:
                     // CT_multiplyの値で割った値を格納
                     Agr = MultiDevelop[2] * CT_multiply;
-                    //Debug.Log("農業:" + Agr);
+                    Debug.Log("農業:" + Agr);
                     break;
             }
 
@@ -73,8 +81,10 @@ public class PreviewScore : MonoBehaviour
         SaveSystem.Instance.MainShipData.HP = Com + SaveSystem.Instance.MainShipData.HP;
         for (int i = 0; i < 4; i++)
         {
-            newCT[i] = Agr + CreateShip.CT[i];
+            newCT[i] = CreateShip.CT[i] - CreateShip.CT[i] * Agr;
             newAttack[i] = Ind + CreateShip.Attack[i];
+            Debug.Log("NewCT:" + newCT[i]);
+            Debug.Log("NewAttack:" + newAttack[i]);
             
         }
         // ステータス表示

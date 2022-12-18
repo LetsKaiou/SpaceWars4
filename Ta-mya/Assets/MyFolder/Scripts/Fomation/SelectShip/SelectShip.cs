@@ -50,7 +50,6 @@ public class SelectShip : MonoBehaviour
         {
             if (dropShip.isGet == true)
             {
-                Debug.Log(dropShip.isGet);
                 ShipImage[check].sprite = Resources.Load<Sprite>(statusInfo.Image[check + 1]);
                 clickok[check] = true;
             }
@@ -132,7 +131,6 @@ public class SelectShip : MonoBehaviour
         {
             // CSVから画像を持ってきて表示
             image[Count].sprite = Resources.Load<Sprite>(statusInfo.Image[Num]);
-            Debug.Log(statusInfo.Image[Num]);
             // カウントを進める
             //Count++;
             //if (Count >= 4)

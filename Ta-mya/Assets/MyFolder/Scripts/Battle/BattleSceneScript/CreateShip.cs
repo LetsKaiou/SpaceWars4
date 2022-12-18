@@ -100,7 +100,6 @@ public class CreateShip : MonoBehaviour
         Attack[num] = specialInfo.Attack[int.Parse(Select_Special.SelectSpecial[num])];
         CT[num] = specialInfo.CT[int.Parse(Select_Special.SelectSpecial[num])];
         Range[num] = specialInfo.Range[int.Parse(Select_Special.SelectSpecial[num])];
-        Debug.Log("IN:" + Range[num]);
     }
     // –¡•û‹@‚ÌCSVƒf[ƒ^‚ğŠi”[‚·‚éˆ—
     public void ReadStatus(int num)
@@ -108,7 +107,6 @@ public class CreateShip : MonoBehaviour
         HP[num] = frindInfo.HP[int.Parse(SelectShip.SelectShipNum[num])];
         DEF[num] = frindInfo.DEF[int.Parse(SelectShip.SelectShipNum[num])];
         SPD[num] = frindInfo.SPD[int.Parse(SelectShip.SelectShipNum[num])];
-        Debug.Log("SPD" + SPD[num]);
     }
 
     // “ÁêUŒ‚‚ÌUŒ‚—Í‚ğ•Ô‚·
