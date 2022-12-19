@@ -73,7 +73,6 @@ public class Select_Special : MonoBehaviour
     // ダブルクリックをした時の処理(船を編成に追加)
     public void DoubleClick(string SpecialNum)
     {
-        Debug.Log(Count);
         // 4番目の配列まで到達したらリセット
 
         // 再度ボタンを押せるようにする処理
@@ -85,7 +84,6 @@ public class Select_Special : MonoBehaviour
         SelectSpecial[Count] = SpecialNum;
         //Debug.Log(Count + "番目の配列に" + ShipNum + "代入");
         // ボタン処理
-        Debug.Log(SpecialNum);
 
         // プレビュー表示用スクリプトに情報を送る
         if (SpecialPrevrew.instance.clickok[int.Parse(SpecialNum) - 1] == true)
@@ -101,10 +99,6 @@ public class Select_Special : MonoBehaviour
                 Loop = true;
             }
         }
-
-        
-
-
 
     }
 }

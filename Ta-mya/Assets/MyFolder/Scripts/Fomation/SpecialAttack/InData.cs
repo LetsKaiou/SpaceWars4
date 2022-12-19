@@ -10,8 +10,8 @@ public class InData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        specialInfo = new Special_info();
-        specialInfo.Init();
+        //specialInfo = new Special_info();
+        //specialInfo.Init();
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public float speedY = 100;
     private float deleteTime = 5.0f;
     private Rigidbody rb;
-    public float MoveSpeed = 2.0f;
+    public float MoveSpeed;
 
     public GameObject BulletObj;
 

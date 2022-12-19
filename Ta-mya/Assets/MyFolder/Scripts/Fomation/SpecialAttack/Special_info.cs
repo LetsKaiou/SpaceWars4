@@ -22,6 +22,11 @@ public class Special_info
 
     //[SerializeField] private DropSkill drop;
 
+    public void Awake()
+    {
+
+    }
+
     // Start is called before the first frame update
     static void CsvReader()
     {
@@ -50,7 +55,6 @@ public class Special_info
             //Debug.Log("count="+SpecialInfo.Count);
             for (int i = 1; i < SpecialList.Count; i++)
             {
-                
                 Name[i] = SpecialList[i][0];
                 Attack[i] = int.Parse(SpecialList[i][1]);//stringŒ^‚©‚çintŒ^‚Ö•ÏŠ·
                 CT[i] = float.Parse(SpecialList[i][2]);
