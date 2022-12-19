@@ -8,6 +8,11 @@ public class PreviewScore : MonoBehaviour
     // 他スクリプトの変数取得用
     //public Player playercs;
     //public CreateShip createcs;
+
+    // セーブ用の入力省略
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
+
     public static PreviewScore instance;
 
     private Special_info specialInfo;
@@ -29,9 +34,9 @@ public class PreviewScore : MonoBehaviour
     public static float[] newCT = new float[4];
 
     // それぞれの開発ポイント格納
-    public int Ind;  // 工業：特殊攻撃の攻撃力
-    public int Com;  // 商業：メイン船の体力
-    public float Agr;  // 農業：特殊攻撃のCT
+    public static int Ind;  // 工業：特殊攻撃の攻撃力
+    public static int Com;  // 商業：メイン船の体力
+    public static float Agr;  // 農業：特殊攻撃のCT
 
 
     void Awake()
@@ -78,32 +83,36 @@ public class PreviewScore : MonoBehaviour
 
         }
         // ステータス反映処理
-        SaveSystem.Instance.MainShipData.HP = Com + SaveSystem.Instance.MainShipData.HP;
-        for (int i = 0; i < 4; i++)
-        {
-            newCT[i] = CreateShip.CT[i] - CreateShip.CT[i] * Agr;
-            newAttack[i] = Ind + CreateShip.Attack[i];
-            Debug.Log("NewCT:" + newCT[i]);
-            Debug.Log("NewAttack:" + newAttack[i]);
-            
-        }
+        Data.HP  = Com + Data.HP;
+        Data.CT  = Agr + Data.CT;
+        Data.ATK = Ind + Data.ATK;
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    newCT[i] = CreateShip.CT[i] - CreateShip.CT[i] * Agr;
+        //    newAttack[i] = Ind + CreateShip.Attack[i];
+        //    Debug.Log("NewCT:" + newCT[i]);
+        //    Debug.Log("NewAttack:" + newAttack[i]);
+
+        //}
+
+
         // ステータス表示
         StatusText[0].SetText("Point : {0}", Ind);
         StatusText[1].SetText("Point : {0}", Com);
         StatusText[2].SetText("Point : {0}", Agr);
 
         // 開発ポイント加算処理
-        SaveSystem.Instance.MainShipData.IndSum = SaveSystem.Instance.MainShipData.IndSum + Ind;
-        SaveSystem.Instance.MainShipData.ComSum = SaveSystem.Instance.MainShipData.ComSum + Com;
-        SaveSystem.Instance.MainShipData.AgrSum = SaveSystem.Instance.MainShipData.AgrSum + Agr;
+        Data.IndSum = Data.IndSum + Ind;
+        Data.ComSum = Data.ComSum + Com;
+        Data.AgrSum = Data.AgrSum + Agr;
 
         // テキスト表示
-        DevlopSumText[0].SetText("Point : {0}", SaveSystem.Instance.MainShipData.IndSum);
-        DevlopSumText[1].SetText("Point : {0}", SaveSystem.Instance.MainShipData.ComSum);
-        DevlopSumText[2].SetText("Point : {0}", SaveSystem.Instance.MainShipData.AgrSum);
+        DevlopSumText[0].SetText("IndSum : {0}", Data.IndSum);
+        DevlopSumText[1].SetText("ComSum : {0}", Data.ComSum);
+        DevlopSumText[2].SetText("AgrSum : {0}", Data.AgrSum);
 
         // 現在のステータス表示
-        NowStatusText[0].SetText("Point : {0}", SaveSystem.Instance.MainShipData.HP);
+        NowStatusText[0].SetText("Point : {0}", Data.HP);
 
         // 値のセーブ
         SaveSystem.Instance.Save();

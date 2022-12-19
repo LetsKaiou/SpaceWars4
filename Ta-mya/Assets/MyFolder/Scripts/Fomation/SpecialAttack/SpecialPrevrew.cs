@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class SpecialPrevrew : MonoBehaviour
 {
+
+    static TextAsset csvFile;
+    // 一時格納先のリスト
+    public static List<string[]> SpecialList = new List<string[]>();
+
+    // セーブ用の入力省略
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
+
     public static SpecialPrevrew instance;
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
+
     private Special_info specialInfo;
     [SerializeField] private int SpecialNum;
     // どの特殊攻撃にステータスを代入するか選択する変数(0～3の４つ)
@@ -47,12 +51,23 @@ public class SpecialPrevrew : MonoBehaviour
 
     private bool isOnce = false;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
+        System.Load();
+
         // CSVデータの参照
         count = 0;
         specialInfo = new Special_info();
         Debug.Log("SpcialPrevrew_Start");
+        specialInfo.Delete();
         specialInfo.Init();
         foreach(DropSkill dropSkill in skillData.SkillList)
             {
@@ -70,9 +85,6 @@ public class SpecialPrevrew : MonoBehaviour
             }
             check++;
             }
-        //}
-        //SkillData.SkillList[0].isGet = true;
-        //CreateShip();
     }
 
     // 戦闘シーン開始時に味方機を生成する際に使用
@@ -91,12 +103,11 @@ public class SpecialPrevrew : MonoBehaviour
     // プレビューに表示するための処理
     public void Display(int number)
     {
-        
-        Debug.Log(specialInfo.Name[6]);
+        Debug.Log(Data.CT);
         NameText.text = specialInfo.Name[number];
         //NameText.SetText("{0}", statusInfo.Name[number]);
-        ATKText.SetText("ATK:{0}", specialInfo.Attack[number]);
-        CTText.SetText("CT:{0}", specialInfo.CT[number] * PreviewScore.instance.Agr);
+        ATKText.SetText("ATK:{0}", specialInfo.Attack[number] + Data.ATK);
+        CTText.SetText("CT:{0}", specialInfo.CT[number] - Data.CT);
         RANGEText.SetText("RANGE:{0}", specialInfo.Range[number]);
     }
     public void DisplayImage(int Num)
@@ -119,4 +130,11 @@ public class SpecialPrevrew : MonoBehaviour
     {
         ShipNumber = SelectNum;
     }
+
+    static void CsvReader()
+    {
+
+    }
+
+
 }

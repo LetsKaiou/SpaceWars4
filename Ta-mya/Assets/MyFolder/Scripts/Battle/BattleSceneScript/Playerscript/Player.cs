@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public CoolDown CoolDownScript;
     // PlayerèÓïÒ
     public float speed;
-    public static int Player_HP = 60;
+    public  int Player_HP = 60;
     public static int MaxHP;
     [SerializeField] private Slider hp_slider;
     public bool isTurn = false;
@@ -44,9 +44,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         
-        MaxHP = Data.HP;
-        Debug.Log("MaxHP" + MaxHP);
-        Player_HP = MaxHP;
+        Debug.Log("MaxHP" + Data.HP);
+        Player_HP = Data.HP;
 
         // èâä˙âª
         hp_slider.maxValue = Player_HP;
@@ -220,12 +219,6 @@ public class Player : MonoBehaviour
     public int GetSpecialNum()
     {
         return BulletSelect;
-    }
-
-    public static int GetHp()
-    {
-        Debug.Log("HP:" + Player_HP);
-        return Player_HP;
     }
 
 

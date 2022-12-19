@@ -1413,6 +1413,7 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
+  Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:
@@ -3590,6 +3591,7 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
+  Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
   Bullet:
@@ -4629,7 +4631,6 @@ GameObject:
   - component: {fileID: 1762919535}
   - component: {fileID: 1762919538}
   - component: {fileID: 1762919537}
-  - component: {fileID: 1762919536}
   m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
@@ -4652,19 +4653,6 @@ Transform:
   m_Father: {fileID: 1469655926}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1762919536
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762919534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1762919537
 MeshRenderer:
   m_ObjectHideFlags: 0

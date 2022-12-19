@@ -19,6 +19,7 @@ public class SaveSystem
     // jsonデータ保存
     public void Save()
     {
+        Debug.Log("セーブ");
         string jsonData = JsonUtility.ToJson(MainShipData);
         StreamWriter writer = new StreamWriter(Path, false);    // false → 上書き　true → 新規に書く
         writer.WriteLine(jsonData);
