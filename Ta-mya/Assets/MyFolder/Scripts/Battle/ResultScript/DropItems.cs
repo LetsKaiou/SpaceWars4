@@ -120,6 +120,10 @@ public class DropItems : MonoBehaviour
             // isGet‚ðtrue‚É•Ï‚¦‚é
             if (dropShip.id == ShipID)
             {
+                // Šl“¾‚µ‚½–¡•û‘D‚ÌID‚ðjson”z—ñ‚É‘ã“ü
+                Data.ShipID[S_InDataCount] = ShipDropIDList[ShipID];
+                // json‚ð•Û‘¶
+                System.Save();
                 dropShip.isGet = true;
             }
         }
