@@ -32,7 +32,7 @@ public class SP_Bullet : MonoBehaviour
     {
 
         // ’e‚ÌˆÚ“®
-        rb.velocity = transform.forward * 15;
+        rb.velocity = transform.forward * 50;
        
     }
 
