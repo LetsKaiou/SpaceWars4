@@ -13,8 +13,9 @@ public class MainShipData
     public float CT;    // CTの短縮される時間(合計値と同じ値が入る)
     public int ATK;     // 特殊攻撃の攻撃力・効果量(合計値と同じ値が入る)
 
-    public int sillID;  // スキルのID
-    public bool isGet;  // 持ってるかどうか判断
+    public int[] SkillID = new int[20];  // 所持済みのスキルID
+    public int[] ShipID = new int[20];  // 所持済みのスキルID
+    //public bool isGet;  // 持ってるかどうか判断
 
 
     // それぞれの開発ポイントの合計値

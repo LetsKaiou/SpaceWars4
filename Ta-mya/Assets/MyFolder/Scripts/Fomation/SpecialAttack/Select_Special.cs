@@ -40,7 +40,6 @@ public class Select_Special : MonoBehaviour
         specialInfo = new Special_info();
         Debug.Log("Select_Specials_Start");
         //animator[Count].SetBool("select", false);
-        Debug.Log("a");
         // プレビュー表示に使用
         Preview = GameObject.Find("SceneImage");
         Button = GameObject.Find("SP_Button1");
