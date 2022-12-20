@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.IO;
 
 public class DropItems : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class DropItems : MonoBehaviour
     //→ゲームのスタート時にIDに対応したやつのisGetをtrueに変更
 
     // マップのサイズ判別
-    private bool Big_Map;   
+    private bool Big_Map = false;   
 
     // データベース取得用変数
     [SerializeField] private SkillDatabase skillData;
@@ -29,13 +30,23 @@ public class DropItems : MonoBehaviour
     // 獲得したアイテムのID格納用変数
     private int SPID;
     private int ShipID;
-       
+
+    // jsonに保存する際の配列番号指定用
+    private int A_InDataCount;  // 特殊攻撃用
+    private int S_InDataCount;  // 味方船用
+    private static int a;
+
+    // セーブ用の入力省略
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
 
     void Start()
     {
         // 初期化処理
         SPDropIDList.Clear();
         ShipDropIDList.Clear();
+        A_InDataCount = 0;
+        S_InDataCount = 0;
 
         foreach (DropSkill dropSkill in skillData.SkillList)
         {
@@ -43,6 +54,14 @@ public class DropItems : MonoBehaviour
             {
                 // 持っていない特殊攻撃のIDを格納
                 SPDropIDList.Add(dropSkill.id);
+            }
+            else
+            {
+                // 持っている特殊攻撃のIDをjson配列に代入
+                Data.SkillID[A_InDataCount] = dropSkill.id;
+                Debug.Log("SkillID:" + Data.SkillID[A_InDataCount]);
+                A_InDataCount++;
+                
             }
         }
 
@@ -53,6 +72,23 @@ public class DropItems : MonoBehaviour
                 // 持っていない味方船のIDを格納
                 SPDropIDList.Add(dropShip.id);
             }
+            else
+            {
+                // 持っている味方船のIDをjson配列に代入
+                Data.ShipID[S_InDataCount] = dropShip.id;
+                S_InDataCount++;
+            }
+        }
+
+        // 大マップだったら味方船をドロップ
+        if(Big_Map == true)
+        {
+            ShipGet();
+        }
+        // 小マップだったら特殊攻撃をドロップ
+        else
+        {
+            SPGet();
         }
 
     }
@@ -60,10 +96,17 @@ public class DropItems : MonoBehaviour
     private void SPGet()
     {
         SPID = Random.Range(1, SPDropIDList.Count);
+        Debug.Log("Count:" + SPDropIDList.Count);
         foreach (DropSkill dropSkill in skillData.SkillList)
         {
-            if (dropSkill.id == SPID)
+            // isGetをtrueに変える
+            if (dropSkill.id == SPDropIDList[SPID])
             {
+                Debug.Log("獲得した特殊攻撃のID:" + SPDropIDList[SPID]);
+                // 獲得した特殊攻撃のIDをjson配列に代入
+                Data.SkillID[A_InDataCount] = SPDropIDList[SPID];
+                // jsonを保存
+                System.Save();
                 dropSkill.isGet = true;
             }
         }
@@ -72,6 +115,14 @@ public class DropItems : MonoBehaviour
     private void ShipGet()
     {
         ShipID = Random.Range(1, ShipDropIDList.Count);
+        foreach (DropShip dropShip in shipData.SkillList)
+        {
+            // isGetをtrueに変える
+            if (dropShip.id == ShipID)
+            {
+                dropShip.isGet = true;
+            }
+        }
     }
 
 }

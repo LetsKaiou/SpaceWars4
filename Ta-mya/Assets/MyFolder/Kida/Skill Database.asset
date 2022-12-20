@@ -37,12 +37,12 @@ MonoBehaviour:
     Name: "\u30B9\u30BF\u30F3\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
     Image: {fileID: 21300000, guid: e6dc0e17761aedb4cbaa927600cb017a, type: 3}
-    isGet: 1
+    isGet: 0
   - id: 6
     Name: "\u4F53\u529B\u6E1B\u5C11\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
     Image: {fileID: 21300000, guid: d12b817ae11788741accfab12d751137, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 7
     Name: "\u9632\u5FA1\u529B\u30C0\u30A6\u30F3\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
@@ -62,12 +62,12 @@ MonoBehaviour:
     Name: "\u56DE\u5FA9"
     SkillType: 1
     Image: {fileID: 21300000, guid: 2336e80e2f39b034c8c140fe1f66a974, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 11
     Name: "\u72B6\u614B\u7570\u5E38\u56DE\u5FA9"
     SkillType: 1
     Image: {fileID: 21300000, guid: dae926c8e08a37549b20870cd5f9c847, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 12
     Name: "\u30D0\u30EA\u30A2"
     SkillType: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
     Name: "\u30EF\u30FC\u30D7"
     SkillType: 1
     Image: {fileID: 21300000, guid: 57f6f35a79fa3f748a5fbbe63b55009f, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 15
     Name: "\u6700\u5927\u4F53\u529BUP"
     SkillType: 1
@@ -92,9 +92,9 @@ MonoBehaviour:
     Name: "\u30B9\u30D4\u30FC\u30C9UP"
     SkillType: 1
     Image: {fileID: 21300000, guid: 2f87d1e25b1cdc34eb0bc08a2fc97cf8, type: 3}
-    isGet: 0
+    isGet: 1
   - id: 17
     Name: "\u9632\u5FA1\u529BUP"
     SkillType: 1
     Image: {fileID: 21300000, guid: a02c135e5edc5864f93332f2e6afb8c5, type: 3}
-    isGet: 0
+    isGet: 1
