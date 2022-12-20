@@ -137,11 +137,12 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                E_Damage(CreateShip.Attack[0]);
-                DamageHit = true;
-            }
+            //if (DamageHit == false)
+            //{
+            //    E_Damage(CreateShip.Attack[0]);
+            //    DamageHit = true;
+            //}
+            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[0]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
@@ -149,11 +150,12 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                E_Damage(CreateShip.Attack[1]);
-                DamageHit = true;
-            }
+            //if (DamageHit == false)
+            //{
+            //    E_Damage(CreateShip.Attack[1]);
+            //    DamageHit = true;
+            //}
+            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[1]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
@@ -161,11 +163,12 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                E_Damage(CreateShip.Attack[2]);
-                DamageHit = true;
-            }
+            //if (DamageHit == false)
+            //{
+            //    E_Damage(CreateShip.Attack[2]);
+            //    DamageHit = true;
+            //}
+            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[2]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
@@ -173,11 +176,12 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                E_Damage(CreateShip.Attack[3]);
-                DamageHit = true;
-            }
+            //if (DamageHit == false)
+            //{
+            //    E_Damage(CreateShip.Attack[3]);
+            //    DamageHit = true;
+            //}
+            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[3]);
             Debug.Log("Ehp:" + Enemy_HP);
         }
