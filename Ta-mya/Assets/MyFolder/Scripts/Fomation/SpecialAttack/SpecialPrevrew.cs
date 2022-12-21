@@ -49,6 +49,7 @@ public class SpecialPrevrew : MonoBehaviour
     int check;
     public bool[] clickok = new bool[20];
 
+    private bool isAttack;
     private bool isOnce = false;
 
     private void Awake()
@@ -106,9 +107,18 @@ public class SpecialPrevrew : MonoBehaviour
         Debug.Log(Data.CT);
         NameText.text = specialInfo.Name[number];
         //NameText.SetText("{0}", statusInfo.Name[number]);
-        ATKText.SetText("ATK:{0}", specialInfo.Attack[number] + Data.ATK);
+        // クリックした特殊攻撃のタイプがAttackだったら攻撃力表示
+        if(skillData.SkillList[number].SkillType == DropSkill.Type.Attack)
+        {
+            ATKText.SetText("ATK:{0}", specialInfo.Attack[number] + Data.ATK);
+            RANGEText.SetText("RANGE:{0}", specialInfo.Range[number]);
+        }
+        else if(skillData.SkillList[number].SkillType == DropSkill.Type.Skill)
+        {
+            ATKText.SetText("Effect:{0}", specialInfo.Attack[number] + Data.ATK);
+            RANGEText.SetText("Time:{0}", specialInfo.Range[number]);
+        }
         CTText.SetText("CT:{0}", specialInfo.CT[number] - Data.CT);
-        RANGEText.SetText("RANGE:{0}", specialInfo.Range[number]);
     }
     public void DisplayImage(int Num)
     {
