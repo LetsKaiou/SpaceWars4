@@ -32,7 +32,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CreateShip createship;
     // プレイヤーの座標取得
     [SerializeField]private GameObject target;
-    // Start is called before the first frame update
+
+    public static Enemy instance;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
 
@@ -87,7 +98,7 @@ public class Enemy : MonoBehaviour
     }
     public void shot()
     {
-        if(shotcheck == true)
+        if(shotcheck == true && In)
         {
             //弾を出現させる位置を取得
             Vector3 placePosition = this.transform.position;
@@ -137,11 +148,6 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            //if (DamageHit == false)
-            //{
-            //    E_Damage(CreateShip.Attack[0]);
-            //    DamageHit = true;
-            //}
             Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[0]);
             Debug.Log("Ehp:" + Enemy_HP);
@@ -150,11 +156,6 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            //if (DamageHit == false)
-            //{
-            //    E_Damage(CreateShip.Attack[1]);
-            //    DamageHit = true;
-            //}
             Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[1]);
             Debug.Log("Ehp:" + Enemy_HP);
@@ -163,11 +164,6 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            //if (DamageHit == false)
-            //{
-            //    E_Damage(CreateShip.Attack[2]);
-            //    DamageHit = true;
-            //}
             Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[2]);
             Debug.Log("Ehp:" + Enemy_HP);
@@ -176,11 +172,6 @@ public class Enemy : MonoBehaviour
         {
             DamageHit = false;
             Destroy(other.gameObject);
-            //if (DamageHit == false)
-            //{
-            //    E_Damage(CreateShip.Attack[3]);
-            //    DamageHit = true;
-            //}
             Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
             Debug.Log("ダメージ:" + CreateShip.Attack[3]);
             Debug.Log("Ehp:" + Enemy_HP);

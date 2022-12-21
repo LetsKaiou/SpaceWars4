@@ -6,9 +6,11 @@ public class CreateEnemyShip : MonoBehaviour
 {
     // 敵船情報格納用
     [SerializeField] private GameObject EnemyShip;
+    [SerializeField] private GameObject[] BossShip;
     private GameObject[] EnemyClones = new GameObject[10];
     [SerializeField] private Vector3[] s_EnemyCreatePos = new Vector3[4];
     [SerializeField] private Vector3[] b_EnemyCreatePos = new Vector3[10];
+    private Vector3[] CreatePos = new Vector3[20];
     GameObject[] enemyparent = new GameObject[2];
     private int Num;
     private int PosCount;
@@ -19,11 +21,14 @@ public class CreateEnemyShip : MonoBehaviour
     [SerializeField] private bool isShip2;
     // 生成する数
     private int Counter;
+    private int ForNum;
+    private SaveSystem System => SaveSystem.Instance;
+    private MainShipData Data => System.MainShipData;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
         SetTag();   // stringにタグの名前割当
 
         enemyparent[0] = GameObject.FindGameObjectWithTag("Enemy");
@@ -42,6 +47,16 @@ public class CreateEnemyShip : MonoBehaviour
         {
             Counter = 2;    // 小マップだったら生成数を2にする
             Smallmap();     
+        }
+
+        // 敵戦の位置を取得して敵の子機を生成するPositionを代入
+        for (int i = 0; i < 2; i++)
+        {
+            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x + 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
+            ForNum++;
+            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x - 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
+            ForNum++;
+            Debug.Log(ForNum);
         }
 
     }
@@ -83,7 +98,7 @@ public class CreateEnemyShip : MonoBehaviour
             // Counterの数だけ船の生成
             for (int count = 0; count < Counter; count++)
             {
-                EnemyClones[count] = Instantiate(EnemyShip, b_EnemyCreatePos[count], Quaternion.identity);
+                EnemyClones[count] = Instantiate(EnemyShip, CreatePos[count], Quaternion.identity);
                 // 当たり判定取得用のタグとステータスを生成時に割り当てる
                 switch (count)
                 {
