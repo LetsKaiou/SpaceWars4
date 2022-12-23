@@ -30,6 +30,7 @@ TagManager:
   - P_bullet
   - C_bullet
   - E_bullet
+  - E_SP
   layers:
   - Default
   - TransparentFX

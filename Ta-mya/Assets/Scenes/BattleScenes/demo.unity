@@ -4035,7 +4035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 800
+      value: 529
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4175,7 +4175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21e4f5a84d37fa4c825f789594bbc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeInterval: 1
+  _timeInterval: 100
   _RotateTime: 8
   speed: 0
   In: 0
@@ -4183,6 +4183,7 @@ MonoBehaviour:
   StatusNum: 0
   Bullet:
   - {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
+  - {fileID: 8518147980204762918, guid: d05b4d173e958cb47985525cf887435c, type: 3}
   bulletPoint: {fileID: 1834901719}
   createship: {fileID: 1693190104}
   target: {fileID: 1469655925}
@@ -4521,6 +4522,27 @@ MonoBehaviour:
   - {x: 185, y: 0, z: 800}
   - {x: 215, y: 0, z: 800}
   b_EnemyCreatePos:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  CreatePos:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

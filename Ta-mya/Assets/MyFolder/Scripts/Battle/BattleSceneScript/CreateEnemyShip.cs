@@ -10,7 +10,7 @@ public class CreateEnemyShip : MonoBehaviour
     private GameObject[] EnemyClones = new GameObject[10];
     [SerializeField] private Vector3[] s_EnemyCreatePos = new Vector3[4];
     [SerializeField] private Vector3[] b_EnemyCreatePos = new Vector3[10];
-    private Vector3[] CreatePos = new Vector3[20];
+    [SerializeField] private Vector3[] CreatePos = new Vector3[20];
     GameObject[] enemyparent = new GameObject[2];
     private int Num;
     private int PosCount;
@@ -28,14 +28,24 @@ public class CreateEnemyShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        ForNum = 0;
         SetTag();   // stringにタグの名前割当
-
+        Debug.Log(BossShip[0].transform.position);
         enemyparent[0] = GameObject.FindGameObjectWithTag("Enemy");
         if(isShip2 == true)
         {
             enemyparent[1] = GameObject.FindGameObjectWithTag("Enemy2");
 
+        }
+        // 敵戦の位置を取得して敵の子機を生成するPositionを代入
+        for (int i = 0; i < 2; i++)
+        {
+            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x + 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
+            Debug.Log(CreatePos[ForNum]);
+            ForNum++;
+            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x - 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
+            ForNum++;
+            Debug.Log(ForNum);
         }
 
         if (isBigMap == true)
@@ -49,15 +59,7 @@ public class CreateEnemyShip : MonoBehaviour
             Smallmap();     
         }
 
-        // 敵戦の位置を取得して敵の子機を生成するPositionを代入
-        for (int i = 0; i < 2; i++)
-        {
-            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x + 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
-            ForNum++;
-            CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x - 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
-            ForNum++;
-            Debug.Log(ForNum);
-        }
+
 
     }
 
@@ -71,7 +73,8 @@ public class CreateEnemyShip : MonoBehaviour
             // Counterの数だけ船の生成
             for (int count = 0; count < Counter; count++)
             {
-                EnemyClones[count] = Instantiate(EnemyShip, s_EnemyCreatePos[PosCount], transform.rotation);
+                Debug.Log(CreatePos[PosCount]);
+                EnemyClones[count] = Instantiate(EnemyShip, CreatePos[PosCount], transform.rotation);
                 // 当たり判定取得用のタグとステータスを生成時に割り当てる
                 switch (count)
                 {
