@@ -3258,6 +3258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeInterval: 1
   _RotateTime: 8
+  CoolTime: 0
   speed: 0
   In: 0
   PlayerFind: 0
@@ -4035,7 +4036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 529
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4177,6 +4178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeInterval: 100
   _RotateTime: 8
+  CoolTime: 0
   speed: 0
   In: 0
   PlayerFind: 0

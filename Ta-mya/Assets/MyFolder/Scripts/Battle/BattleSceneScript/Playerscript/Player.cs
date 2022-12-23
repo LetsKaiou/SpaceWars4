@@ -242,6 +242,17 @@ public class Player : MonoBehaviour
                 DamageHit = true;
             }
         }
+        if (other.gameObject.tag == "E_SP")
+        {
+            DamageHit = false;
+            Destroy(other.gameObject);
+            if (DamageHit == false)
+            {
+                Debug.Log(other.tag);
+                P_Damage(20);
+                DamageHit = true;
+            }
+        }
     }
 }
 

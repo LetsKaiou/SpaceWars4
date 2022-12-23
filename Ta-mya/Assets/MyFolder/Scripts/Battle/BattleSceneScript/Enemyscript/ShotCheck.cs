@@ -6,11 +6,12 @@ public class ShotCheck : MonoBehaviour
 {
     public Enemy enemycs;
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             enemycs.shot();
+            enemycs.SPShot();
             enemycs.In = true;
         }
     }
