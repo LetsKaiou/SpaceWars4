@@ -19,9 +19,10 @@ public class Player : MonoBehaviour
     public float speed;
     public  int Player_HP = 60;
     public static int MaxHP;
-    [SerializeField] private Slider hp_slider;
+    public Slider hp_slider;
     public bool isTurn = false;
     private bool isSecond;
+    public int Defence;
     // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
@@ -40,6 +41,16 @@ public class Player : MonoBehaviour
     private bool DamageHit;
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
+
+    public static Player instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -238,7 +249,7 @@ public class Player : MonoBehaviour
             if (DamageHit == false)
             {
                 Debug.Log(other.tag);
-                P_Damage(5);
+                P_Damage(5 - Defence);
                 DamageHit = true;
             }
         }
