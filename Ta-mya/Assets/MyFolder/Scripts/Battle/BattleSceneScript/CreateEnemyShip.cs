@@ -41,11 +41,9 @@ public class CreateEnemyShip : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x + 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
-            Debug.Log(CreatePos[ForNum]);
             ForNum++;
             CreatePos[ForNum] = new Vector3(BossShip[i].transform.position.x - 15, BossShip[i].transform.position.y, BossShip[i].transform.position.z);
             ForNum++;
-            Debug.Log(ForNum);
         }
 
         if (isBigMap == true)
@@ -73,7 +71,6 @@ public class CreateEnemyShip : MonoBehaviour
             // Counterの数だけ船の生成
             for (int count = 0; count < Counter; count++)
             {
-                Debug.Log(CreatePos[PosCount]);
                 EnemyClones[count] = Instantiate(EnemyShip, CreatePos[PosCount], transform.rotation);
                 // 当たり判定取得用のタグとステータスを生成時に割り当てる
                 switch (count)
