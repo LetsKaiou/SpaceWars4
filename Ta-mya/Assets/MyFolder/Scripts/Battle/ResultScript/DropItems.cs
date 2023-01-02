@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.IO;
+using UnityEngine.UI;
 
 public class DropItems : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class DropItems : MonoBehaviour
     // Šl“¾‚µ‚½ƒAƒCƒeƒ€‚ÌIDŠi”[—p•Ï”
     private int SPID;
     private int ShipID;
+    [SerializeField] private Image GetSkillImage;
 
     // json‚É•Û‘¶‚·‚éÛ‚Ì”z—ñ”Ô†w’è—p
     private int A_InDataCount;  // “ÁêUŒ‚—p
@@ -103,6 +105,7 @@ public class DropItems : MonoBehaviour
             if (dropSkill.id == SPDropIDList[SPID])
             {
                 Debug.Log("Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID:" + SPDropIDList[SPID]);
+                GetSkillImage.sprite = dropSkill.Image;
                 // Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID‚ğjson”z—ñ‚É‘ã“ü
                 Data.SkillID[A_InDataCount] = SPDropIDList[SPID];
                 // json‚ğ•Û‘¶

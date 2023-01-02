@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillData: {fileID: 11400000, guid: e903712641e91ce4ea86fdc037d700ed, type: 2}
   shipData: {fileID: 11400000, guid: 6f9ec37a05601c3429c651fb90fb51bc, type: 2}
+  GetSkillImage: {fileID: 593315929}
 --- !u!1 &933670954
 GameObject:
   m_ObjectHideFlags: 0
