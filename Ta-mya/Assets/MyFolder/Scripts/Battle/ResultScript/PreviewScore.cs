@@ -38,6 +38,11 @@ public class PreviewScore : MonoBehaviour
     public static int Com;  // 商業：メイン船の体力
     public static float Agr;  // 農業：特殊攻撃のCT
 
+    // データベース格納用
+    //[SerializeField] private SkillDatabase skillData;
+    ////private int[] isFalseNum = new int[20];
+    //private int count;
+    //public static List<int> isFalseNum = new List<int>();
 
     void Awake()
     {
@@ -113,6 +118,9 @@ public class PreviewScore : MonoBehaviour
 
         // 現在のステータス表示
         NowStatusText[0].SetText("Point : {0}", Data.HP);
+
+        // 獲得した特殊攻撃の画像表示
+
 
         // 値のセーブ
         SaveSystem.Instance.Save();
