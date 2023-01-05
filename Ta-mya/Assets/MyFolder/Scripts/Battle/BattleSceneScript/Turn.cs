@@ -60,12 +60,20 @@ public class Turn : MonoBehaviour
         {
             playercs.isTurn = true;
             transform.Rotate(new Vector3(0, 0.5f, 0));
+            //child.instance.Front(Player.instance.speed, "FriendShip1");
+            //child.instance.Front(Player.instance.speed, "FriendShip4");
+            //child.instance.Back(Player.instance.speed, "FriendShip2");
+            //child.instance.Back(Player.instance.speed, "FriendShip3");
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log(playercs.isTurn);
             playercs.isTurn = true;
             transform.Rotate(new Vector3(0, -0.5f, 0));
+            //child.instance.Front(Player.instance.speed, "FriendShip2");
+            //child.instance.Front(Player.instance.speed, "FriendShip3");
+            //child.instance.Back(Player.instance.speed, "FriendShip1");
+            //child.instance.Back(Player.instance.speed, "FriendShip4");
         }
         playercs.isTurn = false;
     }

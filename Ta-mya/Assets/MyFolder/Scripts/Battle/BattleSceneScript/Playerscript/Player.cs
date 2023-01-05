@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
 
         // 初期化
         hp_slider.maxValue = Player_HP;
+        
         hp_slider.value = Player_HP;
-
+        Debug.Log("MaxHP" + hp_slider.value);
         for (int i = 0; i < 4; i++)
         {
             speed += createcs.SPD[i];
@@ -144,11 +145,11 @@ public class Player : MonoBehaviour
         // プレイヤーの体力処理
         #region HP処理
         // HPのスライダー処理
-        hp_slider.value = MaxHP;
-        if (Player_HP <= 0)
-        {
-            //SceneManager.LoadScene("Result");
-        }
+        //hp_slider.value = MaxHP;
+        //if (Player_HP <= 0)
+        //{
+        //    //SceneManager.LoadScene("Result");
+        //}
         #endregion
     }
 
@@ -224,7 +225,7 @@ public class Player : MonoBehaviour
     // ダメージ計算処理
     public void P_Damage(int damage)
     {
-        Player_HP -= damage;
+        hp_slider.value -= damage;
     }
 
     // BulletSelectを渡す

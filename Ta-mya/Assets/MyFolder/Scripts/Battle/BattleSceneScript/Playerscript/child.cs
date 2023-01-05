@@ -25,11 +25,28 @@ public class child : MonoBehaviour
     public int[] spd = new int[4];
     private int[] shipId = new int[4];
 
+    private GameObject[] ChildObj = new GameObject[4];
+    private string[] tag = new string[4];
+
+    public static child instance;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // ゲームのスタート時の処理
     void Start()
     {
-        
+        string[] tag = { "FriendShip1", "FriendShip2", "FriendShip3", "FriendShip4" };
+        for (int i = 0; i < tag.Length; i++)
+        {
+            ChildObj[i] = GameObject.FindGameObjectWithTag(tag[i]);
+        }
         switch (this.gameObject.tag)
         {
             case "FriendShip1":
@@ -167,4 +184,43 @@ public class child : MonoBehaviour
         }
     }
     #endregion
+
+    public void Front(float M_Speed, string Tag)
+    {
+        switch (Tag)
+        {
+            case "FriendShip1":
+                ChildObj[0].transform.position += transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip2":
+                ChildObj[1].transform.position += transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip3":
+                ChildObj[2].transform.position += transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip4":
+                ChildObj[3].transform.position += transform.forward * M_Speed * Time.deltaTime;
+                break;
+        }
+    }
+
+    public void Back(float M_Speed, string Tag)
+    {
+        switch (Tag)
+        {
+            case "FriendShip1":
+                ChildObj[0].transform.position -= transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip2":
+                ChildObj[1].transform.position -= transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip3":
+                ChildObj[2].transform.position -= transform.forward * M_Speed * Time.deltaTime;
+                break;
+            case "FriendShip4":
+                ChildObj[3].transform.position -= transform.forward * M_Speed * Time.deltaTime;
+                break;
+        }
+    }
+
 }
