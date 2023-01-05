@@ -1416,6 +1416,7 @@ MonoBehaviour:
   Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
+  Defence: 0
   Bullet:
   - {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
   - {fileID: 8518147980204762918, guid: 17b4ef48c2ac4aa458ddb56a8d2fa593, type: 3}
@@ -3256,9 +3257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21e4f5a84d37fa4c825f789594bbc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeInterval: 1
+  _timeInterval: 10
   _RotateTime: 8
-  CoolTime: 0
+  CoolTime: 30
   speed: 0
   In: 0
   PlayerFind: 0
@@ -3595,6 +3596,7 @@ MonoBehaviour:
   Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
+  Defence: 0
   Bullet:
   - {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
   - {fileID: 8518147980204762918, guid: 17b4ef48c2ac4aa458ddb56a8d2fa593, type: 3}
@@ -4176,9 +4178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21e4f5a84d37fa4c825f789594bbc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeInterval: 100
+  _timeInterval: 10
   _RotateTime: 8
-  CoolTime: 0
+  CoolTime: 30
   speed: 0
   In: 0
   PlayerFind: 0
