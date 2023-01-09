@@ -18,9 +18,10 @@ public class SliderControl : MonoBehaviour
     private int count;
     public static int[] Now_value = new int[3];
     private int check;
-    private int data;
+    private float data;
     // 入力されたデータ格納用
     public TMP_InputField[] inputField;
+    private string[] Num = new string[3];
     // テキスト用
     [SerializeField] string IndText;
     [SerializeField] string ComText;
@@ -42,6 +43,11 @@ public class SliderControl : MonoBehaviour
     }
     private void Update()
     {
+        //for (int i = 0; i < SliderObj.Length; i++)
+        //{
+        //    data = 
+        //}
+        data = SliderObj[0].value + SliderObj[1].value + SliderObj[2].value;
         Remaining.SetText("Remaing : {0}", 100 - data);
     }
 
@@ -52,25 +58,25 @@ public class SliderControl : MonoBehaviour
         // 100以上の値を入力されたら0にする
         if (check > 100 )
         {
-            
-            inputField[num].text = "0";
+            inputField[num].text = Num[num];
         }
 
         // Now_valueに入力された数字を変換
         //Now_value[num] = int.Parse(inputField[num].text);
         int.TryParse(inputField[num].text, out Now_value[num]);
+        
         // countに入力された値の合計を代入
         count = Now_value.Sum();
         
         // 入力した値の合計値が100を越えた場合0にする
         if (count > 100)
         {
-            inputField[num].text = "0";
+            inputField[num].text = Num[num];
         }
         // 入力された値の合計値が100以下の場合スライダーのvalueに値を代入
         else
         {
-            data += Now_value[num];
+            Num[num] = inputField[num].text;
             // スライダーの値に入力された値を代入
             SliderObj[num].value = Now_value[num];
         }

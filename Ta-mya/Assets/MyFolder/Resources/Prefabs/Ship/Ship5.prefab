@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   bullet: {fileID: 8518147980204762918, guid: 8b57f8c2b2228bb479af03faf36826fe, type: 3}
+  bulletPoint: {fileID: 0}
   _timeInterval: 1
   HP: 0
   DEF: 0
@@ -744,6 +745,10 @@ PrefabInstance:
     - target: {fileID: 4394320405331038, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23307252252889532, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 23307252252889532, guid: 328366602c7f9ae4aa29ecb957c7731d, type: 3}
       propertyPath: m_Materials.Array.data[0]

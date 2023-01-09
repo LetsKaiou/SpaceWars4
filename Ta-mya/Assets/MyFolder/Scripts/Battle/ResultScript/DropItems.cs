@@ -18,7 +18,7 @@ public class DropItems : MonoBehaviour
     //→ゲームのスタート時にIDに対応したやつのisGetをtrueに変更
 
     // マップのサイズ判別
-    private bool Big_Map = false;   
+    public static bool Big_Map = false;   
 
     // データベース取得用変数
     [SerializeField] private SkillDatabase skillData;
@@ -42,6 +42,15 @@ public class DropItems : MonoBehaviour
     private SaveSystem System => SaveSystem.Instance;
     private MainShipData Data => System.MainShipData;
 
+    public static DropItems instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         // 初期化処理
@@ -61,7 +70,6 @@ public class DropItems : MonoBehaviour
             {
                 // 持っている特殊攻撃のIDをjson配列に代入
                 Data.SkillID[A_InDataCount] = dropSkill.id;
-                Debug.Log("SkillID:" + Data.SkillID[A_InDataCount]);
                 A_InDataCount++;
                 
             }
@@ -72,7 +80,7 @@ public class DropItems : MonoBehaviour
             if (dropShip.isGet == false)
             {
                 // 持っていない味方船のIDを格納
-                SPDropIDList.Add(dropShip.id);
+                ShipDropIDList.Add(dropShip.id);
             }
             else
             {
@@ -81,7 +89,7 @@ public class DropItems : MonoBehaviour
                 S_InDataCount++;
             }
         }
-
+        Debug.Log(Big_Map);
         // 大マップだったら味方船をドロップ
         if(Big_Map == true)
         {
@@ -98,7 +106,6 @@ public class DropItems : MonoBehaviour
     private void SPGet()
     {
         SPID = Random.Range(1, SPDropIDList.Count);
-        Debug.Log("Count:" + SPDropIDList.Count);
         foreach (DropSkill dropSkill in skillData.SkillList)
         {
             // isGetをtrueに変える
@@ -121,12 +128,15 @@ public class DropItems : MonoBehaviour
         foreach (DropShip dropShip in shipData.SkillList)
         {
             // isGetをtrueに変える
-            if (dropShip.id == ShipID)
+            if (dropShip.id == ShipDropIDList[ShipID])
             {
+                Debug.Log("獲得した船のID:" + ShipDropIDList[ShipID]);
+                GetSkillImage.sprite = dropShip.Image;
                 // 獲得した味方船のIDをjson配列に代入
                 Data.ShipID[S_InDataCount] = ShipDropIDList[ShipID];
                 // jsonを保存
                 System.Save();
+                Debug.Log(dropShip.id);
                 dropShip.isGet = true;
             }
         }
