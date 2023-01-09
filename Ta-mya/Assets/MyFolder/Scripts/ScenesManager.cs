@@ -49,7 +49,14 @@ public class ScenesManager : MonoBehaviour
 
     public void OnclickBattle()
     {
-        SceneManager.LoadScene("demo");
+        DropItems.Big_Map = false;
+        SceneManager.LoadScene("demo"); // è¨É}ÉbÉv
+    }
+
+    public void OnclickB_Battle()
+    {
+        DropItems.Big_Map = true;
+        SceneManager.LoadScene("BigMap");
     }
 
     public void OnclickResult()

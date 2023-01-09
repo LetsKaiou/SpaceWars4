@@ -17,6 +17,9 @@ public class PreviewScore : MonoBehaviour
 
     private Special_info specialInfo;
 
+    // 選択したマップに関する情報
+    private bool isBigmap;
+
     // 開発ポイント表示用
     [SerializeField] private TextMeshProUGUI[] DeveropmentText;
     [SerializeField] private TextMeshProUGUI[] StatusText;
