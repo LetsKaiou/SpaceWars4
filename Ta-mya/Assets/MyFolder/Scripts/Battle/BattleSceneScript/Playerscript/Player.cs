@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 using DG.Tweening;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPunCallbacks
 {
     // セーブ用の入力省略
     private SaveSystem System => SaveSystem.Instance;
@@ -150,6 +151,28 @@ public class Player : MonoBehaviour
         //{
         //    //SceneManager.LoadScene("Result");
         //}
+        #endregion
+
+        #region Photon
+        if (photonView.IsMine)
+        {
+            if (Input.GetKey(KeyCode.W) && isTurn == false)
+            {
+                transform.position += transform.forward * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.S) && isTurn == false)
+            {
+                transform.position -= transform.forward * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                transform.position += transform.up * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                transform.position -= transform.up * speed * Time.deltaTime;
+            }
+        }
         #endregion
     }
 
