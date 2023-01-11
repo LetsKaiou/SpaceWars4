@@ -146,10 +146,10 @@ public class Player : MonoBehaviour
         #region HP処理
         // HPのスライダー処理
         //hp_slider.value = MaxHP;
-        //if (Player_HP <= 0)
-        //{
-        //    //SceneManager.LoadScene("Result");
-        //}
+        if (Player_HP <= 0)
+        {
+            SceneManager.LoadScene("Result");
+        }
         #endregion
     }
 

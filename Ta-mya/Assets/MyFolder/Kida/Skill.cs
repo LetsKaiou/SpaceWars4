@@ -20,6 +20,16 @@ public class Skill : MonoBehaviour
     // –hŒä—ÍƒAƒbƒv
     [SerializeField] private int DefencePoint;
 
+    public static Skill instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     private void Update()
     {
         if (isRegene == true)
