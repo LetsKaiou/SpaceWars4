@@ -27,6 +27,9 @@ public class Homing : MonoBehaviour
     Vector3 startPos;
     private bool moveFlag = false;
     [SerializeField] private ParticleSystem particle;
+
+    // 倒した時のエフェクト
+    public GameObject breakEffect;
     
 
     public Transform Target
@@ -109,8 +112,13 @@ public class Homing : MonoBehaviour
     {
         if(collision.gameObject.tag == "Target")
         {
-            Destroy(obj, 0.5f);
+            // エフェクトを発生させる
+            GenerateEffect();
+
+            // オブジェクトを削除する
+            Destroy(obj);
             Debug.Log("Destroy");
+
         }
     }
 
@@ -120,10 +128,24 @@ public class Homing : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         //Destroy(this);
         
-            Instantiate(obj, startPos, Quaternion.identity);
-            Destroy(this.gameObject);
+        Instantiate(obj, startPos, Quaternion.identity);
 
+        // エフェクトを発生させる
+        GenerateEffect();
 
+        Destroy(this.gameObject);
 
+        Debug.Log("Delete");
+
+    }
+
+    // エフェクトを生成する
+    void GenerateEffect()
+    {
+        Debug.Log("Effect");
+        // エフェクトを生成する
+        GameObject effect = Instantiate(breakEffect) as GameObject;
+        // エフェクトが発生する場所を決定する
+        effect.transform.position = gameObject.transform.position;
     }
 }
