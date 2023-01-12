@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
+    float _rot = 0.0f;
+    public float _anglePerFrame = 0.1f;
+    [SerializeField] private Material skybox;
+    private Vector3 vec;
+
     public static Player instance;
 
     private void Awake()
@@ -55,6 +60,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        //skybox.SetVector("_Rotation", new Vector3(1, 0, 0));
+        //skybox.SetVector("_Speed", new Vector3(0, 0, 0));
+        //vec = new Vector3(1, 0, 0);
         
         Debug.Log("MaxHP" + Data.HP);
         Player_HP = Data.HP;
@@ -82,12 +90,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        //skybox.SetVector("_Speed", vec);
         // 移動処理
         #region 移動
         if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
+
+            //vec = new Vector3(1, 0, 0);
         }
+        //else
+        //{
+        //    vec = new Vector3(0, 0, 0);
+        //}
         if (Input.GetKey(KeyCode.S) && isTurn == false)
         {
             transform.position -= transform.forward * speed * Time.deltaTime;
