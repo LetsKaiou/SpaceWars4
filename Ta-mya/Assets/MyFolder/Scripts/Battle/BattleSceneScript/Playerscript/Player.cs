@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
         //hp_slider.value = MaxHP;
         if (hp_slider.value <= 0)
         {
+            PreviewScore.instance.isWin = false;
             SceneManager.LoadScene("Result");
         }
         #endregion

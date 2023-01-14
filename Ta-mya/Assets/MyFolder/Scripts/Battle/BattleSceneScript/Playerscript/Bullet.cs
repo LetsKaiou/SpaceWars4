@@ -44,4 +44,26 @@ public class Bullet : MonoBehaviour
         Destroy(BulletObj, deleteTime);
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Player.instance.P_Damage(5);
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            Enemy.instance.E_Damage(5,0);
+        }
+        if (other.gameObject.tag == "Enemy2")
+        {
+            Enemy.instance.E_Damage(5,1);
+        }
+        if (other.gameObject.tag == "Enemy3")
+        {
+            Enemy.instance.E_Damage(5,2);
+        }
+    }
+
+
+
 }

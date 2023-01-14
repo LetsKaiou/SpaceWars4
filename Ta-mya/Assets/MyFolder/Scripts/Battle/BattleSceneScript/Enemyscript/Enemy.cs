@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float CoolTime;
     private float _CTTime;
     // 敵の情報
-    private int Enemy_HP = 100;
+    private int[] Enemy_HP = new int[3];
     [SerializeField] private float speed;
     public bool In;
     public bool PlayerFind;
@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     // プレイヤーの座標取得
     [SerializeField]private GameObject target;
 
+    private int EnemyCount;
     public static Enemy instance;
 
 
@@ -49,7 +50,11 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
+        for (int i = 0; i < Enemy_HP.Length; i++)
+        {
+            Enemy_HP[i] = 100;
+        }
+        EnemyCount = CreateEnemyShip.instance.Counter;
         angle = gameObject.transform.eulerAngles;
     }
 
@@ -99,8 +104,9 @@ public class Enemy : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
 
-        if (Enemy_HP <= 0)
+        if (EnemyCount <= 0)
         {
+            PreviewScore.instance.isWin = true;
             SceneManager.LoadScene("Result");
         }
 
@@ -154,63 +160,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void E_Damage(int damage)
+    public void E_Damage(int damage, int Numbre)
     {
-        this.Enemy_HP -= damage;
+        switch (Numbre)
+        {
+            case 0:
+                Enemy_HP[0] -= damage;
+                if(Enemy_HP[0] <= 0)
+                {
+                    EnemyCount--;
+                }
+                break;
+            case 1:
+                Enemy_HP[1] -= damage;
+                if (Enemy_HP[1] <= 0)
+                {
+                    EnemyCount--;
+                }
+                break;
+            case 2:
+                Enemy_HP[2] -= damage;
+                if (Enemy_HP[2] <= 0)
+                {
+                    EnemyCount--;
+                }
+                break;
+        }
     }
-
-    #region 攻撃Hit処理
-    public void OnTriggerEnter(Collider other)
-    {
-        // 通常攻撃Hit判定
-        if (other.gameObject.tag == "P_bullet")
-        {
-            Debug.Log("INEHit");
-            DamageHit = false;
-            Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                E_Damage(5);
-                DamageHit = true;
-            }
-            Debug.Log("ダメージ:" + 5);
-            Debug.Log("Ehp:" + Enemy_HP);
-        }
-        // 特殊攻撃Hit判定
-        if (other.gameObject.tag == "SP1")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
-            Debug.Log("ダメージ:" + CreateShip.Attack[0]);
-            Debug.Log("Ehp:" + Enemy_HP);
-        }
-        if (other.gameObject.tag == "SP2")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
-            Debug.Log("ダメージ:" + CreateShip.Attack[1]);
-            Debug.Log("Ehp:" + Enemy_HP);
-        }
-        if (other.gameObject.tag == "SP3")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
-            Debug.Log("ダメージ:" + CreateShip.Attack[2]);
-            Debug.Log("Ehp:" + Enemy_HP);
-        }
-        if (other.gameObject.tag == "SP4")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            Enemy_HP = Enemy_HP - SP_Use1.instance.SP1Damage();
-            Debug.Log("ダメージ:" + CreateShip.Attack[3]);
-            Debug.Log("Ehp:" + Enemy_HP);
-        }
-        
-    }
-    #endregion
 
 }

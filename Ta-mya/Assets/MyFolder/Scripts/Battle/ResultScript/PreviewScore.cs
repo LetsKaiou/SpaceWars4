@@ -41,11 +41,9 @@ public class PreviewScore : MonoBehaviour
     public static int Com;  // ¤‹ÆFƒƒCƒ“‘D‚Ì‘Ì—Í
     public static float Agr;  // ”_‹ÆF“ÁêUŒ‚‚ÌCT
 
-    // ƒf[ƒ^ƒx[ƒXŠi”[—p
-    //[SerializeField] private SkillDatabase skillData;
-    ////private int[] isFalseNum = new int[20];
-    //private int count;
-    //public static List<int> isFalseNum = new List<int>();
+    // ƒoƒgƒ‹‚ÉŸ‚Á‚½‚©‚Ç‚¤‚©‚Ì”»’è
+    public bool isWin;
+    [SerializeField] private int LosePoint = 2;
 
     void Awake()
     {
@@ -62,26 +60,56 @@ public class PreviewScore : MonoBehaviour
             DevelopNum[i] = SliderControl.Now_value[i];
             MultiDevelop[i] = DevelopNum[i];
             // ‚»‚ê‚¼‚ê‚ÌƒXƒe[ƒ^ƒXŒvZˆ—
-            switch (i)
+            if(isWin == true)
             {
-                // UŒ‚—Í
-                case 0:
-                    // 10•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
-                    Ind = MultiDevelop[0] / 10;
-                    //Debug.Log("H‹Æ:"+Ind);
-                    break;
-                // HP
-                case 1:
-                    // 5•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
-                    Com = MultiDevelop[1] / 5;
-                    //Debug.Log("¤‹Æ:" + Com);
-                    break;
-                // CT
-                case 2:
-                    // CT_multiply‚Ì’l‚ÅŠ„‚Á‚½’l‚ğŠi”[
-                    Agr = MultiDevelop[2] * CT_multiply;
-                    Debug.Log("”_‹Æ:" + Agr);
-                    break;
+                switch (i)
+                {
+                    // UŒ‚—Í
+                    case 0:
+                        // 10•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
+                        Ind = MultiDevelop[0] / 10;
+                        //Debug.Log("H‹Æ:"+Ind);
+                        break;
+                    // HP
+                    case 1:
+                        // 5•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
+                        Com = MultiDevelop[1] / 5;
+                        //Debug.Log("¤‹Æ:" + Com);
+                        break;
+                    // CT
+                    case 2:
+                        // CT_multiply‚Ì’l‚ÅŠ„‚Á‚½’l‚ğŠi”[
+                        Agr = MultiDevelop[2] * CT_multiply;
+                        Debug.Log("”_‹Æ:" + Agr);
+                        break;
+                }
+            }
+            else
+            {
+                switch (i)
+                {
+                    // UŒ‚—Í
+                    case 0:
+                        MultiDevelop[0] = MultiDevelop[0] / LosePoint;
+                        // 10•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
+                        Ind = MultiDevelop[0] / 10;
+                        //Debug.Log("H‹Æ:"+Ind);
+                        break;
+                    // HP
+                    case 1:
+                        MultiDevelop[1] = MultiDevelop[1] / LosePoint;
+                        // 5•ª‚Ì1‚Ì’l‚É‚µ‚ÄŠi”[
+                        Com = MultiDevelop[1] / 5;
+                        //Debug.Log("¤‹Æ:" + Com);
+                        break;
+                    // CT
+                    case 2:
+                        MultiDevelop[1] = MultiDevelop[1] / LosePoint;
+                        // CT_multiply‚Ì’l‚ÅŠ„‚Á‚½’l‚ğŠi”[
+                        Agr = MultiDevelop[2] * CT_multiply;
+                        Debug.Log("”_‹Æ:" + Agr);
+                        break;
+                }
             }
 
             for (int skill = 0; skill < 4; skill++)

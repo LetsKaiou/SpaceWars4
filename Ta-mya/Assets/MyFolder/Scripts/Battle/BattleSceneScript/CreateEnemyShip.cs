@@ -20,10 +20,21 @@ public class CreateEnemyShip : MonoBehaviour
     // “G•êŠÍ‚Ì”‚ª2‚©‚Ç‚¤‚©
     [SerializeField] private bool isShip2;
     // ¶¬‚·‚é”
-    private int Counter;
+    public int Counter;
     private int ForNum;
     private SaveSystem System => SaveSystem.Instance;
     private MainShipData Data => System.MainShipData;
+
+    public static CreateEnemyShip instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()

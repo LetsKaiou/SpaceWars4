@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SP_Bullet : MonoBehaviour
 {
-    public CreateShip sp_info;
-    public Player playersc;
-
     // 発射する特殊攻撃のオブジェクト格納用
     [SerializeField] private GameObject[] P_SPBullet;
     // どの特殊攻撃が撃たれたか判別
