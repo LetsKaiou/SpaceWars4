@@ -3888,7 +3888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 371.2
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4129,7 +4129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1405876428854690, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_TagString
-      value: Enemy2
+      value: Enemy3
       objectReference: {fileID: 0}
     - target: {fileID: 4312138073662048, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_RootOrder
@@ -4336,6 +4336,8 @@ MonoBehaviour:
   BossShip:
   - {fileID: 1491040380}
   - {fileID: 1437693863}
+  - {fileID: 1212340797}
+  - {fileID: 1686153700}
   s_EnemyCreatePos:
   - {x: -15, y: 0, z: 800}
   - {x: 15, y: 0, z: 800}
@@ -4376,6 +4378,27 @@ MonoBehaviour:
   isBigMap: 0
   isShip2: 1
   Counter: 0
+--- !u!114 &1693190109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578787966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2eec804eb2c3b14e8536f0c9d86f1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveropmentText: []
+  StatusText: []
+  NowStatusText: []
+  DevlopSumText: []
+  MultiDevelop: 000000000000000000000000
+  AgrDevelop: 0
+  CT_multiply: 0.1
+  isWin: 0
+  LosePoint: 2
 --- !u!1 &1720176634
 GameObject:
   m_ObjectHideFlags: 0

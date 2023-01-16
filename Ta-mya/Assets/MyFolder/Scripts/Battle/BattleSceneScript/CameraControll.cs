@@ -9,7 +9,7 @@ public class CameraControll : MonoBehaviour
     float differenceX;
 
     float _anglePerFrame = 0.01f;    // 1ƒtƒŒ[ƒ€‚É‰½“x‰ñ‚·‚©[unit : deg]
-    float _rot = 0.0f;
+    //float _rot = 0.0f;
 
     void Start()
     {

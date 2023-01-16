@@ -14,6 +14,7 @@ public class CreateEnemyShip : MonoBehaviour
     GameObject[] enemyparent = new GameObject[2];
     private int Num;
     private int PosCount;
+    [SerializeField]
     private string[] TagName = new string[10];
     // 大マップか小マップどっちが選ばれてるか判断
     [SerializeField] private bool isBigMap;
@@ -33,6 +34,16 @@ public class CreateEnemyShip : MonoBehaviour
         {
             instance = this;
         }
+
+        if (isBigMap == true)
+        {
+            Counter = 4;    // 大マップだったら生成数を4にする
+        }
+        else
+        {
+            Counter = 2;    // 小マップだったら生成数を2にする
+        }
+
     }
 
 
@@ -59,16 +70,12 @@ public class CreateEnemyShip : MonoBehaviour
 
         if (isBigMap == true)
         {
-            Counter = 4;    // 大マップだったら生成数を4にする
             BigMap();
         }
         else
         {
-            Counter = 2;    // 小マップだったら生成数を2にする
-            Smallmap();     
+            Smallmap();
         }
-
-
 
     }
 
@@ -104,6 +111,7 @@ public class CreateEnemyShip : MonoBehaviour
     // 大マップ用の処理
     public void BigMap()
     {
+        Debug.Log("InBig");
         for (int i = 0; i < 2; i++)
         {
             // Counterの数だけ船の生成

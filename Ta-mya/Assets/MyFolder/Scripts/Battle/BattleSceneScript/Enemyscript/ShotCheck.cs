@@ -5,14 +5,23 @@ using UnityEngine;
 public class ShotCheck : MonoBehaviour
 {
     public Enemy enemycs;
+    GameObject rootObj;
+    Enemy rootcs;
+
+    public void Start()
+    {
+        rootObj = transform.root.gameObject;
+        rootcs = rootObj.GetComponent<Enemy>();
+    }
 
     public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            enemycs.shot();
-            enemycs.SPShot();
-            enemycs.In = true;
+
+            rootcs.shot();
+            rootcs.SPShot();
+            rootcs.In = true;
         }
     }
     public void OnTriggerExit(Collider other)
