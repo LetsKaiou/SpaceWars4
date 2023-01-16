@@ -4318,8 +4318,10 @@ MonoBehaviour:
   Range_Z1: {fileID: 1372723683}
   Range_Z2: {fileID: 1779122981}
   Obj:
-  - {fileID: 8012348742254770958, guid: 5413e5c25dd88f745a3ba5d11a4c0e9c, type: 3}
-  CreateNum: 15
+  - {fileID: 1291954423120672, guid: c6fe0381847dcbd49882de385243245a, type: 3}
+  - {fileID: 1346384188866020, guid: 69b54264a2c33f9409434d043441552c, type: 3}
+  - {fileID: 1100702819137354, guid: 32f3a0c748d309c42b4aa860d4cc92aa, type: 3}
+  CreateNum: 30
 --- !u!114 &1693190108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4375,6 +4377,17 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  TagName:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   isBigMap: 0
   isShip2: 1
   Counter: 0
