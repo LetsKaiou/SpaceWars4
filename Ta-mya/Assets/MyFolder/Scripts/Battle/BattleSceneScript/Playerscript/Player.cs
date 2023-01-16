@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
+    private bool shotcheck;
+
     public float _anglePerFrame = 0.1f;
     [SerializeField] private Material skybox;
     private Vector3 vec;
@@ -134,7 +136,8 @@ public class Player : MonoBehaviour
 
         if (_timeElapsed > _timeInterval)
         {
-            shot();
+            shotcheck = true;
+            //shot();
             // 経過時間を元に戻す
             _timeElapsed = 0f;
         }
@@ -170,22 +173,27 @@ public class Player : MonoBehaviour
     // 通常弾発射処理関数
     public void shot()
     {
-        //弾を出現させる位置を取得
-        Vector3 placePosition = this.transform.position;
-        //出現させる位置をずらす値
-        Vector3 offsetGun = new Vector3(0, 0, 8);
+        if(shotcheck == true)
+        {
+            Debug.Log("ShorIN");
+            //弾を出現させる位置を取得
+            Vector3 placePosition = this.transform.position;
+            //出現させる位置をずらす値
+            Vector3 offsetGun = new Vector3(0, 0, 8);
 
-        //武器の向きに合わせて弾の向きも調整
-        Quaternion q1 = this.transform.rotation;
-        //弾を90度回転させる処理
-        Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
-        Quaternion q = q1 * q2;
+            //武器の向きに合わせて弾の向きも調整
+            Quaternion q1 = this.transform.rotation;
+            //弾を90度回転させる処理
+            Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
+            Quaternion q = q1 * q2;
 
-        //弾を出現させる位置を調整
-        placePosition = q1 * offsetGun + placePosition;
-        //弾生成
-        P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
-        P_Bullet.tag = "P_bullet";
+            //弾を出現させる位置を調整
+            placePosition = q1 * offsetGun + placePosition;
+            //弾生成
+            P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+            P_Bullet.tag = "P_bullet";
+            shotcheck = false;
+        }
     }
 
     // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)

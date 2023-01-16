@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour
                 if(Enemy_HP[0] <= 0)
                 {
                     Destroy(this.gameObject);
-                    EnemyCount--;
+                    EnemyCount -= 2;
                 }
                 break;
             case 1:

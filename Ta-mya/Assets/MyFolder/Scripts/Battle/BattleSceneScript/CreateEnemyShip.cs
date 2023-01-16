@@ -41,7 +41,7 @@ public class CreateEnemyShip : MonoBehaviour
         }
         else
         {
-            Counter = 1;    // 小マップだったら生成数を2にする
+            Counter = 2;    // 小マップだったら生成数を2にする
         }
 
     }
