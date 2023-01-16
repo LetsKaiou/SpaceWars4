@@ -31,6 +31,8 @@ TagManager:
   - C_bullet
   - E_bullet
   - E_SP
+  - Enemy3
+  - Enemy4
   layers:
   - Default
   - TransparentFX

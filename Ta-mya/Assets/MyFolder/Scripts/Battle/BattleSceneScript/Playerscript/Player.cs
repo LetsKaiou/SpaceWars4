@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
-    float _rot = 0.0f;
     public float _anglePerFrame = 0.1f;
     [SerializeField] private Material skybox;
     private Vector3 vec;
@@ -64,14 +63,12 @@ public class Player : MonoBehaviour
         //skybox.SetVector("_Speed", new Vector3(0, 0, 0));
         //vec = new Vector3(1, 0, 0);
         
-        Debug.Log("MaxHP" + Data.HP);
         Player_HP = Data.HP;
 
         // 初期化
         hp_slider.maxValue = Player_HP;
         
         hp_slider.value = Player_HP;
-        Debug.Log("MaxHP" + hp_slider.value);
         for (int i = 0; i < 4; i++)
         {
             speed += createcs.SPD[i];
@@ -219,6 +216,10 @@ public class Player : MonoBehaviour
         Quaternion a = Quaternion.identity;
         //弾生成
         Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+
+        // 使った特殊攻撃のIDを返す
+        Skill.instance.StartEffect(BulletSelect);
+
         // タグの割り当て
         switch (BulletSelect - 1)
         {

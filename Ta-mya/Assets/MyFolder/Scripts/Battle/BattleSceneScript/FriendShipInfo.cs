@@ -30,7 +30,6 @@ public class FriendShipInfo
 
     public void Init()
     {
-        Debug.Log("Init");
 
         CsvReader();//情報を一時格納
         //各変数へデータを格納　CSVファイル内の行数分読み込み（全ステータスデータ）
@@ -49,7 +48,6 @@ public class FriendShipInfo
 
     public void Delete()
     {
-        Debug.Log("Ship_Delete");
         FriendShipData.Clear();
     }
 }

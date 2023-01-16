@@ -62,6 +62,7 @@ public class Special_info
                 Explanatory[i] = SpecialList[i][4];
                 Image[i] = SpecialList[i][5];
                 ID[i] = int.Parse(SpecialList[i][6]);
+                //Debug.Log("Count:" + Attack[17]);
             }
             Ones = true;
         }

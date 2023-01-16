@@ -48,19 +48,28 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Destroy(this.gameObject);
             Player.instance.P_Damage(5);
         }
         if (other.gameObject.tag == "Enemy")
         {
+            Destroy(this.gameObject);
             Enemy.instance.E_Damage(5,0);
         }
         if (other.gameObject.tag == "Enemy2")
         {
+            Destroy(this.gameObject);
             Enemy.instance.E_Damage(5,1);
         }
         if (other.gameObject.tag == "Enemy3")
         {
+            Destroy(this.gameObject);
             Enemy.instance.E_Damage(5,2);
+        }
+        if (other.gameObject.tag == "Enemy4")
+        {
+            Destroy(this.gameObject);
+            Enemy.instance.E_Damage(5, 3);
         }
     }
 

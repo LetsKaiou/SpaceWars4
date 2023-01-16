@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float CoolTime;
     private float _CTTime;
     // “G‚Ìî•ñ
-    private int[] Enemy_HP = new int[3];
+    [SerializeField] private int[] Enemy_HP = new int[4];
     [SerializeField] private float speed;
     public bool In;
     public bool PlayerFind;
@@ -171,6 +171,7 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[0] -= damage;
                 if(Enemy_HP[0] <= 0)
                 {
+                    Destroy(this.gameObject);
                     EnemyCount--;
                 }
                 break;
@@ -178,6 +179,7 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[1] -= damage;
                 if (Enemy_HP[1] <= 0)
                 {
+                    Destroy(this.gameObject);
                     EnemyCount--;
                 }
                 break;
@@ -185,6 +187,15 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[2] -= damage;
                 if (Enemy_HP[2] <= 0)
                 {
+                    Destroy(this.gameObject);
+                    EnemyCount--;
+                }
+                break;
+            case 3:
+                Enemy_HP[3] -= damage;
+                if (Enemy_HP[3] <= 0)
+                {
+                    Destroy(this.gameObject);
                     EnemyCount--;
                 }
                 break;

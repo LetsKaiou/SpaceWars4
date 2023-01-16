@@ -17,5 +17,6 @@ public class DropSkill
     public Type SkillType;
     public Sprite Image;
     public bool isGet;
+    public GameObject EffectObj;
 
 }

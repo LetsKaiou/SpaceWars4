@@ -74,7 +74,6 @@ public class SpecialPrevrew : MonoBehaviour
             {
             if(dropSkill.isGet == true)
             {
-                Debug.Log(dropSkill.isGet);
                 SelectImage[check].sprite = Resources.Load<Sprite>(specialInfo.Image[check + 1]);
                 clickok[check] = true;
             }
@@ -104,16 +103,16 @@ public class SpecialPrevrew : MonoBehaviour
     // プレビューに表示するための処理
     public void Display(int number)
     {
-        Debug.Log(Data.CT);
         NameText.text = specialInfo.Name[number];
+        Debug.Log(skillData.SkillList[number - 1].SkillType);
         //NameText.SetText("{0}", statusInfo.Name[number]);
         // クリックした特殊攻撃のタイプがAttackだったら攻撃力表示
-        if(skillData.SkillList[number].SkillType == DropSkill.Type.Attack)
+        if(skillData.SkillList[number-1].SkillType == DropSkill.Type.Attack)
         {
             ATKText.SetText("ATK:{0}", specialInfo.Attack[number] + Data.ATK);
             RANGEText.SetText("RANGE:{0}", specialInfo.Range[number]);
         }
-        else if(skillData.SkillList[number].SkillType == DropSkill.Type.Skill)
+        else if(skillData.SkillList[number - 1].SkillType == DropSkill.Type.Skill)
         {
             ATKText.SetText("Effect:{0}", specialInfo.Attack[number] + Data.ATK);
             RANGEText.SetText("Time:{0}", specialInfo.Range[number]);
