@@ -39,6 +39,9 @@ public class Enemy : MonoBehaviour
     private int EnemyCount;
     public static Enemy instance;
 
+    //倒した時のエフェクト
+    public GameObject breakEffect;
+
 
     private void Awake()
     {
@@ -186,6 +189,15 @@ public class Enemy : MonoBehaviour
                 }
                 break;
         }
+    }
+    
+    //爆破エフェクトを生成する
+    void BreakEffect()
+    {
+        //爆破エフェクトを生成する
+        GameObject effect = Instantiate(breakEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        effect.transform.position = gameObject.transform.position;
     }
 
 }
