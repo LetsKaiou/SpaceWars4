@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
             //íeÇèoåªÇ≥ÇπÇÈà íuÇí≤êÆ
             placePosition = q1 * offsetGun + placePosition;
             //íeê∂ê¨
-            P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
+            P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, Quaternion.Euler(0, 0, 180));
             P_Bullet.tag = "P_bullet";
             shotcheck = false;
         }

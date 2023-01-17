@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < Enemy_HP.Length; i++)
         {
-            Enemy_HP[i] = 100;
+            Enemy_HP[i] = 10;
         }
         EnemyCount = CreateEnemyShip.instance.Counter;
         angle = gameObject.transform.eulerAngles;
@@ -109,6 +109,7 @@ public class Enemy : MonoBehaviour
 
         if (EnemyCount <= 0)
         {
+            Debug.Log("IN");
             PreviewScore.instance.isWin = true;
             SceneManager.LoadScene("Result");
         }
@@ -171,8 +172,9 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[0] -= damage;
                 if(Enemy_HP[0] <= 0)
                 {
+                    EnemyCount = 0;
                     Destroy(this.gameObject);
-                    EnemyCount -= 2;
+                    
                 }
                 break;
             case 1:
@@ -180,7 +182,7 @@ public class Enemy : MonoBehaviour
                 if (Enemy_HP[1] <= 0)
                 {
                     Destroy(this.gameObject);
-                    EnemyCount--;
+                    EnemyCount -= 2;
                 }
                 break;
             case 2:
