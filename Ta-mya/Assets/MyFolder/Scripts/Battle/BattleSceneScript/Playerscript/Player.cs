@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public static int MaxHP;
     public Slider hp_slider;
     public bool isTurn = false;
+    public static float ScoreHP;
     private bool isSecond;
     public int Defence;
     // 弾の種類、発射位置
@@ -64,7 +65,9 @@ public class Player : MonoBehaviour
         //skybox.SetVector("_Rotation", new Vector3(1, 0, 0));
         //skybox.SetVector("_Speed", new Vector3(0, 0, 0));
         //vec = new Vector3(1, 0, 0);
-        
+
+        ScoreHP = 0;
+
         Player_HP = Data.HP;
 
         // 初期化
@@ -246,6 +249,14 @@ public class Player : MonoBehaviour
         }
 
         Destroy();
+    }
+
+    public void GetSocre_HP()
+    {
+        Debug.Log(hp_slider.value);
+        Debug.Log(Player_HP);
+        ScoreHP = hp_slider.value / Player_HP * 100;
+        Debug.Log(ScoreHP);
     }
 
     // ダメージ計算処理
