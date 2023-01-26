@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turn : MonoBehaviour
+public class FriendTurn : MonoBehaviour
 {
     public Player playercs;
     public float turnSpeed;
