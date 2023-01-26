@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297368167037062203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9787164, y: 2.4100409, z: -3.5843766}
+  m_LocalPosition: {x: 0, y: 2.4100409, z: -3.5843766}
   m_LocalScale: {x: 1, y: 1, z: 0.65999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4896,7 +4896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297368167472387070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9787164, y: 2.4100397, z: 5.5756245}
+  m_LocalPosition: {x: 0, y: 2.4100397, z: 5.5756245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9775,7 +9775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297368167813628694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9787164, y: 2.4100397, z: 5.5756245}
+  m_LocalPosition: {x: 0, y: 2.4100397, z: 5.5756245}
   m_LocalScale: {x: 1, y: 1, z: 0.51}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14649,7 +14649,7 @@ GameObject:
   - component: {fileID: 7229694788042385289}
   - component: {fileID: 8263365949582535859}
   m_Layer: 0
-  m_Name: 'UV_DefenseUpBuff '
+  m_Name: 'UV_DefenseUPBuff '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14663,7 +14663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6910538838780371555}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2912836, y: -4.5356236, z: 23.73004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

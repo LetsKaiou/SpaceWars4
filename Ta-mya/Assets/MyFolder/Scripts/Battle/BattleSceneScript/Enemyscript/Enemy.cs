@@ -36,7 +36,11 @@ public class Enemy : MonoBehaviour
     // プレイヤーの座標取得
     [SerializeField]private GameObject target;
 
-    private int EnemyCount;
+    public int EnemyCount;
+    GameObject E1;
+    GameObject E2;
+    GameObject E3;
+    GameObject E4;
     public static Enemy instance;
 
     //倒した時のエフェクト
@@ -53,9 +57,17 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        E1 = GameObject.Find("Enemy");
+        E2 = GameObject.Find("Enemy1");
+        if (DropItems.Big_Map == true)
+        {
+            E3 = GameObject.Find("Enemy2");
+            E4 = GameObject.Find("Enemy3");
+        }
+
         for (int i = 0; i < Enemy_HP.Length; i++)
         {
-            Enemy_HP[i] = 10;
+            Enemy_HP[i] = 20;
         }
         EnemyCount = CreateEnemyShip.instance.Counter;
         angle = gameObject.transform.eulerAngles;
@@ -107,7 +119,7 @@ public class Enemy : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
 
-        if (EnemyCount <= 0)
+        if (EnemyCount == 0)
         {
             Debug.Log("IN");
             PreviewScore.instance.isWin = true;
@@ -172,23 +184,25 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[0] -= damage;
                 if(Enemy_HP[0] <= 0)
                 {
-                    EnemyCount = 0;
-                    Destroy(this.gameObject);
-                    
+                    BreakEffect(E1);
+                    EnemyCount -= 1;
+                    this.gameObject.SetActive(false);
                 }
                 break;
             case 1:
                 Enemy_HP[1] -= damage;
                 if (Enemy_HP[1] <= 0)
                 {
-                    Destroy(this.gameObject);
-                    EnemyCount -= 2;
+                    BreakEffect(E2);
+                    E2.gameObject.SetActive(false);
+                    EnemyCount -= 1;
                 }
                 break;
             case 2:
                 Enemy_HP[2] -= damage;
                 if (Enemy_HP[2] <= 0)
                 {
+                    BreakEffect(E3);
                     Destroy(this.gameObject);
                     EnemyCount--;
                 }
@@ -197,6 +211,7 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[3] -= damage;
                 if (Enemy_HP[3] <= 0)
                 {
+                    BreakEffect(E4);
                     Destroy(this.gameObject);
                     EnemyCount--;
                 }
@@ -205,12 +220,12 @@ public class Enemy : MonoBehaviour
     }
     
     //爆破エフェクトを生成する
-    void BreakEffect()
+    void BreakEffect(GameObject Enemy)
     {
         //爆破エフェクトを生成する
         GameObject effect = Instantiate(breakEffect) as GameObject;
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
-        effect.transform.position = gameObject.transform.position;
+        effect.transform.position = Enemy.gameObject.transform.position;
     }
 
 }

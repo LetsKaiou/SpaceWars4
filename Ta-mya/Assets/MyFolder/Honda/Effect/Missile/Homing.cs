@@ -23,6 +23,9 @@ public class Homing : MonoBehaviour
     Vector3 acceleration;
     Transform thisTransform;
 
+    private GameObject shotcheck;
+    P_ShotCheck shotCheck;
+
     public GameObject obj;
     Vector3 startPos;
     private bool moveFlag = false;
@@ -46,6 +49,9 @@ public class Homing : MonoBehaviour
     void Start()
     {
         Debug.Log("Start");
+        shotcheck = GameObject.Find("P_ShotCheck");
+        shotCheck = shotcheck.GetComponent<P_ShotCheck>();
+        target = shotCheck.ReturnPos();
         thisTransform = transform;
         position = thisTransform.position;
         velocity = new Vector3(Random.Range(minInitVelocity.x, maxInitVelocity.x),
@@ -53,17 +59,18 @@ public class Homing : MonoBehaviour
             Random.Range(minInitVelocity.z, maxInitVelocity.z));
         startPos = thisTransform.position;
         time = 2.5f;
-        
+
         //particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         //StartCoroutine(nameof(Timer));
         //target = GameObject.FindGameObjectWithTag("Target").transform;
 
         // Instantiate(obj, startPos, Quaternion.identity);
+        moveFlag = true;
+        StartCoroutine(nameof(Timer));
 
     }
     public void Update()
     {
-        Debug.Log("update");
         
         //particle.Pause();
 
@@ -108,17 +115,30 @@ public class Homing : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("IN");
+    //        // エフェクトを発生させる
+    //        GenerateEffect();
+
+    //        // オブジェクトを削除する
+    //        Destroy(obj);
+    //        Debug.Log("Destroy");
+
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider collider)
     {
-        if(collision.gameObject.tag == "Target")
+        if (collider.gameObject.tag == "Enemy")
         {
-            // エフェクトを発生させる
-            GenerateEffect();
+        // エフェクトを発生させる
+        GenerateEffect();
 
-            // オブジェクトを削除する
-            Destroy(obj);
-            Debug.Log("Destroy");
-
+        // オブジェクトを削除する
+        Destroy(obj);
         }
     }
 
@@ -128,7 +148,7 @@ public class Homing : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         //Destroy(this);
         
-        Instantiate(obj, startPos, Quaternion.identity);
+        //Instantiate(obj, startPos, Quaternion.identity);
 
         // エフェクトを発生させる
         GenerateEffect();

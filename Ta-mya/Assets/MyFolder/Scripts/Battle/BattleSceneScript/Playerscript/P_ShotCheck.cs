@@ -7,6 +7,7 @@ public class P_ShotCheck : MonoBehaviour
     public Enemy enemycs;
     GameObject rootObj;
     Player rootcs;
+    private Transform E_Positon;
 
     public void Start()
     {
@@ -18,6 +19,7 @@ public class P_ShotCheck : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+            E_Pos(other);
             rootcs.shot();
         }
         else if (other.gameObject.tag == "Enemy2")
@@ -33,8 +35,17 @@ public class P_ShotCheck : MonoBehaviour
             rootcs.shot();
         }
     }
-    public void OnTriggerExit(Collider other)
-    {
 
+    // “G‘D‚ÌPos‚ð‘ã“ü
+    public void E_Pos(Collider other)
+    {
+        E_Positon = other.transform;
     }
+
+    // “G‘D‚ÌPositon‚ð•Ô‚·
+    public Transform ReturnPos()
+    {
+        return E_Positon;
+    }
+
 }
