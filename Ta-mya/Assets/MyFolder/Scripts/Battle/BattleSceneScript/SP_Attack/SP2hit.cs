@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class SP2hit : MonoBehaviour
 {
+    // 攻撃力
+    public int ATKPoint;
+
+    // インスタンス
+    public static SP2hit instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    public void Start()
+    {
+        ATKPoint = CreateShip.Attack[1];
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -14,22 +33,22 @@ public class SP2hit : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
-            Enemy.instance.E_Damage(CreateShip.Attack[1], 0);
+            Enemy.instance.E_Damage(ATKPoint, 0);
         }
         if (other.gameObject.tag == "Enemy2")
         {
             Destroy(this.gameObject);
-            Enemy.instance.E_Damage(CreateShip.Attack[1], 1);
+            Enemy.instance.E_Damage(ATKPoint, 1);
         }
         if (other.gameObject.tag == "Enemy3")
         {
             Destroy(this.gameObject);
-            Enemy.instance.E_Damage(CreateShip.Attack[1], 2);
+            Enemy.instance.E_Damage(ATKPoint, 2);
         }
         if (other.gameObject.tag == "Enemy4")
         {
             Destroy(this.gameObject);
-            Enemy.instance.E_Damage(CreateShip.Attack[1], 3);
+            Enemy.instance.E_Damage(ATKPoint, 3);
         }
     }
 }

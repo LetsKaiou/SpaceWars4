@@ -21,13 +21,14 @@ public class Skill : MonoBehaviour
     [SerializeField] private int DefencePoint;
 
     private Player py;
-
+    private int num;
+    public int[] s = new int[4];
     private int[] SPID = new int[4];
 
     // データベース取得用変数
     [SerializeField] private SkillDatabase skillData;
     // 再生するエフェクトをいれるリスト
-    private List<GameObject> EffectObjList = new List<GameObject>();
+    private GameObject[] EffectObjList = new GameObject[4];
     private List<int> EffectIDList = new List<int>();
 
 
@@ -44,27 +45,47 @@ public class Skill : MonoBehaviour
     private void Start()
     {
         // 配列の初期化
-        EffectObjList.Clear();
 
         // 選択した特殊攻撃のIDを配列に代入
         for (int i = 0; i < SPID.Length; i++)
         {
+            //Debug.Log("SNum" + int.Parse(Select_Special.SelectSpecial[i]));
             SPID[i] = int.Parse(Select_Special.SelectSpecial[i]);
+            
+
         }
 
         // 選択した特殊攻撃と同じIDのエフェクトのオブジェクトとIDをリストに追加
+
+
+        for (int i = 0; i < SPID.Length; i++)
+        {
+            EffectIDList.Add(SPID[i]);
+        }
+
+
         foreach (DropSkill dropSkill in skillData.SkillList)
         {
-            for (int i = 0; i < SPID.Length; i++)
+            for (int i = 0; i < EffectIDList.Count; i++)
             {
-                if(dropSkill.id == SPID[i])
+                if(EffectIDList[i] == dropSkill.id)
                 {
-                    EffectObjList.Add(dropSkill.EffectObj);
-                    EffectIDList.Add(dropSkill.id);
-                    Debug.Log("ID:" + dropSkill.id);
+                    Debug.Log(EffectIDList[i]);
+                    EffectObjList[i] = dropSkill.EffectObj;
                 }
             }
         }
+
+        //Debug.Log("SPID" + i + ":" + SPID[i]);
+
+        Debug.Log("count"+EffectIDList.Count);
+        for (int n = 0; n < s.Length; n++)
+        {
+            s[n] = EffectIDList[n];
+            Debug.Log(s[n]);
+        }
+        
+        Debug.Log(string.Join(",", EffectIDList));
     }
 
     private void Update()
@@ -85,6 +106,7 @@ public class Skill : MonoBehaviour
     public void StartEffect(int UseSPID)
     {
         Instantiate(EffectObjList[UseSPID-1], this.transform.position, Quaternion.identity); //パーティクル用ゲームオブジェクト
+        Debug.Log(UseSPID - 1);
         switch(EffectIDList[UseSPID - 1])
         {
             case 1:

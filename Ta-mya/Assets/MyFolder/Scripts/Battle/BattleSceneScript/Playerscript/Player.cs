@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
             //弾を出現させる位置を調整
             placePosition = q1 * offsetGun + placePosition;
             //弾生成
-            P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, Quaternion.Euler(0, 0, 180));
+            P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
             P_Bullet.tag = "P_bullet";
             shotcheck = false;
         }
@@ -251,6 +251,7 @@ public class Player : MonoBehaviour
     // ダメージ計算処理
     public void P_Damage(int damage)
     {
+        damage = damage - Defence;  // 防御力分ダメージ減少
         hp_slider.value -= damage;
     }
 
@@ -268,30 +269,30 @@ public class Player : MonoBehaviour
     }
 
     // ダメージ判定用関数
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                Debug.Log(other.tag);
-                P_Damage(5 - Defence);
-                DamageHit = true;
-            }
-        }
-        if (other.gameObject.tag == "E_SP")
-        {
-            DamageHit = false;
-            Destroy(other.gameObject);
-            if (DamageHit == false)
-            {
-                Debug.Log(other.tag);
-                P_Damage(20);
-                DamageHit = true;
-            }
-        }
-    }
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")
+    //    {
+    //        DamageHit = false;
+    //        Destroy(other.gameObject);
+    //        if (DamageHit == false)
+    //        {
+    //            Debug.Log(other.tag);
+    //            P_Damage(5 - Defence);
+    //            DamageHit = true;
+    //        }
+    //    }
+    //    if (other.gameObject.tag == "E_SP")
+    //    {
+    //        DamageHit = false;
+    //        Destroy(other.gameObject);
+    //        if (DamageHit == false)
+    //        {
+    //            Debug.Log(other.tag);
+    //            P_Damage(20);
+    //            DamageHit = true;
+    //        }
+    //    }
+    //}
 }
 

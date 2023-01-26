@@ -127,9 +127,9 @@ public class child : MonoBehaviour
         HP = FHP;
     }
 
-    public void C_Damage(int damage)
+    public void C_Damage(int damage, string TagName)
     {
-        switch (this.gameObject.tag)
+        switch (TagName)
         {
             case "FriendShip1":
                 this.hp[0] -= damage;
@@ -151,38 +151,23 @@ public class child : MonoBehaviour
     }
 
     #region çUåÇHitèàóù
-    public void OnTriggerEnter(Collider other)
-    {
-        // í èÌçUåÇHitîªíË
-        if (other.gameObject.tag == "P_bullet")
-        {
-            Debug.Log("INEHit");
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    // í èÌçUåÇHitîªíË
+    //    if (other.gameObject.tag == "P_bullet")
+    //    {
 
-            C_Damage(5);
+    //        C_Damage(5);
 
-        }
-        // ì¡éÍçUåÇHitîªíË
-        if (other.gameObject.tag == "SP1")
-        {
-            Destroy(other.gameObject);
-            C_Damage(createcs.GetSPAttack(0));
-        }
-        if (other.gameObject.tag == "SP2")
-        {
-            Destroy(other.gameObject);
-            C_Damage(createcs.GetSPAttack(1));
-        }
-        if (other.gameObject.tag == "SP3")
-        {
-            Destroy(other.gameObject);
-            C_Damage(createcs.GetSPAttack(2));
-        }
-        if (other.gameObject.tag == "SP4")
-        {
-            Destroy(other.gameObject);
-            C_Damage(createcs.GetSPAttack(3));
-        }
-    }
+    //    }
+    //    // ì¡éÍçUåÇHitîªíË
+    //    if (other.gameObject.tag == "SP1")
+    //    {
+    //        Destroy(other.gameObject);
+    //        C_Damage(createcs.GetSPAttack(0));
+    //    }
+
+    //}
     #endregion
 
     public void Front(float M_Speed, string Tag)

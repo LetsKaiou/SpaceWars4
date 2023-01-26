@@ -18,7 +18,7 @@ public class DropItems : MonoBehaviour
     //→ゲームのスタート時にIDに対応したやつのisGetをtrueに変更
 
     // マップのサイズ判別
-    public static bool Big_Map = false;   
+    public static bool Big_Map;   
 
     // データベース取得用変数
     [SerializeField] private SkillDatabase skillData;
