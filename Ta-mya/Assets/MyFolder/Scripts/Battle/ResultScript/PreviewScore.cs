@@ -23,7 +23,7 @@ public class PreviewScore : MonoBehaviour
     // 開発ポイント表示用
     [SerializeField] private TextMeshProUGUI[] DeveropmentText;
     [SerializeField] private TextMeshProUGUI[] StatusText;
-    [SerializeField] private TextMeshProUGUI[] NowStatusText;
+    [SerializeField] private TextMeshProUGUI ScoreText;
     [SerializeField] private TextMeshProUGUI[] DevlopSumText;
 
     private int[] DevelopNum = new int[3];
@@ -44,6 +44,8 @@ public class PreviewScore : MonoBehaviour
     // バトルに勝ったかどうかの判定
     public bool isWin;
     [SerializeField] private int LosePoint = 2;
+    private int ScorePoint;
+    private string Rank;
 
     void Awake()
     {
@@ -51,7 +53,15 @@ public class PreviewScore : MonoBehaviour
         {
             instance = this;
         }
-
+        Debug.Log("ScoreHP" + CreateShip.ScoreTime);
+        ScorePoint = (int)Player.ScoreHP + (int)CreateShip.ScoreTime;
+        if (ScorePoint >= 150)
+        {
+            Debug.Log("Rank" + ScorePoint);
+            Rank = "S";
+            ScoreText.text = Rank + "RANK";
+        }
+        #region 開発ポイント計算処理
         for (int i = 0; i < DeveropmentText.Length; i++)
         {
             // 開発ポイントの値を表示
@@ -116,8 +126,12 @@ public class PreviewScore : MonoBehaviour
             {
                 CreateShip.Attack[skill] = CreateShip.Attack[skill] + Ind;
             }
-
+            
         }
+        #endregion
+
+
+
         // ステータス反映処理
         Data.HP  = Com + Data.HP;
         Data.CT  = Agr + Data.CT;
@@ -147,8 +161,6 @@ public class PreviewScore : MonoBehaviour
         DevlopSumText[1].SetText("ComSum : {0}", Data.ComSum);
         DevlopSumText[2].SetText("AgrSum : {0}", Data.AgrSum);
 
-        // 現在のステータス表示
-        NowStatusText[0].SetText("Point : {0}", Data.HP);
 
         // 獲得した特殊攻撃の画像表示
 
@@ -156,9 +168,6 @@ public class PreviewScore : MonoBehaviour
         // 値のセーブ
         SaveSystem.Instance.Save();
 
-        Debug.Log("previwHP:" + Com);
-
-        
 
     }
 }

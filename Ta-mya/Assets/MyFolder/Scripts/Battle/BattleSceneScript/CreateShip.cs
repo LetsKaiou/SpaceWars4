@@ -29,6 +29,9 @@ public class CreateShip : MonoBehaviour
     public float[] Range = new float[100];                  // 射程(弾が消えるまでの時間)
     private string[] Explanatory = new string[100];         // 特殊攻撃の説明文
 
+    public static float ScoreTime;
+    private float TimeCount;
+
     public int[] HP = new int[4];
     public int[] DEF = new int[4];
     public int[] SPD = new int[4];
@@ -42,6 +45,8 @@ public class CreateShip : MonoBehaviour
         frindInfo.Delete();    // 一度データを削除
         frindInfo.Init();      // 再度読み込み
 
+        TimeCount = 0f;
+        ScoreTime = 0;
 
         // 親オブジェクトを探す
         GameObject parentObject = GameObject.FindGameObjectWithTag("Player");
@@ -90,6 +95,31 @@ public class CreateShip : MonoBehaviour
             }
 
            
+        }
+    }
+
+    private void Update()
+    {
+        TimeCount += Time.time;
+        if(TimeCount >= 120)
+        {
+            ScoreTime = 100;
+        }
+        else if(TimeCount >= 180)
+        {
+            ScoreTime = 80;
+        }
+        else if(TimeCount >= 240)
+        {
+            ScoreTime = 50;
+        }
+        else if(TimeCount >= 300)
+        {
+            ScoreTime = 30;
+        }
+        else
+        {
+            ScoreTime = 0;
         }
     }
 

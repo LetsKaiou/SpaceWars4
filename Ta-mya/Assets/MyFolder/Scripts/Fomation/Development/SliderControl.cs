@@ -48,7 +48,7 @@ public class SliderControl : MonoBehaviour
         //    data = 
         //}
         data = SliderObj[0].value + SliderObj[1].value + SliderObj[2].value;
-        Remaining.SetText("Remaing : {0}", 100 - data);
+        Remaining.SetText("Remaining : {0}", 100 - data);
     }
 
     // 入力された数字に応じてスライダーを動かす処理

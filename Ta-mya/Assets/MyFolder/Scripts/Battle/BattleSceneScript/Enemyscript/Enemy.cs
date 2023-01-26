@@ -122,6 +122,7 @@ public class Enemy : MonoBehaviour
         if (EnemyCount == 0)
         {
             Debug.Log("IN");
+            Player.instance.GetSocre_HP();
             PreviewScore.instance.isWin = true;
             SceneManager.LoadScene("Result");
         }
@@ -195,7 +196,7 @@ public class Enemy : MonoBehaviour
                 {
                     BreakEffect(E2);
                     E2.gameObject.SetActive(false);
-                    EnemyCount -= 1;
+                    EnemyCount -= 2;
                 }
                 break;
             case 2:
