@@ -30,6 +30,9 @@ public class child : MonoBehaviour
 
     public static child instance;
 
+    // ˆÚ“®—p
+    public bool isTurn = false;
+
 
     private void Awake()
     {
