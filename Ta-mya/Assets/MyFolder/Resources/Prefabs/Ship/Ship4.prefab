@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6450651425045816069}
   - component: {fileID: 1369439365953119753}
   - component: {fileID: 4597177207765957185}
+  - component: {fileID: -1374897894215027922}
   m_Layer: 0
   m_Name: Ship4
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   hp: 00000000000000000000000000000000
   def: 00000000000000000000000000000000
   spd: 00000000000000000000000000000000
+  isTurn: 0
 --- !u!54 &1369439365953119753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,6 +110,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1374897894215027922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646988040113528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b419b286bace94e4d9fc1c5acb02e159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendcs: {fileID: 6450651425045816069}
+  turnSpeed: 0
+  rotateAngle: 45
+  RotateSpeed: 0
 --- !u!1 &2466098283288951334
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23579581749599610}
   - component: {fileID: 1553506769038997371}
   - component: {fileID: -3891326568825505559}
+  - component: {fileID: -8565563181177668751}
   m_Layer: 0
   m_Name: StarSparrow13
   m_TagString: Untagged
@@ -122,6 +123,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.1566553, y: 2.955462, z: 10.7425585}
   m_Center: {x: 0, y: -0.000011980534, z: 0}
+--- !u!114 &-8565563181177668751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946970332979032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b419b286bace94e4d9fc1c5acb02e159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playercs: {fileID: 0}
+  turnSpeed: 0
+  rotateAngle: 45
+  RotateSpeed: 0
 --- !u!1 &377219741515856265
 GameObject:
   m_ObjectHideFlags: 0
