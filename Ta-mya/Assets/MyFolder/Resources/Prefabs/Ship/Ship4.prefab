@@ -82,7 +82,7 @@ MonoBehaviour:
   def: 00000000000000000000000000000000
   spd: 00000000000000000000000000000000
   isTurn: 0
-  JetEffect: {fileID: 3418036267070027112}
+  JetEffect: {fileID: 3418036267088342028}
 --- !u!54 &1369439365953119753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -871,9 +871,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
   m_PrefabInstance: {fileID: 3418036267070125004}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3418036267070027112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
+--- !u!198 &3418036267088342028 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
   m_PrefabInstance: {fileID: 3418036267070125004}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3778912456927110576

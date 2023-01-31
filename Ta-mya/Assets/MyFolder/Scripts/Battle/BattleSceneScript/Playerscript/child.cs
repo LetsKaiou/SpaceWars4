@@ -33,7 +33,7 @@ public class child : MonoBehaviour
     // 移動用
     public bool isTurn = false;
     //エフェクト用
-    public GameObject JetEffect;
+    public ParticleSystem JetEffect;
 
 
     private void Awake()
@@ -71,6 +71,9 @@ public class child : MonoBehaviour
                 //Debug.Log("F4:" + hp[3]);
                 break;
         }
+
+        //エフェクト用
+        JetEffect.Pause();
     }
 
     // ゲーム実行中の繰り返し処理
@@ -79,8 +82,13 @@ public class child : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             //transform.position += transform.forward * speed * Time.deltaTime;
-            GameObject effect = Instantiate(JetEffect) as GameObject;
-            Debug.Log("Jet");
+            //GameObject effect = Instantiate(JetEffect) as GameObject;
+            //JetEffect.SetActive(true);
+            JetEffect.Play();
+            {
+                Debug.Log("Jet");
+            }
+            
         }
         //if (Input.GetKey(KeyCode.S))
         //{
@@ -103,6 +111,8 @@ public class child : MonoBehaviour
             // 経過時間を元に戻す
             _timeElapsed = 0f;
         }
+
+        
     }
 
     public void shot()

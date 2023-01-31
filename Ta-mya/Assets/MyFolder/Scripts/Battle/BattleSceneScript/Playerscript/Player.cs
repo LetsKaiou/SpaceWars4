@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
 
     public static Player instance;
 
+    public ParticleSystem JetEffect;
+
     private void Awake()
     {
         if (instance == null)
@@ -88,6 +90,9 @@ public class Player : MonoBehaviour
         Reload.Add(true);   // 特殊攻撃3
         Reload.Add(true);   // 特殊攻撃4
         //Debug.Log(Reload.Count);
+
+        // エフェクト用
+        JetEffect.Pause();
     }
 
     void Update()
@@ -101,6 +106,8 @@ public class Player : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
 
             //vec = new Vector3(1, 0, 0);
+            //エフェクト用
+            JetEffect.Play();
         }
         //else
         //{
@@ -109,6 +116,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && isTurn == false)
         {
             transform.position -= transform.forward * speed * Time.deltaTime;
+            JetEffect.Stop();
         }
         if (Input.GetKey(KeyCode.Q))
         {
