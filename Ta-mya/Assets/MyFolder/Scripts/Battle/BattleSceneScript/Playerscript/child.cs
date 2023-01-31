@@ -90,10 +90,11 @@ public class child : MonoBehaviour
             }
             
         }
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position -= transform.forward * speed * Time.deltaTime;
-        //}
+        if (Input.GetKey(KeyCode.S))
+        {
+            //transform.position -= transform.forward * speed * Time.deltaTime;
+            JetEffect.Stop();
+        }
         //if (Input.GetKey(KeyCode.Q))
         //{
         //    transform.position += transform.up * speed * Time.deltaTime;
