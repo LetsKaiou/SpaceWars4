@@ -77,7 +77,7 @@ MonoBehaviour:
   def: 00000000000000000000000000000000
   spd: 00000000000000000000000000000000
   isTurn: 0
-  JetEffect: {fileID: 2402424997673313087}
+  JetEffect: {fileID: 2402424997658868315}
 --- !u!65 &3791295774170507505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -615,14 +615,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9b907364c24ea424bbf8ba7e96cb702b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
+--- !u!198 &2402424997658868315 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
+  m_PrefabInstance: {fileID: 2402424997673411995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2402424997673025311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
-  m_PrefabInstance: {fileID: 2402424997673411995}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2402424997673313087 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 341f8826290db434fad3b0fdf46b1b7e, type: 3}
   m_PrefabInstance: {fileID: 2402424997673411995}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2932667983136143098
