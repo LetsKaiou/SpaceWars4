@@ -32,6 +32,8 @@ public class child : MonoBehaviour
 
     // 移動用
     public bool isTurn = false;
+    //エフェクト用
+    public GameObject JetEffect;
 
 
     private void Awake()
@@ -74,10 +76,12 @@ public class child : MonoBehaviour
     // ゲーム実行中の繰り返し処理
     void Update()
     {
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position += transform.forward * speed * Time.deltaTime;
-        //}
+        if (Input.GetKey(KeyCode.W))
+        {
+            //transform.position += transform.forward * speed * Time.deltaTime;
+            GameObject effect = Instantiate(JetEffect) as GameObject;
+            Debug.Log("Jet");
+        }
         //if (Input.GetKey(KeyCode.S))
         //{
         //    transform.position -= transform.forward * speed * Time.deltaTime;
