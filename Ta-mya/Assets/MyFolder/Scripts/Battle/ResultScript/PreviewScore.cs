@@ -21,10 +21,10 @@ public class PreviewScore : MonoBehaviour
     private bool isBigmap;
 
     // 開発ポイント表示用
-    [SerializeField] private TextMeshProUGUI[] DeveropmentText;
     [SerializeField] private TextMeshProUGUI[] StatusText;
     [SerializeField] private TextMeshProUGUI ScoreText;
     [SerializeField] private TextMeshProUGUI[] DevlopSumText;
+    [SerializeField] private TextMeshProUGUI[] NowStatusText;
 
     private int[] DevelopNum = new int[3];
 
@@ -53,19 +53,36 @@ public class PreviewScore : MonoBehaviour
         {
             instance = this;
         }
-        Debug.Log("ScoreHP" + CreateShip.ScoreTime);
+
+        #region スコア計算処理
         ScorePoint = (int)Player.ScoreHP + (int)CreateShip.ScoreTime;
+        Debug.Log(ScorePoint);
         if (ScorePoint >= 150)
         {
-            Debug.Log("Rank" + ScorePoint);
             Rank = "S";
-            ScoreText.text = Rank + "RANK";
+            ScoreText.text = Rank;
         }
-        #region 開発ポイント計算処理
-        for (int i = 0; i < DeveropmentText.Length; i++)
+        if (ScorePoint >= 100)
         {
-            // 開発ポイントの値を表示
-            DeveropmentText[i].SetText("Point : {0}", SliderControl.Now_value[i]);
+            Rank = "A";
+            ScoreText.text = Rank;
+        }
+        if (ScorePoint >= 50)
+        {
+            Rank = "B";
+            ScoreText.text = Rank;
+        }
+        else
+        {
+            Rank = "C";
+            ScoreText.text = Rank;
+        }
+        #endregion
+
+
+        #region 開発ポイント計算処理
+        for (int i = 0; i < 3; i++)
+        {
             // 開発ポイントをそれぞれの変数に割り当てる処理
             DevelopNum[i] = SliderControl.Now_value[i];
             MultiDevelop[i] = DevelopNum[i];
@@ -117,7 +134,6 @@ public class PreviewScore : MonoBehaviour
                         MultiDevelop[1] = MultiDevelop[1] / LosePoint;
                         // CT_multiplyの値で割った値を格納
                         Agr = MultiDevelop[2] * CT_multiply;
-                        Debug.Log("農業:" + Agr);
                         break;
                 }
             }
@@ -129,7 +145,6 @@ public class PreviewScore : MonoBehaviour
             
         }
         #endregion
-
 
 
         // ステータス反映処理
@@ -151,15 +166,20 @@ public class PreviewScore : MonoBehaviour
         StatusText[1].SetText("Point : {0}", Com);
         StatusText[2].SetText("Point : {0}", Agr);
 
+        // テキスト表示
+        DevlopSumText[0].SetText("BeforeATK : {0}", Data.IndSum);
+        DevlopSumText[1].SetText("BeforeDEF : {0}", Data.ComSum);
+        DevlopSumText[2].SetText("BeforeCT : {0}", Data.AgrSum);
+
         // 開発ポイント加算処理
         Data.IndSum = Data.IndSum + Ind;
         Data.ComSum = Data.ComSum + Com;
         Data.AgrSum = Data.AgrSum + Agr;
 
         // テキスト表示
-        DevlopSumText[0].SetText("IndSum : {0}", Data.IndSum);
-        DevlopSumText[1].SetText("ComSum : {0}", Data.ComSum);
-        DevlopSumText[2].SetText("AgrSum : {0}", Data.AgrSum);
+        NowStatusText[0].SetText("NowATK : {0}", Data.IndSum);
+        NowStatusText[1].SetText("NowDEF : {0}", Data.ComSum);
+        NowStatusText[2].SetText("NowCT : {0}", Data.AgrSum);
 
 
         // 獲得した特殊攻撃の画像表示

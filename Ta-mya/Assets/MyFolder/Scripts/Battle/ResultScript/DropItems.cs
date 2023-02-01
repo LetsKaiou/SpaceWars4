@@ -105,41 +105,58 @@ public class DropItems : MonoBehaviour
 
     private void SPGet()
     {
-        SPID = Random.Range(1, SPDropIDList.Count);
-        foreach (DropSkill dropSkill in skillData.SkillList)
+        if(SPDropIDList.Count != 0)
         {
-            // isGet‚ğtrue‚É•Ï‚¦‚é
-            if (dropSkill.id == SPDropIDList[SPID])
+            SPID = Random.Range(0, SPDropIDList.Count);
+            foreach (DropSkill dropSkill in skillData.SkillList)
             {
-                Debug.Log("Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID:" + SPDropIDList[SPID]);
-                GetSkillImage.sprite = dropSkill.Image;
-                // Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID‚ğjson”z—ñ‚É‘ã“ü
-                Data.SkillID[A_InDataCount] = SPDropIDList[SPID];
-                // json‚ğ•Û‘¶
-                System.Save();
-                dropSkill.isGet = true;
+                // isGet‚ğtrue‚É•Ï‚¦‚é
+                if (dropSkill.id == SPDropIDList[SPID])
+                {
+                    
+                    //Debug.Log("Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID:" + SPDropIDList[SPID]);
+                    GetSkillImage.sprite = dropSkill.Image;
+                    // Šl“¾‚µ‚½“ÁêUŒ‚‚ÌID‚ğjson”z—ñ‚É‘ã“ü
+                    Data.SkillID[A_InDataCount] = SPDropIDList[SPID];
+                    // json‚ğ•Û‘¶
+                    System.Save();
+                    dropSkill.isGet = true;
+                }
             }
+
         }
+        else
+        {
+            Destroy(GetSkillImage);
+        }
+
     }
 
     private void ShipGet()
     {
-        ShipID = Random.Range(1, ShipDropIDList.Count);
-        foreach (DropShip dropShip in shipData.SkillList)
+        if(ShipDropIDList.Count != 0)
         {
-            // isGet‚ğtrue‚É•Ï‚¦‚é
-            if (dropShip.id == ShipDropIDList[ShipID])
+            ShipID = Random.Range(0, ShipDropIDList.Count);
+            foreach (DropShip dropShip in shipData.SkillList)
             {
-                Debug.Log("Šl“¾‚µ‚½‘D‚ÌID:" + ShipDropIDList[ShipID]);
-                GetSkillImage.sprite = dropShip.Image;
-                // Šl“¾‚µ‚½–¡•û‘D‚ÌID‚ğjson”z—ñ‚É‘ã“ü
-                Data.ShipID[S_InDataCount] = ShipDropIDList[ShipID];
-                // json‚ğ•Û‘¶
-                System.Save();
-                Debug.Log(dropShip.id);
-                dropShip.isGet = true;
+                // isGet‚ğtrue‚É•Ï‚¦‚é
+                if (dropShip.id == ShipDropIDList[ShipID])
+                {
+                    GetSkillImage.sprite = dropShip.Image;
+                    // Šl“¾‚µ‚½–¡•û‘D‚ÌID‚ğjson”z—ñ‚É‘ã“ü
+                    Data.ShipID[S_InDataCount] = ShipDropIDList[ShipID];
+                    // json‚ğ•Û‘¶
+                    System.Save();
+                    dropShip.isGet = true;
+                }
             }
+
         }
+        else
+        {
+            return;
+        }
+
     }
 
 }
