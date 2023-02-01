@@ -261,10 +261,7 @@ public class Player : MonoBehaviour
 
     public void GetSocre_HP()
     {
-        Debug.Log(hp_slider.value);
-        Debug.Log(Player_HP);
         ScoreHP = hp_slider.value / Player_HP * 100;
-        Debug.Log(ScoreHP);
     }
 
     // ダメージ計算処理
