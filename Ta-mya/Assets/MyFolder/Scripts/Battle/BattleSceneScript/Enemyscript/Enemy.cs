@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour
                 if(Enemy_HP[0] <= 0)
                 {
                     BreakEffect(E1);
-                    EnemyCount -= 1;
+                    EnemyCount --;
                     this.gameObject.SetActive(false);
                 }
                 break;
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
                 {
                     BreakEffect(E2);
                     E2.gameObject.SetActive(false);
-                    EnemyCount -= 2;
+                    EnemyCount --;
                 }
                 break;
             case 2:
