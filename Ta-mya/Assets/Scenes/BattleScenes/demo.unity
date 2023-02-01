@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: breakEffect
       value: 
       objectReference: {fileID: 4242266586524295318, guid: 44649d47673614a498bc139e3cdae788, type: 3}
+    - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
+      propertyPath: Bullet.Array.data[0]
+      value: 
+      objectReference: {fileID: 884650260136263599, guid: 7b27af7325b98644fbaff1a63fcf2d1a, type: 3}
     - target: {fileID: 1405876428854690, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -3988,6 +3992,10 @@ PrefabInstance:
       propertyPath: breakEffect
       value: 
       objectReference: {fileID: 4242266586524295318, guid: 44649d47673614a498bc139e3cdae788, type: 3}
+    - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
+      propertyPath: Bullet.Array.data[0]
+      value: 
+      objectReference: {fileID: 733062212021071762, guid: b008393c2168d264d8591da2f4fa0af2, type: 3}
     - target: {fileID: 1405876428854690, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -4566,10 +4574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2eec804eb2c3b14e8536f0c9d86f1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeveropmentText: []
   StatusText: []
   ScoreText: {fileID: 0}
   DevlopSumText: []
+  NowStatusText: []
   MultiDevelop: 000000000000000000000000
   AgrDevelop: 0
   CT_multiply: 0.1
