@@ -18,7 +18,7 @@ MonoBehaviour:
     SkillType: 0
     Image: {fileID: 21300000, guid: 5685b28d59d88884db84570852f57e99, type: 3}
     isGet: 1
-    EffectObj: {fileID: 4115831064449113204, guid: 13c026eba8c099d408ac7fb6870a1938, type: 3}
+    EffectObj: {fileID: 4063875868126746193, guid: d503c8bc0d5ade244b0f26ea179dd6c6, type: 3}
   - id: 2
     Name: "\u30DB\u30FC\u30DF\u30F3\u30B0\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     Name: "\u9632\u5FA1\u529B\u30C0\u30A6\u30F3\u30DF\u30B5\u30A4\u30EB"
     SkillType: 0
     Image: {fileID: 21300000, guid: e26a4ed1e81729646a099680e592e77a, type: 3}
-    isGet: 0
+    isGet: 1
     EffectObj: {fileID: 3590119944459092812, guid: 1532f8ef7ba0b0240bc882f29c505e1d, type: 3}
   - id: 8
     Name: "\u30B9\u30D4\u30FC\u30C9\u30C0\u30A6\u30F3\u30DF\u30B5\u30A4\u30EB"
@@ -83,26 +83,26 @@ MonoBehaviour:
     Name: "\u30D0\u30EA\u30A2"
     SkillType: 1
     Image: {fileID: 21300000, guid: 219c4cc8bc9162640acb8f1edb3cc904, type: 3}
-    isGet: 0
+    isGet: 1
     EffectObj: {fileID: 0}
   - id: 13
     Name: "\u30EA\u30B8\u30A7\u30CD"
     SkillType: 1
     Image: {fileID: 21300000, guid: 6d2c04a56bc5997468aec912c51dc213, type: 3}
     isGet: 1
-    EffectObj: {fileID: 2972739410691428903, guid: ddbecb5552c879240a4f571cda2be500, type: 3}
+    EffectObj: {fileID: 2899489686427335970, guid: 10d0fb7d02762854ab8f65b0aa71d71d, type: 3}
   - id: 14
     Name: "\u30EF\u30FC\u30D7"
     SkillType: 1
     Image: {fileID: 21300000, guid: 57f6f35a79fa3f748a5fbbe63b55009f, type: 3}
-    isGet: 0
+    isGet: 1
     EffectObj: {fileID: 0}
   - id: 15
     Name: "\u6700\u5927\u4F53\u529BUP"
     SkillType: 1
     Image: {fileID: 21300000, guid: 92cadea9cd0e90b4cb61c9fb0eec0d9f, type: 3}
     isGet: 1
-    EffectObj: {fileID: 0}
+    EffectObj: {fileID: 7574192070307219377, guid: 89968165fe0363c43a610949e0fdfc25, type: 3}
   - id: 16
     Name: "\u30B9\u30D4\u30FC\u30C9UP"
     SkillType: 1
