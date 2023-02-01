@@ -70,7 +70,6 @@ public class Skill : MonoBehaviour
             {
                 if(EffectIDList[i] == dropSkill.id)
                 {
-                    Debug.Log(EffectIDList[i]);
                     EffectObjList[i] = dropSkill.EffectObj;
                 }
             }
@@ -78,14 +77,11 @@ public class Skill : MonoBehaviour
 
         //Debug.Log("SPID" + i + ":" + SPID[i]);
 
-        Debug.Log("count"+EffectIDList.Count);
         for (int n = 0; n < s.Length; n++)
         {
             s[n] = EffectIDList[n];
-            Debug.Log(s[n]);
         }
         
-        Debug.Log(string.Join(",", EffectIDList));
     }
 
     private void Update()
@@ -106,7 +102,6 @@ public class Skill : MonoBehaviour
     public void StartEffect(int UseSPID)
     {
         Instantiate(EffectObjList[UseSPID-1], this.transform.position, Quaternion.identity); //パーティクル用ゲームオブジェクト
-        Debug.Log(UseSPID - 1);
         switch(EffectIDList[UseSPID - 1])
         {
             case 1:

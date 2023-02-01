@@ -21,10 +21,10 @@ public class PreviewScore : MonoBehaviour
     private bool isBigmap;
 
     // 開発ポイント表示用
-    [SerializeField] private TextMeshProUGUI[] StatusText;
+    [SerializeField] private TextMeshProUGUI[] StatusText = new TextMeshProUGUI[3];
     [SerializeField] private TextMeshProUGUI ScoreText;
-    [SerializeField] private TextMeshProUGUI[] DevlopSumText;
-    [SerializeField] private TextMeshProUGUI[] NowStatusText;
+    [SerializeField] private TextMeshProUGUI[] DevlopSumText = new TextMeshProUGUI[3];
+    [SerializeField] private TextMeshProUGUI[] NowStatusText = new TextMeshProUGUI[3];
 
     private int[] DevelopNum = new int[3];
 
@@ -56,27 +56,28 @@ public class PreviewScore : MonoBehaviour
 
         #region スコア計算処理
         ScorePoint = (int)Player.ScoreHP + (int)CreateShip.ScoreTime;
-        Debug.Log(ScorePoint);
+
         if (ScorePoint >= 150)
         {
             Rank = "S";
             ScoreText.text = Rank;
         }
-        if (ScorePoint >= 100)
+        else if (ScorePoint >= 100)
         {
             Rank = "A";
             ScoreText.text = Rank;
         }
-        if (ScorePoint >= 50)
+        else if (ScorePoint >= 50)
         {
             Rank = "B";
             ScoreText.text = Rank;
         }
-        else
-        {
-            Rank = "C";
-            ScoreText.text = Rank;
-        }
+        //else
+        //{
+        //    Rank = "C";
+        //    ScoreText.text = Rank;
+        //}
+        Debug.Log(Rank);
         #endregion
 
 
@@ -95,12 +96,14 @@ public class PreviewScore : MonoBehaviour
                     case 0:
                         // 10分の1の値にして格納
                         Ind = MultiDevelop[0] / 10;
+                        StatusText[i].SetText("Point : {0}", Ind);
                         //Debug.Log("工業:"+Ind);
                         break;
                     // HP
                     case 1:
                         // 5分の1の値にして格納
                         Com = MultiDevelop[1] / 5;
+                        StatusText[i].SetText("Point : {0}", Com);
                         //Debug.Log("商業:" + Com);
                         break;
                     // CT
@@ -108,6 +111,7 @@ public class PreviewScore : MonoBehaviour
                         // CT_multiplyの値で割った値を格納
                         Agr = MultiDevelop[2] * CT_multiply;
                         Debug.Log("農業:" + Agr);
+                        StatusText[i].SetText("Point : {0}", Agr);
                         break;
                 }
             }
@@ -120,6 +124,7 @@ public class PreviewScore : MonoBehaviour
                         MultiDevelop[0] = MultiDevelop[0] / LosePoint;
                         // 10分の1の値にして格納
                         Ind = MultiDevelop[0] / 10;
+                        StatusText[i].SetText("Point : {0}", Ind);
                         //Debug.Log("工業:"+Ind);
                         break;
                     // HP
@@ -127,6 +132,7 @@ public class PreviewScore : MonoBehaviour
                         MultiDevelop[1] = MultiDevelop[1] / LosePoint;
                         // 5分の1の値にして格納
                         Com = MultiDevelop[1] / 5;
+                        StatusText[i].SetText("Point : {0}", Com);
                         //Debug.Log("商業:" + Com);
                         break;
                     // CT
@@ -134,6 +140,7 @@ public class PreviewScore : MonoBehaviour
                         MultiDevelop[1] = MultiDevelop[1] / LosePoint;
                         // CT_multiplyの値で割った値を格納
                         Agr = MultiDevelop[2] * CT_multiply;
+                        StatusText[i].SetText("Point : {0}", Agr);
                         break;
                 }
             }
@@ -149,7 +156,15 @@ public class PreviewScore : MonoBehaviour
 
         // ステータス反映処理
         Data.HP  = Com + Data.HP;
-        Data.CT  = Agr + Data.CT;
+        if(Data.CT <= 10)
+        {
+            Data.CT = Agr + Data.CT;
+        }
+        else if (Data.CT >= 10)
+        {
+            Debug.Log("IN");
+            Data.CT = 10;
+        }
         Data.ATK = Ind + Data.ATK;
         //for (int i = 0; i < 4; i++)
         //{
@@ -162,9 +177,9 @@ public class PreviewScore : MonoBehaviour
 
 
         // ステータス表示
-        StatusText[0].SetText("Point : {0}", Ind);
-        StatusText[1].SetText("Point : {0}", Com);
-        StatusText[2].SetText("Point : {0}", Agr);
+        //StatusText[0].SetText("Point : {0}", Ind);
+        //StatusText[1].SetText("Point : {0}", Com);
+        //StatusText[2].SetText("Point : {0}", Agr);
 
         // テキスト表示
         DevlopSumText[0].SetText("BeforeATK : {0}", Data.IndSum);

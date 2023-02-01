@@ -22,16 +22,24 @@ public class P_ShotCheck : MonoBehaviour
             E_Pos(other);
             rootcs.shot();
         }
+        else if (other.gameObject.tag == "Enemy1")
+        {
+            E_Pos(other);
+            rootcs.shot();
+        }
         else if (other.gameObject.tag == "Enemy2")
         {
+            E_Pos(other);
             rootcs.shot();
         }
         else if (other.gameObject.tag == "Enemy3")
         {
+            E_Pos(other);
             rootcs.shot();
         }
         else if (other.gameObject.tag == "Enemy4")
         {
+            E_Pos(other);
             rootcs.shot();
         }
     }
