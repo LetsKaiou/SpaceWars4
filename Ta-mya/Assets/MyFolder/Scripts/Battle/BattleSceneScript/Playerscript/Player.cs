@@ -9,14 +9,14 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    // ƒZ[ƒu—p‚Ì“ü—ÍÈ—ª
+    // ï¿½Zï¿½[ï¿½uï¿½pï¿½Ì“ï¿½ï¿½ÍÈ—ï¿½
     private SaveSystem System => SaveSystem.Instance;
     private MainShipData Data => System.MainShipData;
-    // ‘¼‚ÌƒXƒNƒŠƒvƒgQÆ—p
+    // ï¿½ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Qï¿½Æ—p
     public SP_Bullet sp_Bullet;
     public CreateShip createcs;
     public CoolDown CoolDownScript;
-    // Playerî•ñ
+    // Playerï¿½ï¿½ï¿½
     public float speed;
     public  int Player_HP = 60;
     public static int MaxHP;
@@ -25,23 +25,23 @@ public class Player : MonoBehaviour
     public static float ScoreHP;
     private bool isSecond;
     public int Defence;
-    // ’e‚Ìí—ŞA”­ËˆÊ’u
+    // ï¿½eï¿½Ìï¿½ŞAï¿½ï¿½ï¿½ËˆÊ’u
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
     public GameObject[] Clones = new GameObject[256];
     private GameObject P_Bullet;
-    // Œo‰ßŠÔæ“¾—p•Ï”
+    // ï¿½oï¿½ßï¿½ï¿½Ôæ“¾ï¿½pï¿½Ïï¿½
     [SerializeField] private float _timeInterval;
     private float _timeElapsed;
-    // ƒ}ƒEƒXƒzƒC[ƒ‹‚Ì‰ñ“]”æ“¾—p•Ï”
+    // ï¿½}ï¿½Eï¿½Xï¿½zï¿½Cï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½]ï¿½ï¿½ï¿½æ“¾ï¿½pï¿½Ïï¿½
     private float MousWheel;
-    // “ÁêUŒ‚—pŠi”[•Ï”
+    // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½pï¿½iï¿½[ï¿½Ïï¿½
     [SerializeField]private float[] sp_Range = new float[4];
     public int BulletSelect;   
     public List<bool> Reload = new List<bool>();
-    // ƒ_ƒ[ƒWˆ——p•Ï”
+    // ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½pï¿½Ïï¿½
     private bool DamageHit;
-    // ƒAƒjƒ[ƒVƒ‡ƒ“Ši”[—p
+    // ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ï¿½p
     [SerializeField] private Animator SP_Anim;
 
     private bool shotcheck;
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         Player_HP = Data.HP;
 
-        // ‰Šú‰»
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         hp_slider.maxValue = Player_HP;
         
         hp_slider.value = Player_HP;
@@ -84,14 +84,14 @@ public class Player : MonoBehaviour
 
         SP_Anim.GetComponent<Animator>();
 
-        // List‚Éî•ñ‚ğ’Ç‰Á(ture:”­Ë‰Â”\Afalse:ƒN[ƒ‹ƒ^ƒCƒ€’†)
-        Reload.Add(true);   // “ÁêUŒ‚1
-        Reload.Add(true);   // “ÁêUŒ‚2
-        Reload.Add(true);   // “ÁêUŒ‚3
-        Reload.Add(true);   // “ÁêUŒ‚4
+        // Listï¿½Éï¿½ï¿½ï¿½Ç‰ï¿½(ture:ï¿½ï¿½ï¿½Ë‰Â”\ï¿½Afalse:ï¿½Nï¿½[ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½)
+        Reload.Add(true);   // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½1
+        Reload.Add(true);   // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½2
+        Reload.Add(true);   // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½3
+        Reload.Add(true);   // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½4
         //Debug.Log(Reload.Count);
 
-        // ƒGƒtƒFƒNƒg—p
+        // ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½p
         JetEffect.Pause();
     }
 
@@ -99,14 +99,14 @@ public class Player : MonoBehaviour
     {
 
         //skybox.SetVector("_Speed", vec);
-        // ˆÚ“®ˆ—
-        #region ˆÚ“®
+        // ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½
+        #region ï¿½Ú“ï¿½
         if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
 
             //vec = new Vector3(1, 0, 0);
-            //ƒGƒtƒFƒNƒg—p
+            //ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½p
             JetEffect.Play();
         }
         //else
@@ -132,29 +132,29 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        // “ÁêUŒ‚‘I‘ğˆ—
-        #region “ÁêUŒ‚
-        // ƒ}ƒEƒX‚Ì‰ñ“]”æ“¾(‰ñ“]‚³‚¹‚é‚½‚Ñ‚É1‚¸‚Â‘Œ¸‚·‚é ƒfƒtƒHƒ‹ƒg‚Í0)
+        // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        #region ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½
+        // ï¿½}ï¿½Eï¿½Xï¿½Ì‰ï¿½]ï¿½ï¿½ï¿½æ“¾(ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½Ñ‚ï¿½1ï¿½ï¿½ï¿½Â‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ï¿½0)
         MousWheel += Input.GetAxis("Mouse ScrollWheel");
         MousWheel = Mathf.Floor(MousWheel);
         MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
         //SP_Anim.SetInteger("Param", (int)MousWheel);
         #endregion
 
-        // ’e”­Ë
-        #region ’e‚Ì”­Ë
+        // ï¿½eï¿½ï¿½ï¿½ï¿½
+        #region ï¿½eï¿½Ì”ï¿½ï¿½ï¿½
         _timeElapsed += Time.deltaTime;
 
         if (_timeElapsed > _timeInterval)
         {
             shotcheck = true;
             //shot();
-            // Œo‰ßŠÔ‚ğŒ³‚É–ß‚·
+            // ï¿½oï¿½ßï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
             _timeElapsed = 0f;
         }
         #endregion
-        // “ÁêUŒ‚‚Ì’e‘I‘ğˆ—‚Æ”­Ëˆ—‚Ö‚ÌˆÚ“®(ƒ}ƒEƒX¶ƒNƒŠƒbƒN‚Å”­Ë)
-        #region “ÁêUŒ‚İ’è—p
+        // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½Ì’eï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ”ï¿½ï¿½Ëï¿½ï¿½ï¿½ï¿½Ö‚ÌˆÚ“ï¿½(ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½Å”ï¿½ï¿½ï¿½)
+        #region ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½İ’ï¿½p
         if (MousWheel > 0)
         {
             if (Input.GetMouseButtonDown(0))
@@ -169,9 +169,9 @@ public class Player : MonoBehaviour
             }
         }
         #endregion
-        // ƒvƒŒƒCƒ„[‚Ì‘Ì—Íˆ—
-        #region HPˆ—
-        // HP‚ÌƒXƒ‰ƒCƒ_[ˆ—
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì‘Ì—Íï¿½ï¿½ï¿½
+        #region HPï¿½ï¿½ï¿½ï¿½
+        // HPï¿½ÌƒXï¿½ï¿½ï¿½Cï¿½_ï¿½[ï¿½ï¿½ï¿½ï¿½
         //hp_slider.value = MaxHP;
         if (hp_slider.value <= 0)
         {
@@ -181,65 +181,65 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    // ’Êí’e”­Ëˆ—ŠÖ”
+    // ï¿½Êï¿½eï¿½ï¿½ï¿½Ëï¿½ï¿½ï¿½ï¿½Öï¿½
     public void shot()
     {
         if(shotcheck == true)
         {
             Debug.Log("ShorIN");
-            //’e‚ğoŒ»‚³‚¹‚éˆÊ’u‚ğæ“¾
+            //ï¿½eï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½æ“¾
             Vector3 placePosition = this.transform.position;
-            //oŒ»‚³‚¹‚éˆÊ’u‚ğ‚¸‚ç‚·’l
+            //ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½ï¿½ï¿½ç‚·ï¿½l
             Vector3 offsetGun = new Vector3(0, 0, 8);
 
-            //•Ší‚ÌŒü‚«‚É‡‚í‚¹‚Ä’e‚ÌŒü‚«‚à’²®
+            //ï¿½ï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½í‚¹ï¿½Ä’eï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Quaternion q1 = this.transform.rotation;
-            //’e‚ğ90“x‰ñ“]‚³‚¹‚éˆ—
+            //ï¿½eï¿½ï¿½90ï¿½xï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½éˆï¿½ï¿½
             Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
             Quaternion q = q1 * q2;
 
-            //’e‚ğoŒ»‚³‚¹‚éˆÊ’u‚ğ’²®
+            //ï¿½eï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ğ’²ï¿½
             placePosition = q1 * offsetGun + placePosition;
-            //’e¶¬
+            //ï¿½eï¿½ï¿½ï¿½ï¿½
             P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
             P_Bullet.tag = "P_bullet";
             shotcheck = false;
         }
     }
 
-    // “ÁêUŒ‚ˆ—ŠÖ”(ˆø”‚Í”­Ë‚·‚é“ÁêUŒ‚‚Ì’e‚Ìí—Ş)
+    // ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Í”ï¿½ï¿½Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½Ì’eï¿½Ìï¿½ï¿½)
     public void SpecialAttack()
     {
-        // ‘I‘ğ‚µ‚½“ÁêUŒ‚‚ğ“n‚·
+        // ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½nï¿½ï¿½
         CoolDownScript.SetSpecialNum();
 
-        // Á–Å‚Ü‚Å‚ÌŠÔ‚ğ‘ã“ü
+        // ï¿½ï¿½ï¿½Å‚Ü‚Å‚Ìï¿½ï¿½Ô‚ï¿½ï¿½ï¿½
         sp_Range[BulletSelect - 1] = createcs.GetSPRange(BulletSelect - 1);
         
-        // ”­ËŒãfalse‚É•ÏX
+        // ï¿½ï¿½ï¿½ËŒï¿½falseï¿½É•ÏX
         Reload[BulletSelect - 1] = false;
 
-        //’e‚ğoŒ»‚³‚¹‚éˆÊ’u‚ğæ“¾
+        //ï¿½eï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½æ“¾
         Vector3 placePosition = this.transform.position;
-        //oŒ»‚³‚¹‚éˆÊ’u‚ğ‚¸‚ç‚·’l
+        //ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½ï¿½ï¿½ç‚·ï¿½l
         Vector3 offsetGun = new Vector3(0, 0, 8);
 
-        //•Ší‚ÌŒü‚«‚É‡‚í‚¹‚Ä’e‚ÌŒü‚«‚à’²®
+        //ï¿½ï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½í‚¹ï¿½Ä’eï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Quaternion q1 = this.transform.rotation;
-        //’e‚ğ90“x‰ñ“]‚³‚¹‚éˆ—
+        //ï¿½eï¿½ï¿½90ï¿½xï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½éˆï¿½ï¿½
         Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
         Quaternion q = q1 * q2;
 
-        //’e‚ğoŒ»‚³‚¹‚éˆÊ’u‚ğ’²®
+        //ï¿½eï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ğ’²ï¿½
         placePosition = q1 * offsetGun + placePosition;
         Quaternion a = Quaternion.identity;
-        //’e¶¬
+        //ï¿½eï¿½ï¿½ï¿½ï¿½
         //Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
 
-        // g‚Á‚½“ÁêUŒ‚‚ÌID‚ğ•Ô‚·
+        // ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½Ô‚ï¿½
         Skill.instance.StartEffect(BulletSelect);
 
-        //// ƒ^ƒO‚ÌŠ„‚è“–‚Ä
+        // ï¿½^ï¿½Oï¿½ÌŠï¿½ï¿½è“–ï¿½ï¿½
         //switch (BulletSelect - 1)
         //{
         //    case 0:
@@ -264,27 +264,27 @@ public class Player : MonoBehaviour
         ScoreHP = hp_slider.value / Player_HP * 100;
     }
 
-    // ƒ_ƒ[ƒWŒvZˆ—
+    // ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½
     public void P_Damage(int damage)
     {
-        damage = damage - Defence;  // –hŒä—Í•ªƒ_ƒ[ƒWŒ¸­
+        damage = damage - Defence;  // ï¿½hï¿½ï¿½Í•ï¿½ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½
         hp_slider.value -= damage;
     }
 
-    // BulletSelect‚ğ“n‚·
+    // BulletSelectï¿½ï¿½nï¿½ï¿½
     public int GetSpecialNum()
     {
         return BulletSelect;
     }
 
 
-    // ”­Ë‚µ‚½“ÁêUŒ‚‚ğÁ‚·
+    // ï¿½ï¿½ï¿½Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Destroy()
     {
         Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
     }
 
-    // ƒ_ƒ[ƒW”»’è—pŠÖ”
+    // ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½pï¿½Öï¿½
     //public void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")

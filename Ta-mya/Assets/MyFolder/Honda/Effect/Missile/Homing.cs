@@ -132,7 +132,7 @@ public class Homing : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy2")
         {
         // エフェクトを発生させる
         GenerateEffect();

@@ -29,7 +29,7 @@ public class SpecialPrevrew : MonoBehaviour
     public int Count;
     // “ÁêUŒ‚‚ÌŠi”[æ
     public string[] Name = new string[30];
-    public int[] Attack = new int[4];
+    public  static int[] Attack = new int[4];
     public float[] CT = new float[4];
     public int[] Range = new int[4];
     public string[] Explanatory = new string[30];
@@ -93,6 +93,7 @@ public class SpecialPrevrew : MonoBehaviour
         // StatusIn‚É‚Í‘ã“ü‚·‚é‚¾‚¯ASelectNum‚Ícount”Ô–Ú‚É‘I‘ğ‚³‚ê‚½”Ô†‚Ìî•ñ‚ğ“Ç‚İ‚Ş
         Name[count] = specialInfo.Name[SelectNum[count]];
         Attack[count] = specialInfo.Attack[SelectNum[count]];
+        Debug.Log("previw"+Attack[0]);
         CT[count] = specialInfo.CT[SelectNum[count]];
         Range[count] = specialInfo.Range[SelectNum[count]];
         count++;

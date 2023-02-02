@@ -3809,7 +3809,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _timeInterval: 2
+  _timeInterval: 200
   sp_Range:
   - 0
   - 0
