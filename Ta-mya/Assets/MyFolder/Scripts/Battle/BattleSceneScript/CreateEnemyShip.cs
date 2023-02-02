@@ -52,7 +52,6 @@ public class CreateEnemyShip : MonoBehaviour
     {
         ForNum = 0;
         SetTag();   // string‚Éƒ^ƒO‚Ì–¼‘OŠ„“–
-        Debug.Log(BossShip[0].transform.position);
         enemyparent[0] = GameObject.FindGameObjectWithTag("Enemy");
         if(isShip2 == true)
         {
