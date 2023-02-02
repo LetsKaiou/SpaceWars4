@@ -234,27 +234,27 @@ public class Player : MonoBehaviour
         placePosition = q1 * offsetGun + placePosition;
         Quaternion a = Quaternion.identity;
         //íeê∂ê¨
-        Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        //Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
 
         // égÇ¡ÇΩì¡éÍçUåÇÇÃIDÇï‘Ç∑
         Skill.instance.StartEffect(BulletSelect);
 
         // É^ÉOÇÃäÑÇËìñÇƒ
-        switch (BulletSelect - 1)
-        {
-            case 0:
-                Clones[BulletSelect - 1].tag = "SP1";
-                break;
-            case 1:
-                Clones[BulletSelect - 1].tag = "SP2";
-                break;
-            case 2:
-                Clones[BulletSelect - 1].tag = "SP3";
-                break;
-            case 3:
-                Clones[BulletSelect - 1].tag = "SP4";
-                break;
-        }
+        //switch (BulletSelect - 1)
+        //{
+        //    case 0:
+        //        Clones[BulletSelect - 1].tag = "SP1";
+        //        break;
+        //    case 1:
+        //        Clones[BulletSelect - 1].tag = "SP2";
+        //        break;
+        //    case 2:
+        //        Clones[BulletSelect - 1].tag = "SP3";
+        //        break;
+        //    case 3:
+        //        Clones[BulletSelect - 1].tag = "SP4";
+        //        break;
+        //}
 
         Destroy();
     }

@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            Player.instance.P_Damage(5);
+            Player.instance.P_Damage(20);
         }
         if (other.gameObject.tag == "FriendShip1")
         {
