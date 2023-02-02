@@ -9,39 +9,39 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    // �Z�[�u�p�̓��͏ȗ�
+    // セーブ用の入力省略
     private SaveSystem System => SaveSystem.Instance;
     private MainShipData Data => System.MainShipData;
-    // ���̃X�N���v�g�Q�Ɨp
+    // 他のスクリプト参照用
     public SP_Bullet sp_Bullet;
     public CreateShip createcs;
     public CoolDown CoolDownScript;
-    // Player���
+    // Player情報
     public float speed;
-    public  int Player_HP = 60;
+    public int Player_HP = 60;
     public static int MaxHP;
     public Slider hp_slider;
     public bool isTurn = false;
     public static float ScoreHP;
     private bool isSecond;
     public int Defence;
-    // �e�̎�ށA���ˈʒu
+    // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
     public GameObject[] Clones = new GameObject[256];
     private GameObject P_Bullet;
-    // �o�ߎ��Ԏ擾�p�ϐ�
+    // 経過時間取得用変数
     [SerializeField] private float _timeInterval;
     private float _timeElapsed;
-    // �}�E�X�z�C�[���̉�]���擾�p�ϐ�
+    // マウスホイールの回転数取得用変数
     private float MousWheel;
-    // ����U���p�i�[�ϐ�
-    [SerializeField]private float[] sp_Range = new float[4];
-    public int BulletSelect;   
+    // 特殊攻撃用格納変数
+    [SerializeField] private float[] sp_Range = new float[4];
+    public int BulletSelect;
     public List<bool> Reload = new List<bool>();
-    // �_���[�W�����p�ϐ�
+    // ダメージ処理用変数
     private bool DamageHit;
-    // �A�j���[�V�����i�[�p
+    // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
     private bool shotcheck;
@@ -72,9 +72,9 @@ public class Player : MonoBehaviour
 
         Player_HP = Data.HP;
 
-        // ������
+        // 初期化
         hp_slider.maxValue = Player_HP;
-        
+
         hp_slider.value = Player_HP;
         for (int i = 0; i < 4; i++)
         {
@@ -84,14 +84,14 @@ public class Player : MonoBehaviour
 
         SP_Anim.GetComponent<Animator>();
 
-        // List�ɏ���ǉ�(ture:���ˉ\�Afalse:�N�[���^�C����)
-        Reload.Add(true);   // ����U��1
-        Reload.Add(true);   // ����U��2
-        Reload.Add(true);   // ����U��3
-        Reload.Add(true);   // ����U��4
+        // Listに情報を追加(ture:発射可能、false:クールタイム中)
+        Reload.Add(true);   // 特殊攻撃1
+        Reload.Add(true);   // 特殊攻撃2
+        Reload.Add(true);   // 特殊攻撃3
+        Reload.Add(true);   // 特殊攻撃4
         //Debug.Log(Reload.Count);
 
-        // �G�t�F�N�g�p
+        // エフェクト用
         JetEffect.Pause();
     }
 
@@ -99,14 +99,14 @@ public class Player : MonoBehaviour
     {
 
         //skybox.SetVector("_Speed", vec);
-        // �ړ�����
-        #region �ړ�
+        // 移動処理
+        #region 移動
         if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
 
             //vec = new Vector3(1, 0, 0);
-            //�G�t�F�N�g�p
+            //エフェクト用
             JetEffect.Play();
         }
         //else
@@ -132,29 +132,29 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        // ����U���I������
-        #region ����U��
-        // �}�E�X�̉�]���擾(��]�����邽�т�1���������� �f�t�H���g��0)
+        // 特殊攻撃選択処理
+        #region 特殊攻撃
+        // マウスの回転数取得(回転させるたびに1ずつ増減する デフォルトは0)
         MousWheel += Input.GetAxis("Mouse ScrollWheel");
         MousWheel = Mathf.Floor(MousWheel);
         MousWheel = Mathf.Clamp(MousWheel, 0.0f, 4.0f);
         //SP_Anim.SetInteger("Param", (int)MousWheel);
         #endregion
 
-        // �e����
-        #region �e�̔���
+        // 弾発射
+        #region 弾の発射
         _timeElapsed += Time.deltaTime;
 
         if (_timeElapsed > _timeInterval)
         {
             shotcheck = true;
             //shot();
-            // �o�ߎ��Ԃ����ɖ߂�
+            // 経過時間を元に戻す
             _timeElapsed = 0f;
         }
         #endregion
-        // ����U���̒e�I�������Ɣ��ˏ����ւ̈ړ�(�}�E�X���N���b�N�Ŕ���)
-        #region ����U���ݒ�p
+        // 特殊攻撃の弾選択処理と発射処理への移動(マウス左クリックで発射)
+        #region 特殊攻撃設定用
         if (MousWheel > 0)
         {
             if (Input.GetMouseButtonDown(0))
@@ -169,9 +169,9 @@ public class Player : MonoBehaviour
             }
         }
         #endregion
-        // �v���C���[�̗̑͏���
-        #region HP����
-        // HP�̃X���C�_�[����
+        // プレイヤーの体力処理
+        #region HP処理
+        // HPのスライダー処理
         //hp_slider.value = MaxHP;
         if (hp_slider.value <= 0)
         {
@@ -181,82 +181,62 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    // �ʏ�e���ˏ����֐�
+    // 通常弾発射処理関数
     public void shot()
     {
-        if(shotcheck == true)
+        if (shotcheck == true)
         {
             Debug.Log("ShorIN");
-            //�e���o��������ʒu���擾
+            //弾を出現させる位置を取得
             Vector3 placePosition = this.transform.position;
-            //�o��������ʒu�����炷�l
+            //出現させる位置をずらす値
             Vector3 offsetGun = new Vector3(0, 0, 8);
 
-            //����̌����ɍ��킹�Ēe�̌���������
+            //武器の向きに合わせて弾の向きも調整
             Quaternion q1 = this.transform.rotation;
-            //�e��90�x��]�����鏈��
+            //弾を90度回転させる処理
             Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
             Quaternion q = q1 * q2;
 
-            //�e���o��������ʒu�𒲐�
+            //弾を出現させる位置を調整
             placePosition = q1 * offsetGun + placePosition;
-            //�e����
+            //弾生成
             P_Bullet = Instantiate(Bullet[0], bulletPoint.transform.position, transform.rotation);
             P_Bullet.tag = "P_bullet";
             shotcheck = false;
         }
     }
 
-    // ����U�������֐�(�����͔��˂������U���̒e�̎��)
+    // 特殊攻撃処理関数(引数は発射する特殊攻撃の弾の種類)
     public void SpecialAttack()
     {
-        // �I����������U����n��
+        // 選択した特殊攻撃を渡す
         CoolDownScript.SetSpecialNum();
 
-        // ���ł܂ł̎��Ԃ���
+        // 消滅までの時間を代入
         sp_Range[BulletSelect - 1] = createcs.GetSPRange(BulletSelect - 1);
-        
-        // ���ˌ�false�ɕύX
+
+        // 発射後falseに変更
         Reload[BulletSelect - 1] = false;
 
-        //�e���o��������ʒu���擾
+        //弾を出現させる位置を取得
         Vector3 placePosition = this.transform.position;
-        //�o��������ʒu�����炷�l
+        //出現させる位置をずらす値
         Vector3 offsetGun = new Vector3(0, 0, 8);
 
-        //����̌����ɍ��킹�Ēe�̌���������
+        //武器の向きに合わせて弾の向きも調整
         Quaternion q1 = this.transform.rotation;
-        //�e��90�x��]�����鏈��
+        //弾を90度回転させる処理
         Quaternion q2 = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
         Quaternion q = q1 * q2;
 
-        //�e���o��������ʒu�𒲐�
+        //弾を出現させる位置を調整
         placePosition = q1 * offsetGun + placePosition;
         Quaternion a = Quaternion.identity;
-        //�e����
-        //Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
 
-        // �g��������U����ID��Ԃ�
+        // 使った特殊攻撃のIDを返す
         Skill.instance.StartEffect(BulletSelect);
 
-        // �^�O�̊��蓖��
-        //switch (BulletSelect - 1)
-        //{
-        //    case 0:
-        //        Clones[BulletSelect - 1].tag = "SP1";
-        //        break;
-        //    case 1:
-        //        Clones[BulletSelect - 1].tag = "SP2";
-        //        break;
-        //    case 2:
-        //        Clones[BulletSelect - 1].tag = "SP3";
-        //        break;
-        //    case 3:
-        //        Clones[BulletSelect - 1].tag = "SP4";
-        //        break;
-        //}
-
-        //Destroy();
     }
 
     public void GetSocre_HP()
@@ -264,27 +244,27 @@ public class Player : MonoBehaviour
         ScoreHP = hp_slider.value / Player_HP * 100;
     }
 
-    // �_���[�W�v�Z����
+    // ダメージ計算処理
     public void P_Damage(int damage)
     {
-        damage = damage - Defence;  // �h��͕��_���[�W����
+        damage = damage - Defence;  // 防御力分ダメージ減少
         hp_slider.value -= damage;
     }
 
-    // BulletSelect��n��
+    // BulletSelectを渡す
     public int GetSpecialNum()
     {
         return BulletSelect;
     }
 
 
-    // ���˂�������U��������
+    // 発射した特殊攻撃を消す
     public void Destroy()
     {
         Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
     }
 
-    // �_���[�W����p�֐�
+    // ダメージ判定用関数
     //public void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")
