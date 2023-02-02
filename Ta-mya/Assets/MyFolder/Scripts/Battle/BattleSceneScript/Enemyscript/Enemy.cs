@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("IN");
             Player.instance.GetSocre_HP();
-            PreviewScore.instance.isWin = true;
+            GoResult.isWin = true;
             SceneManager.LoadScene("Result");
         }
 

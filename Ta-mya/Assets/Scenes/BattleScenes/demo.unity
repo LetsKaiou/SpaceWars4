@@ -4562,27 +4562,6 @@ MonoBehaviour:
   isBigMap: 0
   isShip2: 1
   Counter: 0
---- !u!114 &1693190109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578787966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2eec804eb2c3b14e8536f0c9d86f1a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatusText: []
-  ScoreText: {fileID: 0}
-  DevlopSumText: []
-  NowStatusText: []
-  MultiDevelop: 000000000000000000000000
-  AgrDevelop: 0
-  CT_multiply: 0.1
-  isWin: 0
-  LosePoint: 2
 --- !u!114 &1693190112
 MonoBehaviour:
   m_ObjectHideFlags: 0

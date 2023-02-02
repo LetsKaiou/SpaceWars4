@@ -42,7 +42,6 @@ public class PreviewScore : MonoBehaviour
     public static float Agr;  // 農業：特殊攻撃のCT
 
     // バトルに勝ったかどうかの判定
-    public bool isWin;
     [SerializeField] private int LosePoint = 2;
     private int ScorePoint;
     private string Rank;
@@ -88,7 +87,7 @@ public class PreviewScore : MonoBehaviour
             DevelopNum[i] = SliderControl.Now_value[i];
             MultiDevelop[i] = DevelopNum[i];
             // それぞれのステータス計算処理
-            if(isWin == true)
+            if(GoResult.isWin == true)
             {
                 switch (i)
                 {

@@ -43,5 +43,29 @@ MonoBehaviour:
     Image: {fileID: 21300000, guid: abffc7b445dd8e84e9b11eb8967372b9, type: 3}
   - id: 8
     Name: Ship8
-    isGet: 1
+    isGet: 0
     Image: {fileID: 21300000, guid: e79be431155d2f14087a9427e3c6fe9f, type: 3}
+  - id: 9
+    Name: Ship9
+    isGet: 0
+    Image: {fileID: 21300000, guid: be37163a1677eca4d917f4a1e3efe3c8, type: 3}
+  - id: 10
+    Name: Ship10
+    isGet: 0
+    Image: {fileID: 21300000, guid: 7954e78812428744d9094b7f17ebc4d2, type: 3}
+  - id: 11
+    Name: Ship11
+    isGet: 0
+    Image: {fileID: 21300000, guid: 3ad53c524fe42134eb109a2aaa3b84ef, type: 3}
+  - id: 12
+    Name: Ship12
+    isGet: 0
+    Image: {fileID: 21300000, guid: 3afccb008b39838418a534c545516a7f, type: 3}
+  - id: 13
+    Name: Ship13
+    isGet: 0
+    Image: {fileID: 21300000, guid: cc0dbe657fe53e04c8f00e5ea8b5012f, type: 3}
+  - id: 14
+    Name: Ship14
+    isGet: 0
+    Image: {fileID: 21300000, guid: c9c48c09469cc1346921857f03deabea, type: 3}

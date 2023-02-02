@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         //hp_slider.value = MaxHP;
         if (hp_slider.value <= 0)
         {
-            PreviewScore.instance.isWin = false;
+            GoResult.isWin = false;
             SceneManager.LoadScene("Result");
         }
         #endregion
@@ -234,29 +234,29 @@ public class Player : MonoBehaviour
         placePosition = q1 * offsetGun + placePosition;
         Quaternion a = Quaternion.identity;
         //弾生成
-        Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
+        //Clones[BulletSelect-1] = Instantiate(Bullet[BulletSelect], bulletPoint.transform.position, transform.rotation);
 
         // 使った特殊攻撃のIDを返す
         Skill.instance.StartEffect(BulletSelect);
 
-        // タグの割り当て
-        switch (BulletSelect - 1)
-        {
-            case 0:
-                Clones[BulletSelect - 1].tag = "SP1";
-                break;
-            case 1:
-                Clones[BulletSelect - 1].tag = "SP2";
-                break;
-            case 2:
-                Clones[BulletSelect - 1].tag = "SP3";
-                break;
-            case 3:
-                Clones[BulletSelect - 1].tag = "SP4";
-                break;
-        }
+        //// タグの割り当て
+        //switch (BulletSelect - 1)
+        //{
+        //    case 0:
+        //        Clones[BulletSelect - 1].tag = "SP1";
+        //        break;
+        //    case 1:
+        //        Clones[BulletSelect - 1].tag = "SP2";
+        //        break;
+        //    case 2:
+        //        Clones[BulletSelect - 1].tag = "SP3";
+        //        break;
+        //    case 3:
+        //        Clones[BulletSelect - 1].tag = "SP4";
+        //        break;
+        //}
 
-        Destroy();
+        //Destroy();
     }
 
     public void GetSocre_HP()
