@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PreviewScore : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PreviewScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ScoreText;
     [SerializeField] private TextMeshProUGUI[] DevlopSumText = new TextMeshProUGUI[3];
     [SerializeField] private TextMeshProUGUI[] NowStatusText = new TextMeshProUGUI[3];
+    [SerializeField] private Image[] Yajirusi = new Image[3];
 
     private int[] DevelopNum = new int[3];
 
@@ -40,6 +42,9 @@ public class PreviewScore : MonoBehaviour
     public static int Ind;  // 工業：特殊攻撃の攻撃力
     public static int Com;  // 商業：メイン船の体力
     public static float Agr;  // 農業：特殊攻撃のCT
+
+    // アニメーション
+    [SerializeField] private Animator anim;
 
     // バトルに勝ったかどうかの判定
     [SerializeField] private int LosePoint = 2;
@@ -165,20 +170,6 @@ public class PreviewScore : MonoBehaviour
             Data.CT = 10;
         }
         Data.ATK = Ind + Data.ATK;
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    newCT[i] = CreateShip.CT[i] - CreateShip.CT[i] * Agr;
-        //    newAttack[i] = Ind + CreateShip.Attack[i];
-        //    Debug.Log("NewCT:" + newCT[i]);
-        //    Debug.Log("NewAttack:" + newAttack[i]);
-
-        //}
-
-
-        // ステータス表示
-        //StatusText[0].SetText("Point : {0}", Ind);
-        //StatusText[1].SetText("Point : {0}", Com);
-        //StatusText[2].SetText("Point : {0}", Agr);
 
         // テキスト表示
         DevlopSumText[0].SetText("BeforeATK : {0}", Data.IndSum);
@@ -190,18 +181,33 @@ public class PreviewScore : MonoBehaviour
         Data.ComSum = Data.ComSum + Com;
         Data.AgrSum = Data.AgrSum + Agr;
 
+        // 1.5秒後に矢印を表示
+        Invoke("DisplayYajirusi", 1.5f);
+        //Invoke("StartAnim", 1.6f);
+
+        // 2秒後にNowStatus表示
+        Invoke("DisplayNowStatus", 2);
+
+        // 値のセーブ
+        SaveSystem.Instance.Save();
+    }
+
+    private void DisplayYajirusi()
+    {
+        for (int i = 0; i < Yajirusi.Length; i++)
+        {
+            Yajirusi[i].enabled = true;
+        }
+        anim.SetBool("isStart", true);
+    }
+
+    private void DisplayNowStatus()
+    {
         // テキスト表示
         NowStatusText[0].SetText("NowATK : {0}", Data.IndSum);
         NowStatusText[1].SetText("NowDEF : {0}", Data.ComSum);
         NowStatusText[2].SetText("NowCT : {0}", Data.AgrSum);
 
-
-        // 獲得した特殊攻撃の画像表示
-
-
-        // 値のセーブ
-        SaveSystem.Instance.Save();
-
-
     }
+
 }
