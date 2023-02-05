@@ -1077,11 +1077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172234733235080, guid: c6fe0381847dcbd49882de385243245a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96.9
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 4172234733235080, guid: c6fe0381847dcbd49882de385243245a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4172234733235080, guid: c6fe0381847dcbd49882de385243245a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1374,6 +1374,8 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
+  normalspeed: 0
+  minspeed: 0
   Player_HP: 60
   hp_slider: {fileID: 2102736276}
   isTurn: 0
@@ -2728,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4686351410737048, guid: 69b54264a2c33f9409434d043441552c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 143
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4686351410737048, guid: 69b54264a2c33f9409434d043441552c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3541,6 +3543,8 @@ MonoBehaviour:
   createcs: {fileID: 1693190104}
   CoolDownScript: {fileID: 449866964}
   speed: 15
+  normalspeed: 8
+  minspeed: 5
   Player_HP: 10
   hp_slider: {fileID: 2102736276}
   isTurn: 0

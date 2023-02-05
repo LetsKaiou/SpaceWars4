@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public CoolDown CoolDownScript;
     // Player情報
     public float speed;
+    public float normalspeed;
+    public float minspeed;
     public int Player_HP = 60;
     public static int MaxHP;
     public Slider hp_slider;
@@ -97,6 +99,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        transform.position += transform.forward * normalspeed * Time.deltaTime;
+        //エフェクト用
+        JetEffect.Play();
 
         //skybox.SetVector("_Speed", vec);
         // 移動処理
@@ -104,10 +109,8 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && isTurn == false)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
-
             //vec = new Vector3(1, 0, 0);
-            //エフェクト用
-            JetEffect.Play();
+
         }
         //else
         //{
@@ -115,8 +118,9 @@ public class Player : MonoBehaviour
         //}
         if (Input.GetKey(KeyCode.S) && isTurn == false)
         {
-            transform.position -= transform.forward * speed * Time.deltaTime;
-            JetEffect.Stop();
+            //transform.position -= transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * minspeed * Time.deltaTime;
+            //JetEffect.Stop();
         }
         if (Input.GetKey(KeyCode.Q))
         {
