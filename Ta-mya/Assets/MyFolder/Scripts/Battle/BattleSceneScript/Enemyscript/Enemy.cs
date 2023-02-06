@@ -36,6 +36,10 @@ public class Enemy : MonoBehaviour
     // プレイヤーの座標取得
     [SerializeField]private GameObject target;
 
+    [SerializeField]
+    GameObject transitionPrefab;
+    readonly float waitTime = 0.5f;
+
     public int EnemyCount;
     GameObject E1;
     GameObject E2;
@@ -119,15 +123,21 @@ public class Enemy : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
 
-        if (EnemyCount == 0)
+        if (EnemyCount <= 0)
         {
             Debug.Log("IN");
             Player.instance.GetSocre_HP();
             GoResult.isWin = true;
-            SceneManager.LoadScene("Result");
+            Invoke("Load", 5);
         }
 
     }
+
+    private void Load()
+    {
+        StartCoroutine(nameof(LoadScene));
+    }
+
     public void shot()
     {
         if(isSP == true)
@@ -198,7 +208,7 @@ public class Enemy : MonoBehaviour
                     BreakEffect(E2);
                     E2.gameObject.SetActive(false);
 
-                    EnemyCount--;
+                    EnemyCount -= 2;
                 }
                 break;
             case 2:
@@ -229,6 +239,16 @@ public class Enemy : MonoBehaviour
         GameObject effect = Instantiate(breakEffect) as GameObject;
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
         effect.transform.position = Enemy.gameObject.transform.position;
+    }
+
+    IEnumerator LoadScene()
+    {
+        Debug.Log("IN");
+        Instantiate(transitionPrefab);
+
+        yield return new WaitForSeconds(waitTime);
+
+        SceneManager.LoadScene("Result");
     }
 
 }

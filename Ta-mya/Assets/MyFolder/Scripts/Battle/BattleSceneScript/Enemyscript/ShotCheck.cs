@@ -18,7 +18,6 @@ public class ShotCheck : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("IN");
             rootcs.shot();
             rootcs.SPShot();
             rootcs.In = true;
