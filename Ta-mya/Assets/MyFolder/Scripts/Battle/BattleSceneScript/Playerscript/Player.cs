@@ -277,7 +277,7 @@ public class Player : MonoBehaviour
         Instantiate(transitionPrefab);
 
         yield return new WaitForSeconds(waitTime);
-
+        Debug.Log("PIN");
         SceneManager.LoadScene("Result");
     }
 }

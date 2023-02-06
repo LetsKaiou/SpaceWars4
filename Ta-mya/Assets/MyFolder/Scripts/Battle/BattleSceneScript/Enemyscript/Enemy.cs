@@ -38,7 +38,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     GameObject transitionPrefab;
-    readonly float waitTime = 0.5f;
+    readonly float waitTime = 0.9f;
+    private bool InLoad;
 
     public int EnemyCount;
     GameObject E1;
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        InLoad = false;
         E1 = GameObject.Find("Enemy");
         E2 = GameObject.Find("Enemy1");
         if (DropItems.Big_Map == true)
@@ -128,14 +130,25 @@ public class Enemy : MonoBehaviour
             Debug.Log("IN");
             Player.instance.GetSocre_HP();
             GoResult.isWin = true;
-            Invoke("Load", 5);
+            if (!InLoad)
+            {
+                Debug.Log("INCount");
+                InLoad = true;
+                StartCoroutine(nameof(LoadScene));
+
+            }
         }
 
     }
 
     private void Load()
     {
-        StartCoroutine(nameof(LoadScene));
+        if (InLoad)
+        {
+            
+            StartCoroutine(nameof(LoadScene));
+            InLoad = false;
+        }
     }
 
     public void shot()
