@@ -657,6 +657,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4242266586524295318, guid: 44649d47673614a498bc139e3cdae788, type: 3}
     - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
+      propertyPath: transitionPrefab
+      value: 
+      objectReference: {fileID: 2354207475885785177, guid: 04a450d526a3f5f499f575db3bc55520, type: 3}
+    - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: Bullet.Array.data[0]
       value: 
       objectReference: {fileID: 884650260136263599, guid: 7b27af7325b98644fbaff1a63fcf2d1a, type: 3}
@@ -1655,6 +1659,7 @@ MonoBehaviour:
   SP_Anim: {fileID: 1114951652}
   _anglePerFrame: 0.1
   skybox: {fileID: 0}
+  transitionPrefab: {fileID: 0}
   JetEffect: {fileID: 0}
 --- !u!1 &511119073
 GameObject:
@@ -3824,6 +3829,7 @@ MonoBehaviour:
   SP_Anim: {fileID: 1114951652}
   _anglePerFrame: 0.1
   skybox: {fileID: 2100000, guid: 2952ac49204dc8546bd7a9693be17518, type: 2}
+  transitionPrefab: {fileID: 2354207475885785177, guid: 04a450d526a3f5f499f575db3bc55520, type: 3}
   JetEffect: {fileID: 1861803530}
 --- !u!95 &1469655929
 Animator:
@@ -3996,6 +4002,10 @@ PrefabInstance:
       propertyPath: breakEffect
       value: 
       objectReference: {fileID: 4242266586524295318, guid: 44649d47673614a498bc139e3cdae788, type: 3}
+    - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
+      propertyPath: transitionPrefab
+      value: 
+      objectReference: {fileID: 2354207475885785177, guid: 04a450d526a3f5f499f575db3bc55520, type: 3}
     - target: {fileID: 1491040386, guid: 12e2965e034095b40b035c26bdecd5ed, type: 3}
       propertyPath: Bullet.Array.data[0]
       value: 

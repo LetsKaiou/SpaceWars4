@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Material skybox;
     private Vector3 vec;
 
+    [SerializeField]
+    GameObject transitionPrefab;
+    readonly float waitTime = 3f;
+
     public static Player instance;
 
     public ParticleSystem JetEffect;
@@ -180,7 +184,7 @@ public class Player : MonoBehaviour
         if (hp_slider.value <= 0)
         {
             GoResult.isWin = false;
-            SceneManager.LoadScene("Result");
+            StartCoroutine(nameof(LoadScene));
         }
         #endregion
     }
@@ -268,31 +272,13 @@ public class Player : MonoBehaviour
         Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
     }
 
-    // ダメージ判定用関数
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "E_bullet" || other.gameObject.tag == "C_bullet")
-    //    {
-    //        DamageHit = false;
-    //        Destroy(other.gameObject);
-    //        if (DamageHit == false)
-    //        {
-    //            Debug.Log(other.tag);
-    //            P_Damage(5 - Defence);
-    //            DamageHit = true;
-    //        }
-    //    }
-    //    if (other.gameObject.tag == "E_SP")
-    //    {
-    //        DamageHit = false;
-    //        Destroy(other.gameObject);
-    //        if (DamageHit == false)
-    //        {
-    //            Debug.Log(other.tag);
-    //            P_Damage(20);
-    //            DamageHit = true;
-    //        }
-    //    }
-    //}
+    IEnumerator LoadScene()
+    {
+        Instantiate(transitionPrefab);
+
+        yield return new WaitForSeconds(waitTime);
+
+        SceneManager.LoadScene("Result");
+    }
 }
 

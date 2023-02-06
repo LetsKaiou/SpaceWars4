@@ -198,7 +198,7 @@ public class PreviewScore : MonoBehaviour
         {
             Yajirusi[i].enabled = true;
         }
-        anim.SetBool("isStart", true);
+        //anim.SetBool("isStart", true);
     }
 
     private void DisplayNowStatus()

@@ -17,10 +17,10 @@ public class GoResult : MonoBehaviour
     void Update()
     {
 
-        if (Enemy.instance.EnemyCount == 0)
-        {
-            isWin = true;
-            SceneManager.LoadScene("Result");
-        }
+        //if (Enemy.instance.EnemyCount == 0)
+        //{
+        //    isWin = true;
+        //    SceneManager.LoadScene("Result");
+        //}
     }
 }
