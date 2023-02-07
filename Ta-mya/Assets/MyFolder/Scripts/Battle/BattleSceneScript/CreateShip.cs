@@ -101,19 +101,19 @@ public class CreateShip : MonoBehaviour
     private void Update()
     {
         TimeCount += Time.time;
-        if(TimeCount >= 120)
+        if(TimeCount >= 300)
         {
             ScoreTime = 100;
         }
-        else if(TimeCount >= 180)
+        else if(TimeCount >= 340)
         {
             ScoreTime = 80;
         }
-        else if(TimeCount >= 240)
+        else if(TimeCount >= 380)
         {
             ScoreTime = 50;
         }
-        else if(TimeCount >= 300)
+        else if(TimeCount >= 420)
         {
             ScoreTime = 30;
         }
