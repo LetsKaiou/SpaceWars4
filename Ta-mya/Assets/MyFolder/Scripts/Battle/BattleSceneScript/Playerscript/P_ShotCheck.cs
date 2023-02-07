@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class P_ShotCheck : MonoBehaviour
 {
-    public Enemy enemycs;
     GameObject rootObj;
     Player rootcs;
     private Transform E_Positon;
@@ -29,6 +28,7 @@ public class P_ShotCheck : MonoBehaviour
         }
         else if (other.gameObject.tag == "Enemy2")
         {
+            Debug.Log("In");
             E_Pos(other);
             rootcs.shot();
         }

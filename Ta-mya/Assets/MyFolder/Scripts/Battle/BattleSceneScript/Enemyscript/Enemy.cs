@@ -127,15 +127,13 @@ public class Enemy : MonoBehaviour
 
         if (EnemyCount <= 0)
         {
-            Debug.Log("IN");
             Player.instance.GetSocre_HP();
             GoResult.isWin = true;
+            GoResult.instance.DisplayResult();
             if (!InLoad)
             {
-                Debug.Log("INCount");
                 InLoad = true;
-                StartCoroutine(nameof(LoadScene));
-
+                Invoke("Load", 3);
             }
         }
 
@@ -221,7 +219,7 @@ public class Enemy : MonoBehaviour
                     BreakEffect(E2);
                     E2.gameObject.SetActive(false);
 
-                    EnemyCount -= 2;
+                    EnemyCount--;
                 }
                 break;
             case 2:
@@ -256,7 +254,6 @@ public class Enemy : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        Debug.Log("IN");
         Instantiate(transitionPrefab);
 
         yield return new WaitForSeconds(waitTime);

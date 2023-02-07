@@ -12,10 +12,12 @@ public class Player : MonoBehaviour
     // セーブ用の入力省略
     private SaveSystem System => SaveSystem.Instance;
     private MainShipData Data => System.MainShipData;
+
     // 他のスクリプト参照用
     public SP_Bullet sp_Bullet;
     public CreateShip createcs;
     public CoolDown CoolDownScript;
+
     // Player情報
     public float speed;
     public float normalspeed;
@@ -27,38 +29,50 @@ public class Player : MonoBehaviour
     public static float ScoreHP;
     private bool isSecond;
     public int Defence;
+
     // 弾の種類、発射位置
     [SerializeField] private GameObject[] Bullet;
     [SerializeField] private GameObject bulletPoint;
     public GameObject[] Clones = new GameObject[256];
     private GameObject P_Bullet;
+
     // 経過時間取得用変数
     [SerializeField] private float _timeInterval;
     private float _timeElapsed;
+
     // マウスホイールの回転数取得用変数
     private float MousWheel;
+
     // 特殊攻撃用格納変数
     [SerializeField] private float[] sp_Range = new float[4];
     public int BulletSelect;
     public List<bool> Reload = new List<bool>();
+
     // ダメージ処理用変数
     private bool DamageHit;
+
     // アニメーション格納用
     [SerializeField] private Animator SP_Anim;
 
+    // 攻撃可能かどうか
     private bool shotcheck;
 
     public float _anglePerFrame = 0.1f;
     [SerializeField] private Material skybox;
     private Vector3 vec;
 
+    // ブラックアウト処理
     [SerializeField]
     GameObject transitionPrefab;
-    readonly float waitTime = 3f;
+    readonly float waitTime = 0.9f;
+    private bool InLoad;
 
-    public static Player instance;
-
+    // エフェクト
     public ParticleSystem JetEffect;
+    public GameObject breakEffect;
+
+    // インスタンス
+    public static Player instance;
 
     private void Awake()
     {
@@ -184,7 +198,12 @@ public class Player : MonoBehaviour
         if (hp_slider.value <= 0)
         {
             GoResult.isWin = false;
-            StartCoroutine(nameof(LoadScene));
+            if (!InLoad)
+            {
+                InLoad = true;
+                StartCoroutine(nameof(LoadScene));
+
+            }
         }
         #endregion
     }
@@ -272,12 +291,21 @@ public class Player : MonoBehaviour
         Destroy(Clones[BulletSelect - 1], sp_Range[BulletSelect - 1]);
     }
 
+    //爆破エフェクトを生成する
+    void BreakEffect()
+    {
+        //爆破エフェクトを生成する
+        GameObject effect = Instantiate(breakEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        effect.transform.position = this.gameObject.transform.position;
+    }
+
+    // シーン遷移のフェード処理
     IEnumerator LoadScene()
     {
         Instantiate(transitionPrefab);
 
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("PIN");
         SceneManager.LoadScene("Result");
     }
 }

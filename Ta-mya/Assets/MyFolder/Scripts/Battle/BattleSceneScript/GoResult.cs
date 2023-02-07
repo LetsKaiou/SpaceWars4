@@ -2,25 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GoResult : MonoBehaviour
 {
     public static bool isWin;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject WinPanel;
+    [SerializeField] private GameObject GameOverPanel;
+
+    public static GoResult instance;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayResult()
     {
-
-        //if (Enemy.instance.EnemyCount == 0)
-        //{
-        //    isWin = true;
-        //    SceneManager.LoadScene("Result");
-        //}
+        // Ÿ—˜‚¾‚Á‚½‚çWin‚ğ•\¦
+        if (isWin)
+        {
+            WinPanel.SetActive(true);
+        }
+        // •‰‚¯‚½‚çGameOver‚ğ•\¦
+        else
+        {
+            GameOverPanel.SetActive(true);
+        }
     }
+
 }
