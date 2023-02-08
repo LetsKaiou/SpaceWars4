@@ -79,21 +79,21 @@ public class child : MonoBehaviour
     // ÉQÅ[ÉÄé¿çsíÜÇÃåJÇËï‘Çµèàóù
     void Update()
     {
+
+        JetEffect.Play();
+
         if (Input.GetKey(KeyCode.W))
         {
             //transform.position += transform.forward * speed * Time.deltaTime;
             //GameObject effect = Instantiate(JetEffect) as GameObject;
             //JetEffect.SetActive(true);
-            JetEffect.Play();
-            {
-                Debug.Log("Jet");
-            }
+            
             
         }
         if (Input.GetKey(KeyCode.S))
         {
             //transform.position -= transform.forward * speed * Time.deltaTime;
-            JetEffect.Stop();
+            //JetEffect.Stop();
         }
         //if (Input.GetKey(KeyCode.Q))
         //{
