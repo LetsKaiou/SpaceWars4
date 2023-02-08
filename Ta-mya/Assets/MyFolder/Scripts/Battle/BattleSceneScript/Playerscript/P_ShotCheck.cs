@@ -28,7 +28,6 @@ public class P_ShotCheck : MonoBehaviour
         }
         else if (other.gameObject.tag == "Enemy2")
         {
-            Debug.Log("In");
             E_Pos(other);
             rootcs.shot();
         }
