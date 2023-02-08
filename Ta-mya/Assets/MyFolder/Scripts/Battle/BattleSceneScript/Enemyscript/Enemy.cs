@@ -36,10 +36,7 @@ public class Enemy : MonoBehaviour
     // プレイヤーの座標取得
     [SerializeField]private GameObject target;
 
-    [SerializeField]
-    GameObject transitionPrefab;
-    readonly float waitTime = 0.9f;
-    private bool InLoad;
+
 
     public int EnemyCount;
     GameObject E1;
@@ -62,7 +59,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        InLoad = false;
         E1 = GameObject.Find("Enemy");
         E2 = GameObject.Find("Enemy1");
         if (DropItems.Big_Map == true)
@@ -77,6 +73,7 @@ public class Enemy : MonoBehaviour
         }
         EnemyCount = CreateEnemyShip.instance.Counter;
         angle = gameObject.transform.eulerAngles;
+        Debug.Log(EnemyCount);
     }
 
     // Update is called once per frame
@@ -125,29 +122,11 @@ public class Enemy : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
 
-        if (EnemyCount <= 0)
-        {
-            Player.instance.GetSocre_HP();
-            GoResult.isWin = true;
-            GoResult.instance.DisplayResult();
-            if (!InLoad)
-            {
-                InLoad = true;
-                Invoke("Load", 3);
-            }
-        }
+        
 
     }
 
-    private void Load()
-    {
-        if (InLoad)
-        {
-            
-            StartCoroutine(nameof(LoadScene));
-            InLoad = false;
-        }
-    }
+
 
     public void shot()
     {
@@ -206,10 +185,10 @@ public class Enemy : MonoBehaviour
                 Enemy_HP[0] -= damage;
                 if(Enemy_HP[0] <= 0)
                 {
-                    BreakEffect(E1);
-
-                    EnemyCount--;
+                    BreakEffect(E1);                   
                     this.gameObject.SetActive(false);
+                    EnemyCount--;
+                    Debug.Log(EnemyCount);
                 }
                 break;
             case 1:
@@ -218,8 +197,8 @@ public class Enemy : MonoBehaviour
                 {
                     BreakEffect(E2);
                     E2.gameObject.SetActive(false);
-
-                    EnemyCount--;
+                    EnemyCount --;
+                    Debug.Log(EnemyCount);
                 }
                 break;
             case 2:
@@ -228,7 +207,7 @@ public class Enemy : MonoBehaviour
                 {
                     BreakEffect(E3);
                     Destroy(this.gameObject);
-                    EnemyCount--;
+                    EnemyCount -= 2;
                 }
                 break;
             case 3:
@@ -252,13 +231,6 @@ public class Enemy : MonoBehaviour
         effect.transform.position = Enemy.gameObject.transform.position;
     }
 
-    IEnumerator LoadScene()
-    {
-        Instantiate(transitionPrefab);
 
-        yield return new WaitForSeconds(waitTime);
-
-        SceneManager.LoadScene("Result");
-    }
 
 }

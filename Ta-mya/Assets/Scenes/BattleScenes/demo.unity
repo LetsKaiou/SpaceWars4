@@ -4864,6 +4864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinPanel: {fileID: 686179620}
   GameOverPanel: {fileID: 1747677182}
+  transitionPrefab: {fileID: 2354207475885785177, guid: 04a450d526a3f5f499f575db3bc55520, type: 3}
 --- !u!1 &1720176634
 GameObject:
   m_ObjectHideFlags: 0
