@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: 68d6f78f20c8aba48b25e90f40dd573d
+  - enabled: 1
+    path: Assets/Scenes/BaseCityScene.unity
+    guid: ec4214cc06e6a5347963d743221991a4
+  - enabled: 1
     path: Assets/Scenes/FomationScenes/SelectScenes.unity
     guid: fa1e916432e0f3c45894e7117aff6a3c
   - enabled: 1
@@ -18,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FomationScenes/SpecialAttack.unity
     guid: 9cae0d7e6aafdb344aab444c35dfddc4
   - enabled: 1
-    path: Assets/Scenes/BaseCityScene.unity
-    guid: ec4214cc06e6a5347963d743221991a4
-  - enabled: 1
     path: Assets/Scenes/BattleSelectScene.unity
     guid: 658e8c8126d33ce4b915a6914aa304eb
   - enabled: 1
@@ -32,10 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScenes/Result.unity
     guid: b1bf035bf576fce4aacbf2260606b425
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyFolder/Honda/NetWorkDemo/StandbyScene.unity
     guid: a1c3e467b7d4a894d9f5cb01f1b1ae64
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyFolder/Honda/NetWorkDemo/NetWorkDemo.unity
     guid: 1e4afde1cc18c6f46a9425a3960bb18d
   m_configObjects: {}
